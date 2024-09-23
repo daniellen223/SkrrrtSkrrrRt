@@ -1,4 +1,4 @@
-/CVS/*
-**/CVS/*
-.cvsignore
-*/.cvsignore
+/CSV/*
+**/CSV/*
+.csvignore
+*/.csvignore
