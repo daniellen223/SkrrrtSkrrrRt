@@ -1,5 +1,5 @@
 '''
-Authors:    Ragnar, Danielle and Hulda
+Authors:    Ragnar, Danielle and Huldar
 Date:       2024-10-08
 Project:
 Background functions for helping solve the kaggle used car prices competition:
