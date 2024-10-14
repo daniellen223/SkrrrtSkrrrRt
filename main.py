@@ -66,12 +66,18 @@ import tools # Group tools
 
 # Testing area
 #-----------------------------------------------
-x = torch.ones(3)
-w = torch.rand(3)
-w = w-0.5
-print("activation function test")
-print("w: " + str(w))
-print(tools.h(x,w))
+'''
+x = torch.rand(10, 3)
+t = torch.rand(10)
+print("testing data split")
+print("data: \n" + str(x))
+print("Targets: \n" + str(t))
+(train_data, train_targets), (test_data, test_targets) = tools.split_data(x,t, train_ratio=0.1)
+print("Train_data: \n" + str(train_data))
+print("Train_Targets: \n" + str(train_targets))
+print("Test_data: \n" + str(test_data))
+print("Test_Targets: \n" + str(test_targets))
+'''
 
 # Run finished message
 print("\n")
