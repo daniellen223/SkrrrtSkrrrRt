@@ -78,6 +78,29 @@ def split_data(
 
 # Measure error function
 
+#Making weights
+def init_weights(N: int, M: int, bias: bool = True):
+    ''' 
+    Inputs
+    N : number of weights ?
+    M : Number of nodes in the hidden layer
+    '''
+    # making w1
+    if bias:
+        w1 = torch.rand(N+1)
+    else:
+        w1 = torch.rand(N)
+
+    if bias: 
+     w2 = torch.rand(M+1)
+    else:
+     w2 = torch.rand(M)
+
+    return w1, w2
+
+
+
+
 
 # Activation function, h
 def h(z1: torch.Tensor, w1: torch.Tensor) -> float:

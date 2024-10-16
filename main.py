@@ -79,6 +79,8 @@ print("Test_data: \n" + str(test_data))
 print("Test_Targets: \n" + str(test_targets))
 '''
 
+print(tools.init_weights(3, 5))
+
 # Run finished message
 print("\n")
 print("main.py ran succesfully")
