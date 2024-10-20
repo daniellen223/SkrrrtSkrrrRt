@@ -17,13 +17,14 @@ start_time = time.time()
 print(" \r\nRunning main.py")
 
 # Imports
-import torch
+import torch # For working with tensors and neural networks
 import tools # Group tools
+from colorama import Fore, Back, Style  # For coloring terminal messages
 
 # Load data
 print("Loading data..............",end="")
 data, targets = tools.read_in_file()
-print("Complete")
+print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
 # Transform data into manageable form
 
@@ -32,7 +33,7 @@ print("Complete")
 # Split data into training_data, training_targets, test_data & test_targets
 print("Splitting data............",end="")
 (train_data, train_targets), (test_data, test_targets) = tools.split_data(data,targets, train_ratio=0.1)
-print("Complete")
+print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
 # Initialize neural network
 # torch.nn or similar might be useful for this - Huldar 2024-10-20
@@ -40,18 +41,18 @@ print("Complete")
 # Train neural network on training set
 #print("Training neural network...",end="")
 
-#print("Complete")
+#print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
 
 # Test neural network on test set, log errors
 #print("Testing neural network....",end="")
 
-#print("Complete")
+#print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
 # Plot results
 #print("Plotting results..........",end="")
 
-#print("Complete")
+#print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
 
 # For when the above code is already working, implement the following:
