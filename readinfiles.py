@@ -3,7 +3,7 @@ import torch
 
 # Load the data
 data = pd.read_csv('train.csv')
-
+print(data.head())
 # One-hot encode categorical columns
 categorical_columns = ['brand', 'model', 'fuel_type', 'transmission', 'engine', 'ext_col', 'int_col']
 data_encoded = pd.get_dummies(data, columns=categorical_columns)
@@ -31,7 +31,7 @@ data_encoded['price'] = pd.to_numeric(data_encoded['price'], errors='coerce')
 
 # Separate features and target
 arraydata = data_encoded.iloc[:, :-1]  # Assuming the last column is the target
-arraytarget = data_encoded.iloc[:, -1]
+arraytarget = data_encoded['price']  # Explicitly use the 'price' column
 
 # Ensure target is numeric
 arraytarget = pd.to_numeric(arraytarget, errors='coerce')
