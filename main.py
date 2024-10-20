@@ -12,49 +12,49 @@ print("\nRunning main.py")
 # Imports
 import torch
 import tools # Group tools
+import time
+
+# Start timer
+start_time = time.time()
 
 # Load data
-#print("Loading data")
-
-
-
-#print("Complete\n")
+print("Loading data.....",end="")
+data, targets = tools.read_in_file()
+print("Complete")
 
 # Transform data into manageable form
 
 
 
 # Split data into training_data, training_targets, test_data & test_targets
-#print("Splitting data")
-
-
-
-#print("Complete\n")
+print("Splitting data...",end="")
+(train_data, train_targets), (test_data, test_targets) = tools.split_data(data,targets, train_ratio=0.1)
+print("Complete")
 
 # Initialize neural network
 
 
 # Train neural network on training set
-#print("Training neural network")
+#print("Training neural network...",end="")
 
 
 
-#print("Complete\n")
+#print("Complete")
 
 
 # Test neural network on test set, log errors
-#print("Testing neural network")
+#print("Testing neural network...",end="")
 
 
 
-#print("Complete\n")
+#print("Complete")
 
 # Plot results
-#print("Plotting results")
+#print("Plotting results...",end="")
 
 
 
-#print("Complete\n")
+#print("Complete")
 
 
 # For when the above code is already working, implement the following:
@@ -79,8 +79,10 @@ print("Test_data: \n" + str(test_data))
 print("Test_Targets: \n" + str(test_targets))
 '''
 
-print(tools.init_weights(3, 5))
+# print(tools.init_weights(3, 5))
+
+# Calculate runtime
+runtime = time.time() - start_time
 
 # Run finished message
-print("\n")
-print("main.py ran succesfully")
+print("\nmain.py ran succesfully in {:0.1f} seconds\n".format(runtime))

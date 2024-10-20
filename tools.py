@@ -8,9 +8,81 @@ https://www.kaggle.com/competitions/playground-series-s4e9/data
 # Imports
 import torch # To work with tensors and neural network functions
 from typing import Union # To return multiple values as a union
+import pandas as pd # For loading data
+from sklearn.preprocessing import LabelEncoder # For loading data
 
 # Read data function
+def read_in_file(filename: str = 'train.csv') -> Union[torch.Tensor, torch.Tensor] :
+    '''
+    Reads in the data from a csv file, given the filename.
+    Formats the data in a workable format and splits it into data and targets.
+    Returns the data and targets.
+    Copied from readinfiles.py the 2024-10-20
+    
+    input:
+    filename    : The filename to fetch
+    
+    outputs:
+    data_tensor    : Size (N x 12) where N is the number of data points
+    target_tensor : Size (N) where N is the number of data points. Cont
+    
+    data_tensor column meanings:
+    0 : 
+    1 : 
+    2 :
+    3 : 
+    4 : 
+    5 : 
+    6 : 
+    7 : 
+    8 : 
+    9 : 
+    10 : 
+    11 : 
+    '''
+    # Try except in case something goes wrong
+    try:
+        # Load the data
+        data = pd.read_csv(filename)
 
+        # Define categorical columns for label encoding
+        categorical_columns = ['brand', 'model', 'fuel_type', 'transmission', 'engine', 'ext_col', 'int_col']
+
+        # Initialize the label encoder
+        label_encoder = LabelEncoder()
+
+        # Apply label encoding to each categorical column
+        for col in categorical_columns:
+            data[col] = label_encoder.fit_transform(data[col])
+
+        # Convert binary columns manually (e.g., 'Yes'/'No' or similar binary data)
+        binary_columns = ['accident', 'clean_title']
+        data['accident'] = data['accident'].map({'None reported': 0, 'At least 1 accident or damage reported': 1})
+        data['clean_title'] = data['clean_title'].map({'Yes': 1, 'No': 0})
+
+        # Convert any remaining object columns to numeric values
+        object_columns = data.select_dtypes(include=['object']).columns
+        if len(object_columns) > 0:
+            print("Non-numeric columns found, attempting to convert:", object_columns)
+            data[object_columns] = data[object_columns].apply(lambda x: pd.to_numeric(x, errors='coerce'))
+
+        # Ensure 'price' is numeric
+        data['price'] = pd.to_numeric(data['price'], errors='coerce')
+
+        # Separate features and target
+        arraydata = data.iloc[:, :-1]  # Assuming the last column is the target
+        arraytarget = data['price']  # Explicitly use the 'price' column
+
+        # Convert to tensor
+        data_tensor = torch.tensor(arraydata.values, dtype=torch.float32)
+        target_tensor = torch.tensor(arraytarget.values, dtype=torch.float32)
+
+        # Return data_tensor and target_tensor
+        return data_tensor, target_tensor
+    
+    # Except statement
+    except Exception as e:
+        raise("Error reading data:\n" + str(e))
 
 # Split data function
 def split_data(
@@ -74,8 +146,6 @@ def split_data(
     except Exception as e:
         raise("Data splitting error: " + str(e))
 
-
-
 # Measure error function
 
 #Making weights
@@ -98,10 +168,6 @@ def init_weights(N: int, M: int, bias: bool = True):
 
     return w1, w2
 
-
-
-
-
 # Activation function, h
 def h(z1: torch.Tensor, w1: torch.Tensor) -> float:
     '''
@@ -121,4 +187,3 @@ def h(z1: torch.Tensor, w1: torch.Tensor) -> float:
     # ReLU of the weighed sum
     ReLU = torch.nn.ReLU()
     return ReLU(w_sum).item() # .item() pulls the 1x1 tensor value out
-
