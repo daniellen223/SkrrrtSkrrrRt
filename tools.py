@@ -146,27 +146,28 @@ def split_data(
     except Exception as e:
         raise("Data splitting error: " + str(e))
 
-# Measure error function
-
 #Making weights
-def init_weights(N: int, M: int, bias: bool = True):
+def init_weights(D: int, M: int, bias: bool = True) -> Union[torch.Tensor, torch.Tensor]:
     ''' 
     Inputs
-    N : number of weights ?
+    D : Number of dimensions
     M : Number of nodes in the hidden layer
     '''
     # making w1
     if bias:
-        w1 = torch.rand(N+1)
+        w1 = torch.rand(D+1)
     else:
-        w1 = torch.rand(N)
+        w1 = torch.rand(D)
 
     if bias: 
-     w2 = torch.rand(M+1)
+        w2 = torch.rand(M+1)
     else:
-     w2 = torch.rand(M)
+        w2 = torch.rand(M)
 
     return w1, w2
+
+# Measure error function
+
 
 # Activation function, h
 def h(z1: torch.Tensor, w1: torch.Tensor) -> float:
@@ -187,3 +188,77 @@ def h(z1: torch.Tensor, w1: torch.Tensor) -> float:
     # ReLU of the weighed sum
     ReLU = torch.nn.ReLU()
     return ReLU(w_sum).item() # .item() pulls the 1x1 tensor value out
+
+
+# Get device for torch
+# Based on https://pytorch.org/tutorials/beginner/basics/buildmodel_tutorial.html
+def get_device() -> str:
+    '''
+    Gets which device the neural network will run on
+    
+    output:
+    device: The device to run the neural network model on
+    '''
+    # Default to cpu"
+    device = "cpu"
+    # If cuda available, use cuda
+    if torch.cuda.is_available():
+        device = "cuda"
+    # If mps available, use mps
+    elif torch.backends.mps.is_available():
+        device = "mps"
+
+    # Return device
+    return device
+
+# Make single layer neural network class
+# Based on https://pytorch.org/tutorials/beginner/basics/buildmodel_tutorial.html
+class NeuralNetwork(torch.nn.Module):
+    '''
+    Class for neural network, contains layers and weights.
+    '''
+    # Initialize network
+    def __init__(self, D, M):
+        '''
+        Initializes the neural network with random initial weights
+        
+        inputs:
+        D   : Number of dimensions in the dataset
+        M   : Number of hidden layer nodes
+        '''
+        super().__init__()
+        self.flatten = torch.nn.Flatten()
+        # Create layer_stack containing instructions for each layer
+        self.linear_layer_stack = torch.nn.Sequential(
+            torch.nn.Linear(D, M),  # First linear combination between each dimension and weights to hidden layer
+            torch.nn.ReLU(),        # ReLU activation function inside hidden layer
+            torch.nn.Linear(M, 1),  # Last output is 1 value which should be the car price
+            torch.nn.ReLU(),        # ReLU activation function on output
+        )
+
+    def forward(self, car):
+        '''
+        Forward propagation through each layer of the neural network
+        
+        input:
+        car : Input datapoint with all the car information
+        
+        output:
+        car_price   : Estimated price of inputted car
+        '''
+        # car = self.flatten(car) # Used for multilayer input data, like images with RGB values (3 layers)
+        # Run the input data through the layers, return output
+        car_price = self.linear_layer_stack(car)
+        return car_price
+
+    def train(self, train_data: torch.Tensor, train_targets: torch.Tensor):
+        '''
+        Trains the neural network using the given training data and targets
+        
+        inputs:
+        train_data      : Size (N x D) where N is the number of data points and D is the number of dimensions. The training data.
+        train_targets   : Size (N x 1) where N is the number of data points. The targets, price for each car.
+        '''
+        
+        raise ReferenceError("Error: neural network train function has not yet been implemented. Huldar 2024-10-22")
+
