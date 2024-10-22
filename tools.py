@@ -251,14 +251,34 @@ class NeuralNetwork(torch.nn.Module):
         car_price = self.linear_layer_stack(car)
         return car_price
 
+    # Train neural network
+    # Based on https://pytorch.org/tutorials/beginner/introyt/trainingyt.html ????? At least if it helps
     def train(self, train_data: torch.Tensor, train_targets: torch.Tensor):
         '''
-        Trains the neural network using the given training data and targets
+        Trains the neural network with the given training data and targets by:
+        1. forward propagating an input feature through the network
+        2. Calculate the error between the prediction the network made and the actual target
+        3. Backpropagating the error through the network to adjust the weights.
         
         inputs:
         train_data      : Size (N x D) where N is the number of data points and D is the number of dimensions. The training data.
         train_targets   : Size (N x 1) where N is the number of data points. The targets, price for each car.
-        '''
         
-        raise ReferenceError("Error: neural network train function has not yet been implemented. Huldar 2024-10-22")
+        Possible more inputs:
+        - Learning rate
+        - Momentum
+        - More?
+        '''
+        # For each data point
+        
+        #N, D = train_data.size() #N number of data points and D number of dimensions
+        # for i in range(N):
+        # Forward propagate through network
+        price = self.forward(train_data)
+        # Calculate loss (a.k.a. error)
+        loss = torch.nn.CrossEntropyLoss(price, train_targets)
+        # Backpropagate error to adjust weights
+        
+        
+        print("Failed :(\nNEURAL NETWORK TRAINING FUNCTION NOT YET IMPLEMENTED.\nMaybe we don't need it and can use training mode? Huldar 2024-10-22")
 

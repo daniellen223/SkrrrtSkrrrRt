@@ -40,13 +40,16 @@ neural_network = tools.NeuralNetwork(D, M).to(tools.get_device())
 weights = tools.init_weights(D, D)
 print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
-print("Estimated car price of first car (a.k.a. data point): " + str(neural_network(train_data[0,:])))
+print("Estimated car price of first car (a.k.a. data point): " + str(neural_network(train_data[0]).item()))
 print("Supposed to be: " + str(train_targets[0]))
 
 # Train neural network on training set
+train_time = time.time()
 print("Training neural network.......",end="")
-neural_network.train(train_data, train_targets)
+# Use train mode?
+#neural_network.train(train_data, train_targets)
 #print(Fore.GREEN + "Complete" + Style.RESET_ALL)
+train_time = time.time() - train_time
 
 
 # Test neural network on test set, log errors
@@ -76,3 +79,4 @@ runtime = time.time() - start_time
 
 # Run finished message
 print("\nmain.py ran succesfully in {:0.1f} seconds\n".format(runtime))
+print("Training took {:0.1f}".format(train_time))
