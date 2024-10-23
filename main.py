@@ -17,9 +17,12 @@ start_time = time.time()
 print(" \r\nRunning main.py")
 
 # Imports
+print("Importing modules.............",end="")
+
 import torch # For working with tensors and neural networks
 import tools # Group tools
 from colorama import Fore, Back, Style  # For coloring terminal messages
+print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
 # Load data and transform data into manageable form
 print("Loading data..................",end="")
@@ -37,7 +40,7 @@ print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 print("Initializing neural network...",end="")
 M = D # Number of hidden nodes
 neural_network = tools.NeuralNetwork(D, M).to(tools.get_device())
-weights = tools.init_weights(D, D)
+# weights = tools.init_weights(D, D) # Not used by torch so far?
 print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
 print("Estimated car price of first car (a.k.a. data point): " + str(neural_network(train_data[0]).item()))
@@ -47,9 +50,12 @@ print("Supposed to be: " + str(train_targets[0]))
 train_time = time.time()
 print("Training neural network.......",end="")
 # Use train mode?
-#neural_network.train(train_data, train_targets)
-#print(Fore.GREEN + "Complete" + Style.RESET_ALL)
+neural_network.train_on_data(train_data, train_targets,epochs=2)
+print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 train_time = time.time() - train_time
+
+print("Estimated car price of first car (a.k.a. data point): " + str(neural_network(train_data[0]).item()))
+print("Supposed to be: " + str(train_targets[0]))
 
 
 # Test neural network on test set, log errors

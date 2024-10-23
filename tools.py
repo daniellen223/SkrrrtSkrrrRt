@@ -233,7 +233,6 @@ class NeuralNetwork(torch.nn.Module):
             torch.nn.Linear(D, M),  # First linear combination between each dimension and weights to hidden layer
             torch.nn.ReLU(),        # ReLU activation function inside hidden layer
             torch.nn.Linear(M, 1),  # Last output is 1 value which should be the car price
-            torch.nn.ReLU(),        # ReLU activation function on output
         )
 
     def forward(self, car):
@@ -253,7 +252,7 @@ class NeuralNetwork(torch.nn.Module):
 
     # Train neural network
     # Based on https://pytorch.org/tutorials/beginner/introyt/trainingyt.html ????? At least if it helps
-    def train(self, train_data: torch.Tensor, train_targets: torch.Tensor):
+    def train_on_data(self, train_data: torch.Tensor, train_targets: torch.Tensor, epochs: int=100, lr: float=0.001):
         '''
         Trains the neural network with the given training data and targets by:
         1. forward propagating an input feature through the network
@@ -263,22 +262,65 @@ class NeuralNetwork(torch.nn.Module):
         inputs:
         train_data      : Size (N x D) where N is the number of data points and D is the number of dimensions. The training data.
         train_targets   : Size (N x 1) where N is the number of data points. The targets, price for each car.
+        epochs          : Number of epochs that the training will run
+        lr              : Learning rate
         
         Possible more inputs:
-        - Learning rate
         - Momentum
         - More?
         '''
+        # N number of data points and D number of dimensions
+        N, D = train_data.size()
+        #print("\nTrain data size: " + str(train_data.size()))
+        #print("\nTrain targets size: " + str(train_targets.size()))
+
+        # Modified code from ChatGPT start
+        # -------------------------------------------------------------------
+        # Define the loss function (Mean Squared Error for regression)
+        MSE_Loss = torch.nn.MSELoss()
+
+        # Define the optimizer (Adam optimizer)
+        optimizer = torch.optim.Adam(self.parameters(), lr=0.001)
+        
+        # Set model to training mode
+        self.train()
+        
+        # Batch training data into loader
+        # train_loader = torch.utils.data.DataLoader(train_data, batch_size=32, shuffle=True)
+        
+        # Training loop
+        for epoch in range(epochs):
+            # running_loss = 0.0
+            print(100*epoch/epochs,"%\r",end="Training neural network.......")
+            for n in range(N):
+                # Zero the gradients
+                optimizer.zero_grad()
+
+                # Forward pass
+                car_price = self(train_data[n,:])
+                #print("\ncar_price size: " + str(car_price.size()))
+                #print("\ntrain_targets[n] size: " + str(train_targets[n].size()))
+                loss = MSE_Loss(train_targets[n].unsqueeze(0), car_price) # Unsqueeze so that the tensor sizes match                
+
+                # Backward pass and optimization
+                loss.backward()
+                optimizer.step()
+
+                # running_loss += loss.item()
+            
+        # Modified code from ChatGPT end
+        # -------------------------------------------------------------------
+        
         # For each data point
         
         #N, D = train_data.size() #N number of data points and D number of dimensions
+        
         # for i in range(N):
         # Forward propagate through network
-        price = self.forward(train_data)
+        # price = self.forward(train_data)
         # Calculate loss (a.k.a. error)
-        loss = torch.nn.CrossEntropyLoss(price, train_targets)
+        # loss = torch.nn.CrossEntropyLoss(price, train_targets)
         # Backpropagate error to adjust weights
         
-        
-        print("Failed :(\nNEURAL NETWORK TRAINING FUNCTION NOT YET IMPLEMENTED.\nMaybe we don't need it and can use training mode? Huldar 2024-10-22")
+        # print("Failed :(\nNEURAL NETWORK TRAINING FUNCTION NOT YET IMPLEMENTED.\nMaybe we don't need it and can use training mode? Huldar 2024-10-22")
 
