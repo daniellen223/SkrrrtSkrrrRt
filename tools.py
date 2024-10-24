@@ -196,9 +196,6 @@ def init_weights(D: int, M: int, bias: bool = True) -> Union[torch.Tensor, torch
 
     return w1, w2
 
-# Measure error function
-
-
 # Activation function, h
 def h(z1: torch.Tensor, w1: torch.Tensor) -> float:
     '''

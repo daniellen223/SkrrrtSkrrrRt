@@ -48,6 +48,13 @@ print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 print("Estimated car price of first car (a.k.a. data point): " + str(neural_network(train_data[0]).item()))
 print("Supposed to be: " + str(train_targets[0].item()))
 
+# Test initial weights on test set, log errors
+initial_test_time = time.time()
+print("1st testing neural network....",end="")
+first_testing_loss = neural_network.test_on_data(test_data, test_targets)
+print(Fore.GREEN + "Complete" + Style.RESET_ALL)
+initial_test_time = time.time() - initial_test_time
+
 # Train neural network on training set
 train_time = time.time()
 print("Training neural network.......",end="")
@@ -69,7 +76,8 @@ test_time = time.time() - test_time
 
 # Plot results
 print("Plotting results..............",end="")
-tools.plot_results(testing_loss,filename="Fig1")
+tools.plot_results(first_testing_loss,filename="Fig1")
+tools.plot_results(testing_loss,filename="Fig2")
 print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
 # For when the above code is already working, implement the following:
@@ -87,6 +95,7 @@ print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 runtime = time.time() - start_time
 
 # Run finished message and print times
-print("\nmain.py ran succesfully in {:0.1f} seconds\n".format(runtime))
-print("Training took {:0.1f} seconds with a train ratio of {:0.1f} %".format(train_time, 100*train_ratio))
+print("\nTraining took {:0.1f} seconds with a train ratio of {:0.1f} %".format(train_time, 100*train_ratio))
+print("Initial testing took {:0.1f} seconds".format(initial_test_time))
 print("Testing took {:0.1f} seconds".format(test_time))
+print("\nmain.py ran succesfully in {:0.1f} seconds\n".format(runtime))
