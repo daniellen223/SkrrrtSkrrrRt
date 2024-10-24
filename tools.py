@@ -281,7 +281,7 @@ class NeuralNetwork(torch.nn.Module):
 
     # Train neural network
     # Based on https://pytorch.org/tutorials/beginner/introyt/trainingyt.html ????? At least if it helps
-    def train_on_data(self, train_data: torch.Tensor, train_targets: torch.Tensor, epochs: int=100, lr: float=0.0001) -> torch.Tensor:
+    def train_on_data(self, train_data: torch.Tensor, train_targets: torch.Tensor, epochs: int=100, lr: float=0.0001) -> Union[torch.Tensor, int]:
         '''
         Trains the neural network with the given training data and targets by:
         1. forward propagating an input feature through the network
@@ -323,6 +323,9 @@ class NeuralNetwork(torch.nn.Module):
         # Initialize loss_matrix
         loss_matrix = torch.zeros(epochs)
         
+        # Initialize unclean points counter - Temporary value, should be removed from this function before project end
+        unclean_points = 0
+        
         # Training loop through each epoch
         for epoch in range(epochs):
             # Reset runnin_loss
@@ -333,16 +336,20 @@ class NeuralNetwork(torch.nn.Module):
             for n in range(N):
                 # Zero the gradients
                 optimizer.zero_grad()
-
-                # Forward pass
-                car_price = self(train_data[n,:])
-                # Calculate loss
-                loss = MSE_Loss(train_targets[n].unsqueeze(0), car_price) # Unsqueeze so that the tensor sizes match                
-                # Backward pass and optimization
-                loss.backward()
-                optimizer.step()
-                # Add loss to running loss
-                running_loss += loss.item()
+                
+                # If data point not clean (has any NaN values), skip that point. Temporary if statement, should be removed from function before project end.
+                if not(torch.isnan(train_data[n]).any()):
+                    # Forward pass
+                    car_price = self(train_data[n,:])
+                    # Calculate loss
+                    loss = MSE_Loss(train_targets[n].unsqueeze(0), car_price) # Unsqueeze so that the tensor sizes match                
+                    # Backward pass and optimization
+                    loss.backward()
+                    optimizer.step()
+                    # Add loss to running loss
+                    running_loss += loss.item()
+                else:
+                    unclean_points = unclean_points + 1
             # End for n
             # Log running_loss to loss_matrix
             loss_matrix[epoch] = running_loss
@@ -355,7 +362,7 @@ class NeuralNetwork(torch.nn.Module):
         self.eval()
         
         # Return loss_matrix
-        return loss_matrix
+        return loss_matrix, unclean_points
 
     # Test neural network
     # Based on self.train_on_data()

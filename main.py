@@ -59,12 +59,13 @@ initial_test_time = time.time() - initial_test_time
 train_time = time.time()
 print("Training neural network.......",end="")
 # Use train mode?
-training_loss = neural_network.train_on_data(train_data, train_targets,epochs=2)
+training_loss, n_unclean_points = neural_network.train_on_data(train_data, train_targets,epochs=2)
 print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 train_time = time.time() - train_time
 
 print("Estimated car price of first car (a.k.a. data point): " + str(neural_network(train_data[0]).item()))
 print("Supposed to be: " + str(train_targets[0].item()))
+print("Unclean points: " + str(n_unclean_points))
 
 
 # Test neural network on test set, log errors
