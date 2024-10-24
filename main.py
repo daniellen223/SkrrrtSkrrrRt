@@ -19,10 +19,10 @@ print(" \r\nRunning main.py")
 # Settings
 #--------------------------------------------------------
 data_file_name = "train.csv"    # Which file to get the data from
-train_ratio = 0.3               # How high ratio of data should be used for training
+train_ratio = 0.03               # How high ratio of data should be used for training
 M = 12                          # Number of hidden nodes - 12 dimensional data
-training_cycles = 5             # A.k.a "epochs" or how many times the training goes through each data point in the training data
-learning_rate = 0.001           # The learning rate for the neural network training
+training_cycles = 1             # A.k.a "epochs" or how many times the training goes through each data point in the training data
+learning_rate = 0.01           # The learning rate for the neural network training
 test_eval_method = "percent"    # Which evaluation method for the error is used for testing. See tools.test_on_data for options
 #--------------------------------------------------------
 
@@ -53,8 +53,8 @@ neural_network = tools.NeuralNetwork(D, M).to(tools.get_device())
 # weights = tools.init_weights(D, D) # Not used by torch so far?
 print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
-print("Estimated car price of first car (a.k.a. data point): " + str(neural_network(train_data[0]).item()))
-print("Supposed to be: " + str(train_targets[0].item()))
+print("Estimated car price of first car (a.k.a. data point): " + str(int(neural_network(train_data[0]).item())))
+print("Supposed to be: " + str(int(train_targets[0].item())))
 
 # Test initial weights on test set, log errors
 initial_test_time = time.time()
@@ -70,8 +70,8 @@ training_loss, n_unclean_points = neural_network.train_on_data(train_data, train
 print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 train_time = time.time() - train_time
 
-print("Estimated car price of first car (a.k.a. data point): " + str(neural_network(train_data[0]).item()))
-print("Supposed to be: " + str(train_targets[0].item()))
+print("Estimated car price of first car (a.k.a. data point): " + str(int(neural_network(train_data[0]).item())))
+print("Supposed to be: " + str(int(train_targets[0].item())))
 print("Unclean points: " + str(n_unclean_points))
 
 
@@ -105,4 +105,4 @@ print("\nTraining took {:0.1f} minutes with a train ratio of {:0.1f} %".format(t
 print("Initial testing took {:0.1f} seconds".format(initial_test_time))
 print("Testing took {:0.1f} seconds".format(test_time))
 print("Max error: " + str(torch.max(testing_loss)))
-print("\nmain.py ran succesfully in {:0.1f} seconds\n".format(runtime))
+print("\nmain.py ran succesfully in {:0.1f} minutes\n".format(runtime/60))
