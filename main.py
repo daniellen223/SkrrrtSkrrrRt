@@ -19,10 +19,10 @@ print(" \r\nRunning main.py")
 # Settings
 #--------------------------------------------------------
 data_file_name = "train.csv"    # Which file to get the data from
-train_ratio = 0.03               # How high ratio of data should be used for training
-M = 12                          # Number of hidden nodes - 12 dimensional data
-training_cycles = 1             # A.k.a "epochs" or how many times the training goes through each data point in the training data
-learning_rate = 0.01           # The learning rate for the neural network training
+train_ratio = 0.1               # How high ratio of data should be used for training
+M = 15                          # Number of hidden nodes - 12 dimensional data
+training_cycles = 3             # A.k.a "epochs" or how many times the training goes through each data point in the training data
+learning_rate = 0.005           # The learning rate for the neural network training
 test_eval_method = "percent"    # Which evaluation method for the error is used for testing. See tools.test_on_data for options
 #--------------------------------------------------------
 
@@ -84,8 +84,8 @@ test_time = time.time() - test_time
 
 # Plot results
 print("Plotting results..............",end="")
-tools.plot_results(first_testing_loss,filename="Fig1")
-tools.plot_results(testing_loss,filename="Fig2")
+tools.plot_results(100*first_testing_loss,filename="Fig1", ylabel="% error")
+tools.plot_results(100*testing_loss,filename="Fig2", ylabel="% error")
 print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
 # For when the above code is already working, implement the following:
@@ -97,12 +97,14 @@ print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
 #-----------------------------------------------
 
-# Calculate runtime
-runtime = time.time() - start_time
-
-# Run finished message and print times
+# Run final messages and print times
 print("\nTraining took {:0.1f} minutes with a train ratio of {:0.1f} %".format(train_time/60, 100*train_ratio))
 print("Initial testing took {:0.1f} seconds".format(initial_test_time))
 print("Testing took {:0.1f} seconds".format(test_time))
-print("Max error: " + str(torch.max(testing_loss)))
+print("Max error: " + str(torch.max(testing_loss).item()))
+
+# Calculate runtime and print succesful run message
+runtime = time.time() - start_time
 print("\nmain.py ran succesfully in {:0.1f} minutes\n".format(runtime/60))
+
+print(testing_loss)

@@ -65,10 +65,10 @@ def read_in_file(filename: str = 'train.csv') -> Union[torch.Tensor, torch.Tenso
         object_columns = data.select_dtypes(include=['object']).columns
         if len(object_columns) > 0:
             print("Non-numeric columns found, attempting to convert:", object_columns)
-            data[object_columns] = data[object_columns].apply(lambda x: pd.to_numeric(x, errors='coerce'))
+            data[object_columns] = data[object_columns].apply(lambda x: pd.to_numeric(x))
 
         # Ensure 'price' is numeric
-        data['price'] = pd.to_numeric(data['price'], errors='coerce')
+        data['price'] = pd.to_numeric(data['price'])
 
         # Separate features and target
         arraydata = data.iloc[:, :-1]  # Assuming the last column is the target
@@ -86,7 +86,7 @@ def read_in_file(filename: str = 'train.csv') -> Union[torch.Tensor, torch.Tenso
         raise("Error reading data:\n" + str(e))
 
 # Plot results
-def plot_results(results: torch.Tensor, filename: str = None):
+def plot_results(results: torch.Tensor, filename: str = None, xlabel: str="Data points", ylabel: str="Error"):
     '''
     Plots the fig and saves it if a filename is given
     
@@ -107,8 +107,8 @@ def plot_results(results: torch.Tensor, filename: str = None):
 
     matplotlib.pyplot.plot(x_values,y_values)
     matplotlib.pyplot.title("Error", fontsize='16')	#title
-    matplotlib.pyplot.xlabel("data points",fontsize='13')	#adds a label in the x axis
-    matplotlib.pyplot.ylabel("Error",fontsize='13')	#adds a label in the y axis
+    matplotlib.pyplot.xlabel(xlabel,fontsize='13')	#adds a label in the x axis
+    matplotlib.pyplot.ylabel(ylabel,fontsize='13')	#adds a label in the y axis
     matplotlib.pyplot.grid()	#shows a grid under the plot
     if filename != None:
         matplotlib.pyplot.savefig(filename + ".png")	#saves the figure in the present directory
@@ -345,14 +345,14 @@ class NeuralNetwork(torch.nn.Module):
             # Reset runnin_loss
             running_loss = 0.0
             # Print status
-            print(100*epoch/epochs,"%\r",end="Training neural network.......")
+            print("{:.1f} %\r".format(100*epoch/epochs),end="Training neural network.......")
             # Loop through each data point
             for n in range(N):
                 # Zero the gradients
                 optimizer.zero_grad()
                 
                 # If data point not clean (has any NaN values), skip that point. Temporary if statement, should be removed from function before project end.
-                if not(torch.isnan(train_data[n]).any()):
+                if not(torch.isnan(train_data[n]).any() or torch.isnan(train_targets[n]).any()):
                     # Forward pass
                     car_price = self(train_data[n,:])
                     # Calculate loss
