@@ -281,7 +281,7 @@ class NeuralNetwork(torch.nn.Module):
 
     # Train neural network
     # Based on https://pytorch.org/tutorials/beginner/introyt/trainingyt.html ????? At least if it helps
-    def train_on_data(self, train_data: torch.Tensor, train_targets: torch.Tensor, epochs: int=100, lr: float=0.0001) -> Union[torch.Tensor, int]:
+    def train_on_data(self, train_data: torch.Tensor, train_targets: torch.Tensor, epochs: int=100, lr: float=0.001) -> Union[torch.Tensor, int]:
         '''
         Trains the neural network with the given training data and targets by:
         1. forward propagating an input feature through the network

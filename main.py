@@ -16,6 +16,15 @@ start_time = time.time()
 # Start message
 print(" \r\nRunning main.py")
 
+# Settings
+#--------------------------------------------------------
+data_file_name = "train.csv"    # Which file to get the data from
+train_ratio = 0.5               # How high ratio of data should be used for training
+M = 12                          # Number of hidden nodes - 12 dimensional data
+training_cycles = 5             # A.k.a "epochs" or how many times the training goes through each data point in the training data
+learning_rate = 0.001           # The learning rate for the neural network training
+#--------------------------------------------------------
+
 # Imports
 print("Importing modules.............",end="")
 
@@ -27,20 +36,18 @@ print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
 # Load data and transform data into manageable form
 print("Loading data..................",end="")
-data, targets = tools.read_in_file()
+data, targets = tools.read_in_file(data_file_name)
 N, D = data.size()  # Get number of data points, N, and number of data dimensions, D.
 print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
 # Split data into training_data, training_targets, test_data & test_targets
 print("Splitting data................",end="")
-train_ratio = 0.05
 (train_data, train_targets), (test_data, test_targets) = tools.split_data(data,targets, train_ratio=train_ratio)
 print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
 # Initialize neural network
 # Based on https://pytorch.org/tutorials/beginner/basics/buildmodel_tutorial.html
 print("Initializing neural network...",end="")
-M = D # Number of hidden nodes
 neural_network = tools.NeuralNetwork(D, M).to(tools.get_device())
 # weights = tools.init_weights(D, D) # Not used by torch so far?
 print(Fore.GREEN + "Complete" + Style.RESET_ALL)
@@ -58,8 +65,7 @@ initial_test_time = time.time() - initial_test_time
 # Train neural network on training set
 train_time = time.time()
 print("Training neural network.......",end="")
-# Use train mode?
-training_loss, n_unclean_points = neural_network.train_on_data(train_data, train_targets,epochs=2)
+training_loss, n_unclean_points = neural_network.train_on_data(train_data, train_targets,epochs=training_cycles,lr=learning_rate)
 print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 train_time = time.time() - train_time
 
@@ -88,15 +94,13 @@ print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 # Train with incomplete data, test with complete data
 # Train with incomplete data, test with incomplete data
 
-# Testing area
 #-----------------------------------------------
-
 
 # Calculate runtime
 runtime = time.time() - start_time
 
 # Run finished message and print times
-print("\nTraining took {:0.1f} seconds with a train ratio of {:0.1f} %".format(train_time, 100*train_ratio))
+print("\nTraining took {:0.1f} minutes with a train ratio of {:0.1f} %".format(train_time/60, 100*train_ratio))
 print("Initial testing took {:0.1f} seconds".format(initial_test_time))
 print("Testing took {:0.1f} seconds".format(test_time))
 print("\nmain.py ran succesfully in {:0.1f} seconds\n".format(runtime))
