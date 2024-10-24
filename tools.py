@@ -86,7 +86,7 @@ def read_in_file(filename: str = 'train.csv') -> Union[torch.Tensor, torch.Tenso
         raise("Error reading data:\n" + str(e))
 
 # Plot results
-def plot_results(results: torch.Tensor, filename: str = None, xlabel: str="Data points", ylabel: str="Error"):
+def plot_results(results: torch.Tensor, filename: str = None, title: str=None, xlabel: str="Data points", ylabel: str="Error"):
     '''
     Plots the fig and saves it if a filename is given
     
@@ -106,7 +106,8 @@ def plot_results(results: torch.Tensor, filename: str = None, xlabel: str="Data 
     y_values = results.numpy()
 
     matplotlib.pyplot.plot(x_values,y_values)
-    matplotlib.pyplot.title("Error", fontsize='16')	#title
+    if title != None:
+        matplotlib.pyplot.title(title, fontsize='16')	#title
     matplotlib.pyplot.xlabel(xlabel,fontsize='13')	#adds a label in the x axis
     matplotlib.pyplot.ylabel(ylabel,fontsize='13')	#adds a label in the y axis
     matplotlib.pyplot.grid()	#shows a grid under the plot

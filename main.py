@@ -84,8 +84,8 @@ test_time = time.time() - test_time
 
 # Plot results
 print("Plotting results..............",end="")
-tools.plot_results(100*first_testing_loss,filename="Fig1", ylabel="% error")
-tools.plot_results(100*testing_loss,filename="Fig2", ylabel="% error")
+tools.plot_results(100*first_testing_loss,filename="Fig1", ylabel="% error",title="Before training")
+tools.plot_results(100*testing_loss,filename="Fig2", ylabel="% error",title="After training")
 print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
 # For when the above code is already working, implement the following:
