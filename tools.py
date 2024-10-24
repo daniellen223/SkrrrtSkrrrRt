@@ -25,21 +25,21 @@ def read_in_file(filename: str = 'train.csv') -> Union[torch.Tensor, torch.Tenso
     
     outputs:
     data_tensor    : Size (N x 12) where N is the number of data points
-    target_tensor : Size (N) where N is the number of data points. Cont
+    target_tensor : Size (N) where N is the number of data points. Contains the price of each car.
     
     data_tensor column meanings:
-    0 : 
-    1 : 
-    2 :
-    3 : 
-    4 : 
-    5 : 
-    6 : 
-    7 : 
-    8 : 
-    9 : 
-    10 : 
-    11 : 
+    0 : id
+    1 : brand
+    2 : model
+    3 : model\_year
+    4 : milage
+    5 : fuel\_type
+    6 : engine
+    7 : transmission
+    8 : ext\_col
+    9 : int\_col
+    10 : accident
+    11 : clean\_title
     '''
     # Try except in case something goes wrong
     try:
