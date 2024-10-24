@@ -19,10 +19,10 @@ print(" \r\nRunning main.py")
 # Settings
 #--------------------------------------------------------
 data_file_name = "train.csv"    # Which file to get the data from
-train_ratio = 0.1               # How high ratio of data should be used for training
-M = 15                          # Number of hidden nodes - 12 dimensional data
-training_cycles = 2             # A.k.a "epochs" or how many times the training goes through each data point in the training data
-learning_rate = 0.005           # The learning rate for the neural network training
+train_ratio = 0.05               # How high ratio of data should be used for training
+M = 12                          # Number of hidden nodes - 12 dimensional data
+training_cycles = 1             # A.k.a "epochs" or how many times the training goes through each data point in the training data
+learning_rate = 0.01           # The learning rate for the neural network training
 test_eval_method = "percent"    # Which evaluation method for the error is used for testing. See tools.test_on_data for options
 #--------------------------------------------------------
 
