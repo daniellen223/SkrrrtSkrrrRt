@@ -19,10 +19,11 @@ print(" \r\nRunning main.py")
 # Settings
 #--------------------------------------------------------
 data_file_name = "train.csv"    # Which file to get the data from
-train_ratio = 0.5               # How high ratio of data should be used for training
+train_ratio = 0.3               # How high ratio of data should be used for training
 M = 12                          # Number of hidden nodes - 12 dimensional data
 training_cycles = 5             # A.k.a "epochs" or how many times the training goes through each data point in the training data
 learning_rate = 0.001           # The learning rate for the neural network training
+test_eval_method = "percent"    # Which evaluation method for the error is used for testing. See tools.test_on_data for options
 #--------------------------------------------------------
 
 # Imports
@@ -58,7 +59,7 @@ print("Supposed to be: " + str(train_targets[0].item()))
 # Test initial weights on test set, log errors
 initial_test_time = time.time()
 print("1st testing neural network....",end="")
-first_testing_loss = neural_network.test_on_data(test_data, test_targets)
+first_testing_loss = neural_network.test_on_data(test_data, test_targets,eval_method=test_eval_method)
 print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 initial_test_time = time.time() - initial_test_time
 
@@ -77,7 +78,7 @@ print("Unclean points: " + str(n_unclean_points))
 # Test neural network on test set, log errors
 test_time = time.time()
 print("Testing neural network........",end="")
-testing_loss = neural_network.test_on_data(test_data, test_targets)
+testing_loss = neural_network.test_on_data(test_data, test_targets,eval_method=test_eval_method)
 print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 test_time = time.time() - test_time
 
@@ -103,4 +104,5 @@ runtime = time.time() - start_time
 print("\nTraining took {:0.1f} minutes with a train ratio of {:0.1f} %".format(train_time/60, 100*train_ratio))
 print("Initial testing took {:0.1f} seconds".format(initial_test_time))
 print("Testing took {:0.1f} seconds".format(test_time))
+print("Max error: " + str(torch.max(testing_loss)))
 print("\nmain.py ran succesfully in {:0.1f} seconds\n".format(runtime))

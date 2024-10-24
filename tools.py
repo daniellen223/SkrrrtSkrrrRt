@@ -216,6 +216,20 @@ def h(z1: torch.Tensor, w1: torch.Tensor) -> float:
     ReLU = torch.nn.ReLU()
     return ReLU(w_sum).item() # .item() pulls the 1x1 tensor value out
 
+def percent_error(p1: torch.Tensor, p2: torch.Tensor) -> float:
+    '''
+    Calculates the error as error = ||p2-p1||/p2
+    Returns the absolute value
+    
+    inputs:
+    p1  : 
+    p2  : 
+    
+    outputs:
+    error   : The percent error as a ratio
+    '''
+    # Find the absolute value of the distance between p1 and p2, get the error ratio and return it
+    return abs(abs(p2-p1)/p2)    
 
 # Get device for torch
 # Based on https://pytorch.org/tutorials/beginner/basics/buildmodel_tutorial.html
@@ -366,15 +380,16 @@ class NeuralNetwork(torch.nn.Module):
 
     # Test neural network
     # Based on self.train_on_data()
-    def test_on_data(self, test_data: torch.Tensor, test_targets: torch.Tensor) -> torch.Tensor:
+    def test_on_data(self, test_data: torch.Tensor, test_targets: torch.Tensor,eval_method: str = "MSE") -> torch.Tensor:
         '''
         Tests the neural network with the given testing data and targets by:
         1. forward propagating test_data through the network
         2. Calculate the error between the prediction the network made and the actual target
         
         inputs:
-        test_data      : Size (N x D) where N is the number of data points and D is the number of dimensions. The training data.
-        test_targets   : Size (N x 1) where N is the number of data points. The targets, price for each car.
+        test_data       : Size (N x D) where N is the number of data points and D is the number of dimensions. The training data.
+        test_targets    : Size (N x 1) where N is the number of data points. The targets, price for each car.
+        eval_method     : Which error evaluation method to use, options are "MSE" (for mean square) or "percent" for percent wise
         
         output:
         loss_matrix     : Size (N) where N is the number of data points and each value is the error between the test_target and the neural networks guess using test_data.
@@ -383,7 +398,10 @@ class NeuralNetwork(torch.nn.Module):
         N, D = test_data.size()
 
         # Define the loss function (Mean Squared Error for regression)
-        MSE_Loss = torch.nn.MSELoss()
+        if eval_method == "MSE":
+            loss_func = torch.nn.MSELoss()
+        elif eval_method == "percent":
+            loss_func = percent_error
         
         # Set model to evaluation mode just in case
         self.eval()
@@ -399,7 +417,7 @@ class NeuralNetwork(torch.nn.Module):
             # Forward pass to estimate value
             car_price = self(test_data[n,:])
             # Calculate and log error
-            loss_matrix[n] = MSE_Loss(test_targets[n].unsqueeze(0), car_price) # Unsqueeze so that the tensor sizes match                
+            loss_matrix[n] = loss_func(test_targets[n].unsqueeze(0), car_price) # Unsqueeze so that the tensor sizes match                
 
             # Print status for every whole percent
             if  n % n_print == 0:
