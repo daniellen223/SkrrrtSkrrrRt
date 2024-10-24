@@ -9,6 +9,7 @@ https://www.kaggle.com/competitions/playground-series-s4e9/data
 import torch # To work with tensors and neural network functions
 from typing import Union # To return multiple values as a union
 import pandas as pd # For loading data
+import matplotlib.pyplot # For plotting results
 from sklearn.preprocessing import LabelEncoder # For loading data
 
 # Read data function
@@ -83,6 +84,35 @@ def read_in_file(filename: str = 'train.csv') -> Union[torch.Tensor, torch.Tenso
     # Except statement
     except Exception as e:
         raise("Error reading data:\n" + str(e))
+
+# Plot results
+def plot_results(results: torch.Tensor, filename: str = None):
+    '''
+    Plots the fig and saves it if a filename is given
+    
+    input:
+    filename    : The filename to save as without a filetype ending
+    '''
+    # fig = matplotlib.pyplot.figure()
+    # Find number of data points and make x_values
+    N = results.size()[0]
+    x_values = range(N)
+
+    # Detach the tensor if it requires gradients
+    if results.requires_grad:
+        results = results.detach()
+        
+    # Convert the tensor to a NumPy array
+    y_values = results.numpy()
+
+    matplotlib.pyplot.plot(x_values,y_values)
+    matplotlib.pyplot.title("Error", fontsize='16')	#title
+    matplotlib.pyplot.xlabel("data points",fontsize='13')	#adds a label in the x axis
+    matplotlib.pyplot.ylabel("Error",fontsize='13')	#adds a label in the y axis
+    matplotlib.pyplot.grid()	#shows a grid under the plot
+    if filename != None:
+        matplotlib.pyplot.savefig(filename + ".png")	#saves the figure in the present directory
+    matplotlib.pyplot.show()
 
 # Split data function
 def split_data(
@@ -226,7 +256,9 @@ class NeuralNetwork(torch.nn.Module):
         D   : Number of dimensions in the dataset
         M   : Number of hidden layer nodes
         '''
+        # WHAT IS THIS? Was copied from tutorial
         super().__init__()
+        # WHAT IS THIS?  Was copied from tutorial
         self.flatten = torch.nn.Flatten()
         # Create layer_stack containing instructions for each layer
         self.linear_layer_stack = torch.nn.Sequential(
@@ -252,7 +284,7 @@ class NeuralNetwork(torch.nn.Module):
 
     # Train neural network
     # Based on https://pytorch.org/tutorials/beginner/introyt/trainingyt.html ????? At least if it helps
-    def train_on_data(self, train_data: torch.Tensor, train_targets: torch.Tensor, epochs: int=100, lr: float=0.001):
+    def train_on_data(self, train_data: torch.Tensor, train_targets: torch.Tensor, epochs: int=100, lr: float=0.0001) -> torch.Tensor:
         '''
         Trains the neural network with the given training data and targets by:
         1. forward propagating an input feature through the network
@@ -264,6 +296,9 @@ class NeuralNetwork(torch.nn.Module):
         train_targets   : Size (N x 1) where N is the number of data points. The targets, price for each car.
         epochs          : Number of epochs that the training will run
         lr              : Learning rate
+        
+        output:
+        loss_matrix     : Size (epochs) where the first value is the running loss after propagating through the whole train_data, the second value is the running loss after the second epoch etc.
         
         Possible more inputs:
         - Momentum
@@ -288,39 +323,84 @@ class NeuralNetwork(torch.nn.Module):
         # Batch training data into loader
         # train_loader = torch.utils.data.DataLoader(train_data, batch_size=32, shuffle=True)
         
-        # Training loop
+        # Initialize loss_matrix
+        loss_matrix = torch.zeros(epochs)
+        
+        # Training loop through each epoch
         for epoch in range(epochs):
-            # running_loss = 0.0
+            # Reset runnin_loss
+            running_loss = 0.0
+            # Print status
             print(100*epoch/epochs,"%\r",end="Training neural network.......")
+            # Loop through each data point
             for n in range(N):
                 # Zero the gradients
                 optimizer.zero_grad()
 
                 # Forward pass
                 car_price = self(train_data[n,:])
-                #print("\ncar_price size: " + str(car_price.size()))
-                #print("\ntrain_targets[n] size: " + str(train_targets[n].size()))
+                # Calculate loss
                 loss = MSE_Loss(train_targets[n].unsqueeze(0), car_price) # Unsqueeze so that the tensor sizes match                
-
                 # Backward pass and optimization
                 loss.backward()
                 optimizer.step()
-
-                # running_loss += loss.item()
+                # Add loss to running loss
+                running_loss += loss.item()
+            # End for n
+            # Log running_loss to loss_matrix
+            loss_matrix[epoch] = running_loss
+        # End for epoch
             
         # Modified code from ChatGPT end
         # -------------------------------------------------------------------
         
-        # For each data point
+        # Set neural network back to evaluation mode
+        self.eval()
         
-        #N, D = train_data.size() #N number of data points and D number of dimensions
-        
-        # for i in range(N):
-        # Forward propagate through network
-        # price = self.forward(train_data)
-        # Calculate loss (a.k.a. error)
-        # loss = torch.nn.CrossEntropyLoss(price, train_targets)
-        # Backpropagate error to adjust weights
-        
-        # print("Failed :(\nNEURAL NETWORK TRAINING FUNCTION NOT YET IMPLEMENTED.\nMaybe we don't need it and can use training mode? Huldar 2024-10-22")
+        # Return loss_matrix
+        return loss_matrix
 
+    # Test neural network
+    # Based on self.train_on_data()
+    def test_on_data(self, test_data: torch.Tensor, test_targets: torch.Tensor) -> torch.Tensor:
+        '''
+        Tests the neural network with the given testing data and targets by:
+        1. forward propagating test_data through the network
+        2. Calculate the error between the prediction the network made and the actual target
+        
+        inputs:
+        test_data      : Size (N x D) where N is the number of data points and D is the number of dimensions. The training data.
+        test_targets   : Size (N x 1) where N is the number of data points. The targets, price for each car.
+        
+        output:
+        loss_matrix     : Size (N) where N is the number of data points and each value is the error between the test_target and the neural networks guess using test_data.
+        '''
+        # N number of data points and D number of dimensions
+        N, D = test_data.size()
+
+        # Define the loss function (Mean Squared Error for regression)
+        MSE_Loss = torch.nn.MSELoss()
+        
+        # Set model to evaluation mode just in case
+        self.eval()
+                
+        # Initialize loss_matrix
+        loss_matrix = torch.zeros(N)
+        
+        # Status print message index
+        n_print = int(N/100)
+        
+        # Loop through each data point and find error
+        for n in range(N):
+            # Forward pass to estimate value
+            car_price = self(test_data[n,:])
+            # Calculate and log error
+            loss_matrix[n] = MSE_Loss(test_targets[n].unsqueeze(0), car_price) # Unsqueeze so that the tensor sizes match                
+
+            # Print status for every whole percent
+            if  n % n_print == 0:
+                print("{:.1f} %\r".format(100*n/N),end="Testing neural network........")
+
+        # End for n
+        # Return loss_matrix
+        return loss_matrix

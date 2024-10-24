@@ -19,6 +19,7 @@ print(" \r\nRunning main.py")
 # Imports
 print("Importing modules.............",end="")
 
+import matplotlib.pyplot
 import torch # For working with tensors and neural networks
 import tools # Group tools
 from colorama import Fore, Back, Style  # For coloring terminal messages
@@ -32,7 +33,8 @@ print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
 # Split data into training_data, training_targets, test_data & test_targets
 print("Splitting data................",end="")
-(train_data, train_targets), (test_data, test_targets) = tools.split_data(data,targets, train_ratio=0.1)
+train_ratio = 0.05
+(train_data, train_targets), (test_data, test_targets) = tools.split_data(data,targets, train_ratio=train_ratio)
 print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
 # Initialize neural network
@@ -44,30 +46,31 @@ neural_network = tools.NeuralNetwork(D, M).to(tools.get_device())
 print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
 print("Estimated car price of first car (a.k.a. data point): " + str(neural_network(train_data[0]).item()))
-print("Supposed to be: " + str(train_targets[0]))
+print("Supposed to be: " + str(train_targets[0].item()))
 
 # Train neural network on training set
 train_time = time.time()
 print("Training neural network.......",end="")
 # Use train mode?
-neural_network.train_on_data(train_data, train_targets,epochs=2)
+training_loss = neural_network.train_on_data(train_data, train_targets,epochs=2)
 print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 train_time = time.time() - train_time
 
 print("Estimated car price of first car (a.k.a. data point): " + str(neural_network(train_data[0]).item()))
-print("Supposed to be: " + str(train_targets[0]))
+print("Supposed to be: " + str(train_targets[0].item()))
 
 
 # Test neural network on test set, log errors
-#print("Testing neural network........",end="")
-
-#print(Fore.GREEN + "Complete" + Style.RESET_ALL)
+test_time = time.time()
+print("Testing neural network........",end="")
+testing_loss = neural_network.test_on_data(test_data, test_targets)
+print(Fore.GREEN + "Complete" + Style.RESET_ALL)
+test_time = time.time() - test_time
 
 # Plot results
-#print("Plotting results..............",end="")
-
-#print(Fore.GREEN + "Complete" + Style.RESET_ALL)
-
+print("Plotting results..............",end="")
+tools.plot_results(testing_loss,filename="Fig1")
+print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
 # For when the above code is already working, implement the following:
 #-----------------------------------------
@@ -83,6 +86,7 @@ print("Supposed to be: " + str(train_targets[0]))
 # Calculate runtime
 runtime = time.time() - start_time
 
-# Run finished message
+# Run finished message and print times
 print("\nmain.py ran succesfully in {:0.1f} seconds\n".format(runtime))
-print("Training took {:0.1f}".format(train_time))
+print("Training took {:0.1f} seconds with a train ratio of {:0.1f} %".format(train_time, 100*train_ratio))
+print("Testing took {:0.1f} seconds".format(test_time))
