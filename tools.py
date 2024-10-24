@@ -70,7 +70,7 @@ def read_in_file(filename: str = 'train.csv') -> Union[torch.Tensor, torch.Tenso
         # Ensure 'price' is numeric
         data['price'] = pd.to_numeric(data['price'])
 
-        # Separate features and target
+        # Separate data and targets
         arraydata = data.iloc[:, :-1]  # Assuming the last column is the target
         arraytarget = data['price']  # Explicitly use the 'price' column
 
@@ -340,12 +340,16 @@ class NeuralNetwork(torch.nn.Module):
         # Initialize unclean points counter - Temporary value, should be removed from this function before project end
         unclean_points = 0
         
+        # Find indexes for when to print update messages
+        n_loops = epochs*N
+        update_index = n_loops/100
+        
         # Training loop through each epoch
         for epoch in range(epochs):
             # Reset runnin_loss
             running_loss = 0.0
             # Print status
-            print("{:.1f} %\r".format(100*epoch/epochs),end="Training neural network.......")
+            # print("{:.1f} %\r".format(100*epoch/epochs),end="Training neural network.......")
             # Loop through each data point
             for n in range(N):
                 # Zero the gradients
@@ -355,15 +359,23 @@ class NeuralNetwork(torch.nn.Module):
                 if not(torch.isnan(train_data[n]).any() or torch.isnan(train_targets[n]).any()):
                     # Forward pass
                     car_price = self(train_data[n,:])
-                    # Calculate loss
-                    loss = MSE_Loss(train_targets[n].unsqueeze(0), car_price) # Unsqueeze so that the tensor sizes match                
-                    # Backward pass and optimization
-                    loss.backward()
-                    optimizer.step()
-                    # Add loss to running loss
-                    running_loss += loss.item()
+                    # If forward pass results in NaN, skip that point
+                    if not(torch.isnan(car_price)):
+                        # Calculate loss
+                        loss = MSE_Loss(train_targets[n].unsqueeze(0), car_price) # Unsqueeze so that the tensor sizes match                
+                        # Backward pass and optimization
+                        loss.backward()
+                        optimizer.step()
+                        # Add loss to running loss
+                        running_loss += loss.item()
                 else:
                     unclean_points = unclean_points + 1
+                
+                # Print status for every whole percent
+                loop = n*epoch
+                if  loop % update_index == 0:
+                    print("{:.1f} %\r".format(100*loop/n_loops),end="Testing neural network........")
+
             # End for n
             # Log running_loss to loss_matrix
             loss_matrix[epoch] = running_loss
@@ -406,8 +418,8 @@ class NeuralNetwork(torch.nn.Module):
         # Set model to evaluation mode just in case
         self.eval()
                 
-        # Initialize loss_matrix
-        loss_matrix = torch.zeros(N)
+        # Initialize loss_matrix as list
+        loss_matrix = []
         
         # Status print message index
         n_print = int(N/100)
@@ -416,13 +428,15 @@ class NeuralNetwork(torch.nn.Module):
         for n in range(N):
             # Forward pass to estimate value
             car_price = self(test_data[n,:])
-            # Calculate and log error
-            loss_matrix[n] = loss_func(test_targets[n].unsqueeze(0), car_price) # Unsqueeze so that the tensor sizes match                
+            # If forward pass results in NaN, skip that point
+            if not(torch.isnan(car_price)):
+                # Calculate and log error
+                loss_matrix.append(loss_func(test_targets[n].unsqueeze(0), car_price)) # Unsqueeze so that the tensor sizes match
 
             # Print status for every whole percent
             if  n % n_print == 0:
                 print("{:.1f} %\r".format(100*n/N),end="Testing neural network........")
 
         # End for n
-        # Return loss_matrix
-        return loss_matrix
+        # Return loss_matrix as torch.tensor
+        return torch.Tensor(loss_matrix)

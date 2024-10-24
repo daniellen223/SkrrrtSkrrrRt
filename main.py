@@ -21,7 +21,7 @@ print(" \r\nRunning main.py")
 data_file_name = "train.csv"    # Which file to get the data from
 train_ratio = 0.1               # How high ratio of data should be used for training
 M = 15                          # Number of hidden nodes - 12 dimensional data
-training_cycles = 3             # A.k.a "epochs" or how many times the training goes through each data point in the training data
+training_cycles = 2             # A.k.a "epochs" or how many times the training goes through each data point in the training data
 learning_rate = 0.005           # The learning rate for the neural network training
 test_eval_method = "percent"    # Which evaluation method for the error is used for testing. See tools.test_on_data for options
 #--------------------------------------------------------
@@ -101,10 +101,8 @@ print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 print("\nTraining took {:0.1f} minutes with a train ratio of {:0.1f} %".format(train_time/60, 100*train_ratio))
 print("Initial testing took {:0.1f} seconds".format(initial_test_time))
 print("Testing took {:0.1f} seconds".format(test_time))
-print("Max error: " + str(torch.max(testing_loss).item()))
+print("Max error: {:.2} %".format(100*torch.max(testing_loss).item()))
 
 # Calculate runtime and print succesful run message
 runtime = time.time() - start_time
 print("\nmain.py ran succesfully in {:0.1f} minutes\n".format(runtime/60))
-
-print(testing_loss)
