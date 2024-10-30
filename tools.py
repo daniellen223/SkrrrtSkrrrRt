@@ -296,7 +296,7 @@ class NeuralNetwork(torch.nn.Module):
 
     # Train neural network
     # Based on https://pytorch.org/tutorials/beginner/introyt/trainingyt.html ????? At least if it helps
-    def train_on_data(self, train_data: torch.Tensor, train_targets: torch.Tensor, epochs: int=100, lr: float=0.001) -> Union[torch.Tensor, int]:
+    def train_on_data(self, train_data: torch.Tensor, train_targets: torch.Tensor, epochs: int=100, lr: float=0.001, msg: str="Training neural network.......") -> Union[torch.Tensor, int]:
         '''
         Trains the neural network with the given training data and targets by:
         1. forward propagating an input feature through the network
@@ -308,6 +308,7 @@ class NeuralNetwork(torch.nn.Module):
         train_targets   : Size (N x 1) where N is the number of data points. The targets, price for each car.
         epochs          : Number of epochs that the training will run
         lr              : Learning rate
+        msg             : The printing message before the percent update
         
         output:
         loss_matrix     : Size (epochs) where the first value is the running loss after propagating through the whole train_data, the second value is the running loss after the second epoch etc.
@@ -375,7 +376,7 @@ class NeuralNetwork(torch.nn.Module):
                 # Print status for every whole percent
                 loop = n*epoch
                 if  loop % update_index == 0:
-                    print("{:.1f} %\r".format(100*loop/n_loops),end="Testing neural network........")
+                    print("{:.1f} %\r".format(100*loop/n_loops),end=msg)
 
             # End for n
             # Log running_loss to loss_matrix
@@ -393,7 +394,7 @@ class NeuralNetwork(torch.nn.Module):
 
     # Test neural network
     # Based on self.train_on_data()
-    def test_on_data(self, test_data: torch.Tensor, test_targets: torch.Tensor,eval_method: str = "MSE") -> torch.Tensor:
+    def test_on_data(self, test_data: torch.Tensor, test_targets: torch.Tensor,eval_method: str = "MSE", msg: str = "Testing neural network........") -> torch.Tensor:
         '''
         Tests the neural network with the given testing data and targets by:
         1. forward propagating test_data through the network
@@ -403,6 +404,7 @@ class NeuralNetwork(torch.nn.Module):
         test_data       : Size (N x D) where N is the number of data points and D is the number of dimensions. The training data.
         test_targets    : Size (N x 1) where N is the number of data points. The targets, price for each car.
         eval_method     : Which error evaluation method to use, options are "MSE" (for mean square) or "percent" for percent wise
+        msg             : The printing message before the percent update
         
         output:
         loss_matrix     : Size (N) where N is the number of data points and each value is the error between the test_target and the neural networks guess using test_data.
@@ -436,7 +438,7 @@ class NeuralNetwork(torch.nn.Module):
 
             # Print status for every whole percent
             if  n % n_print == 0:
-                print("{:.1f} %\r".format(100*n/N),end="Testing neural network........")
+                print("{:.1f} %\r".format(100*n/N),end=msg)
 
         # End for n
         # Return loss_matrix as torch.tensor

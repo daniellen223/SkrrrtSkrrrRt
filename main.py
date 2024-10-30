@@ -20,7 +20,7 @@ print(" \r\nRunning main.py")
 #--------------------------------------------------------
 data_file_name = "train.csv"    # Which file to get the data from
 train_ratio = 0.05               # How high ratio of data should be used for training
-M = 12                          # Number of hidden nodes - 12 dimensional data
+M = 24                          # Number of hidden nodes - 12 dimensional data. - Decided via trial and error or heuristics according to Jón but usually more than number of data dimensions in order to not compress data.
 training_cycles = 1             # A.k.a "epochs" or how many times the training goes through each data point in the training data
 learning_rate = 0.01           # The learning rate for the neural network training
 test_eval_method = "percent"    # Which evaluation method for the error is used for testing. See tools.test_on_data for options
@@ -53,13 +53,19 @@ neural_network = tools.NeuralNetwork(D, M).to(tools.get_device())
 # weights = tools.init_weights(D, D) # Not used by torch so far?
 print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
-print("Estimated car price of first car (a.k.a. data point): " + str(int(neural_network(train_data[0]).item())))
+print("Neural network:")
+print(neural_network)
+
+print("Layer weights?:")
+print(neural_network.linear_layer_stack.l)
+
+print("First estimation of car price of first car (a.k.a. data point): " + str(int(neural_network(train_data[0]).item())))
 print("Supposed to be: " + str(int(train_targets[0].item())))
 
 # Test initial weights on test set, log errors
 initial_test_time = time.time()
 print("1st testing neural network....",end="")
-first_testing_loss = neural_network.test_on_data(test_data, test_targets,eval_method=test_eval_method)
+first_testing_loss = neural_network.test_on_data(test_data, test_targets,eval_method=test_eval_method, msg="1st testing neural network....")
 print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 initial_test_time = time.time() - initial_test_time
 
@@ -105,4 +111,4 @@ print("Max error: {:.2} %".format(100*torch.max(testing_loss).item()))
 
 # Calculate runtime and print succesful run message
 runtime = time.time() - start_time
-print("\nmain.py ran succesfully in {:0.1f} minutes\n".format(runtime/60))
+print("\nmain.py ran succesfully in " + Fore.BLUE + " {:0.1f} minutes\n".format(runtime/60)  + Style.RESET_ALL)
