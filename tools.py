@@ -72,7 +72,9 @@ def read_in_file(filename: str = 'train.csv') -> Union[torch.Tensor, torch.Tenso
         data['price'] = pd.to_numeric(data['price'])
 
         # Separate data and targets
-        arraydata = data.iloc[:, :-1]  # Assuming the last column is the target
+        arraydata = data.iloc[:, 1:-1]  # Assuming the first column is ID (skip that) and last column is the target (skip those)
+        print("LESA ÞETTA MARR")
+        print(arraydata.head())
         arraytarget = data['price']  # Explicitly use the 'price' column
 
         # Convert to tensor

@@ -49,6 +49,9 @@ print("Splitting data................",end="")
 (train_data, train_targets), (test_data, test_targets) = tools.split_data(data,targets, train_ratio=train_ratio)
 print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
+print("NUMBER oF COLUMNS:")
+print(train_data.size())
+
 # Initialize neural network
 # Based on https://pytorch.org/tutorials/beginner/basics/buildmodel_tutorial.html
 print("Initializing neural network...",end="")
@@ -58,13 +61,10 @@ print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
 # Save initial weights if save weights
 if save_weights:
+    print("Saving initial weights........",end="")
     neural_network.save_weights(weight_filename)
+    print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
-print("Layer weights?:")
-print(neural_network.linear_layer_stack[0].weight.size())
-
-print("First estimation of car price of first car (a.k.a. data point): " + str(int(neural_network(train_data[0]).item())))
-print("Supposed to be: " + str(int(train_targets[0].item())))
 
 # Test initial weights on test set, log errors
 initial_test_time = time.time()
