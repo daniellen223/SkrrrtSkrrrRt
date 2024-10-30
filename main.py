@@ -24,6 +24,9 @@ M = 24                          # Number of hidden nodes - 12 dimensional data. 
 training_cycles = 1             # A.k.a "epochs" or how many times the training goes through each data point in the training data
 learning_rate = 0.01           # The learning rate for the neural network training
 test_eval_method = "percent"    # Which evaluation method for the error is used for testing. See tools.test_on_data for options
+save_weights = True            # If the weights should be saved - NOT YET IMPLEMENTED
+load_weights = False            # If the weights should be loaded - NOT YET IMPLEMENTED
+weight_filename = "weights.csv" # Filename (including path) for the weights to be saved to or read from - NOT YET IMPLEMENTED
 #--------------------------------------------------------
 
 # Imports
@@ -32,7 +35,7 @@ print("Importing modules.............",end="")
 import matplotlib.pyplot
 import torch # For working with tensors and neural networks
 import tools # Group tools
-from colorama import Fore, Back, Style  # For coloring terminal messages
+from colorama import Fore, Style  # For coloring terminal messages
 print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
 # Load data and transform data into manageable form
@@ -53,11 +56,12 @@ neural_network = tools.NeuralNetwork(D, M).to(tools.get_device())
 # weights = tools.init_weights(D, D) # Not used by torch so far?
 print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
-print("Neural network:")
-print(neural_network)
+# Save initial weights if save weights
+if save_weights:
+    neural_network.save_weights(weight_filename)
 
 print("Layer weights?:")
-print(neural_network.linear_layer_stack.l)
+print(neural_network.linear_layer_stack[0].weight.size())
 
 print("First estimation of car price of first car (a.k.a. data point): " + str(int(neural_network(train_data[0]).item())))
 print("Supposed to be: " + str(int(train_targets[0].item())))

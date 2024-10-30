@@ -11,6 +11,7 @@ from typing import Union # To return multiple values as a union
 import pandas as pd # For loading data
 import matplotlib.pyplot # For plotting results
 from sklearn.preprocessing import LabelEncoder # For loading data
+import csv      # To write to csv files e.g. for saving weights
 
 # Read data function
 def read_in_file(filename: str = 'train.csv') -> Union[torch.Tensor, torch.Tensor] :
@@ -260,17 +261,18 @@ class NeuralNetwork(torch.nn.Module):
     Class for neural network, contains layers and weights.
     '''
     # Initialize network
-    def __init__(self, D, M):
+    def __init__(self, D, M, load_weights_file: str=None):
         '''
         Initializes the neural network with random initial weights
         
         inputs:
         D   : Number of dimensions in the dataset
         M   : Number of hidden layer nodes
+        load_weights_file   : Filename (including path) to load initial weights from, if None, does not load weights but initializes random ones with torch default settings
         '''
         # WHAT IS THIS? Was copied from tutorial
         super().__init__()
-        # WHAT IS THIS?  Was copied from tutorial
+        # WHAT IS THIS?  Was copied from tutorial. Probably related to having RGB layers in images.
         self.flatten = torch.nn.Flatten()
         # Create layer_stack containing instructions for each layer
         self.linear_layer_stack = torch.nn.Sequential(
@@ -278,6 +280,60 @@ class NeuralNetwork(torch.nn.Module):
             torch.nn.ReLU(),        # ReLU activation function inside hidden layer
             torch.nn.Linear(M, 1),  # Last output is 1 value which should be the car price
         )
+        if load_weights_file != None:
+            self.load_weights(load_weights_file)
+
+    def save_weights(self, filename: str = 'weights.csv'):
+        '''
+        Saves the weights from filename to each layer.
+        File format has columns:
+        - weight_set_ID (0 is the weights between layer 0 and 1, 1 between 1 and 2 etc.)
+        - in_node_ID for the input layer node number
+        - out_node_ID for the output layer node number
+        - weight for the weight.
+
+        There are NO SPACES in the file.
+        It's recommended to keep the initial weights on the smaller side.
+        Example:
+        First line (header) : weight_set_ID,in_node_ID,out_node_ID,weight
+        All other lines     : 0,9,31,2.15*10^(-2)
+        
+        input:
+        filename    : The file name (including path) to a csv file with the weights to load.        
+        '''
+        # Get number of sets of weights
+        n_weight_sets = int(torch.round(torch.tensor((len(self.linear_layer_stack)+1)/2)).item())
+        
+        # Init csv file with writing permissions and no newline at end of row for condensed data
+        with open(filename, 'w', newline='') as csvfile:
+            # Header
+            fieldnames = ['weight_set_ID', 'in_node_ID', 'out_node_ID', 'weight']
+            # Init writer
+            writer = csv.DictWriter(csvfile, delimiter=',', fieldnames=fieldnames)
+            # Write header with fieldnames
+            writer.writeheader()
+            # For each weigth set, write all weights
+            for w_set_ID in range(n_weight_sets):
+                # Get number of nodes in input layer and number of nodes in output layer
+                n_out_nodes, n_in_nodes = self.linear_layer_stack[w_set_ID*2].weight.size()
+                
+                # Loop through each node of the input layer:
+                for in_node_ID in range(n_in_nodes):
+                    # Loop through each node of the output layer:
+                    for out_node_ID in range(n_out_nodes):
+                        # Write weights
+                        writer.writerow({'weight_set_ID'  : w_set_ID,
+                                        'in_node_ID'   : in_node_ID,
+                                        'out_node_ID'  : out_node_ID,
+                                        'weight'       : self.linear_layer_stack[w_set_ID*2].weight[out_node_ID][in_node_ID].item()})  # Times 2 because of activation functions
+        '''
+        Info about weights (if it was a tensor) - This comment can probably be deleted
+        weights     : All weights of the neural network where weights[0] is a torch.Tensor with the
+                weights between the first layer and the second layer, weights[1] for the weights
+                between the second and third layers etc.
+                Subtensor format has the output layer node number as a row number and the input
+                layer node number as a column number.
+        '''        
 
     def forward(self, car):
         '''
@@ -443,3 +499,5 @@ class NeuralNetwork(torch.nn.Module):
         # End for n
         # Return loss_matrix as torch.tensor
         return torch.Tensor(loss_matrix)
+
+
