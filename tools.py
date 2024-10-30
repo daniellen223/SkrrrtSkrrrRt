@@ -73,8 +73,6 @@ def read_in_file(filename: str = 'train.csv') -> Union[torch.Tensor, torch.Tenso
 
         # Separate data and targets
         arraydata = data.iloc[:, 1:-1]  # Assuming the first column is ID (skip that) and last column is the target (skip those)
-        print("LESA ÞETTA MARR")
-        print(arraydata.head())
         arraytarget = data['price']  # Explicitly use the 'price' column
 
         # Convert to tensor
@@ -235,6 +233,15 @@ def percent_error(p1: torch.Tensor, p2: torch.Tensor) -> float:
     # Find the absolute value of the distance between p1 and p2, get the error ratio and return it
     return abs(abs(p2-p1)/p2)    
 
+def tensor_to_weights(t: torch.Tensor) -> torch.nn.parameter.Parameter:
+    '''
+    Transforms a torch.Tensor to a weight parameter
+    
+    input:
+    t   : The tensor to be transformed
+    '''
+    return torch.nn.parameter.Parameter(t,requires_grad=True)
+
 # Get device for torch
 # Based on https://pytorch.org/tutorials/beginner/basics/buildmodel_tutorial.html
 def get_device() -> str:
@@ -265,7 +272,8 @@ class NeuralNetwork(torch.nn.Module):
     # Initialize network
     def __init__(self, D, M, load_weights_file: str=None):
         '''
-        Initializes the neural network with random initial weights
+        Initializes the neural network with random initial weights with default values from PyTorch
+        unless given a weight file.
         
         inputs:
         D   : Number of dimensions in the dataset
@@ -282,6 +290,8 @@ class NeuralNetwork(torch.nn.Module):
             torch.nn.ReLU(),        # ReLU activation function inside hidden layer
             torch.nn.Linear(M, 1),  # Last output is 1 value which should be the car price
         )
+        # Save number of weight sets
+        self.n_weight_sets = int(torch.round(torch.tensor((len(self.linear_layer_stack)+1)/2)).item())
         if load_weights_file != None:
             self.load_weights(load_weights_file)
 
@@ -302,10 +312,7 @@ class NeuralNetwork(torch.nn.Module):
         
         input:
         filename    : The file name (including path) to a csv file with the weights to load.        
-        '''
-        # Get number of sets of weights
-        n_weight_sets = int(torch.round(torch.tensor((len(self.linear_layer_stack)+1)/2)).item())
-        
+        '''        
         # Init csv file with writing permissions and no newline at end of row for condensed data
         with open(filename, 'w', newline='') as csvfile:
             # Header
@@ -315,7 +322,7 @@ class NeuralNetwork(torch.nn.Module):
             # Write header with fieldnames
             writer.writeheader()
             # For each weigth set, write all weights
-            for w_set_ID in range(n_weight_sets):
+            for w_set_ID in range(self.n_weight_sets):
                 # Get number of nodes in input layer and number of nodes in output layer
                 n_out_nodes, n_in_nodes = self.linear_layer_stack[w_set_ID*2].weight.size()
                 
@@ -337,6 +344,68 @@ class NeuralNetwork(torch.nn.Module):
                 layer node number as a column number.
         '''        
 
+    def load_weights(self, filename: str = 'initial_weights.csv'):
+        '''
+        NOTE: The accuracy is not 100% reliable, some numbers will be pretty much spot on and others will be mostly spot on but not quite exactly the same
+        Saves the weights from filename to each layer.
+        File format has header line and columns:
+        - weight_set_ID (0 is the weights between layer 0 and 1, 1 between 1 and 2 etc.)
+        - in_node_ID for the input layer node number
+        - out_node_ID for the output layer node number
+        - weight for the weight.
+
+        There are NO SPACES in the file.
+        It's recommended to keep the initial weights on the smaller side.
+        Example:
+        First line (header) : weight_set_ID,in_node_ID,out_node_ID,weight
+        All other lines     : 0,9,31,2.15*10^(-2)
+        
+        input:
+        filename    : The file name (including path) to a csv file with the weights to load.        
+        '''
+        # Init csv file with reading permissions
+        with open(filename, 'r') as csvfile:    # newline=''
+            # Init csv reader
+            reader = csv.reader(csvfile, delimiter=',')
+            
+            # For each row in reader, collect weights to corresponding locations and load to neural network
+            next(reader, None)  # skip the header in the csv
+            # Initialize empty weight list
+            weights = []
+            # Initialize old_weight_set_ID
+            old_weight_set_ID = 0
+            for row in reader:
+                # Get weight_set_ID, in_node_ID, out_node_ID and weight
+                weight_set_ID = int(row[0]) # Which weight tensor we're working on
+                in_node_ID = int(row[1])    # Which column in tensor we're updating
+                out_node_ID = int(row[2])   # Which row in tensor we're updating
+                weight = float(row[3])      # Weight to put in tensor row and column
+                
+                # If weights list rows increased, append row with weight, if columns
+                # increased, append column with weight, if weight set_ID increased
+                # load weights to neural network and reinitialize weights list
+                # --------
+                # If new out_node_ID, append new row to weights with weight as list (as the first column)
+                if len(weights) <= out_node_ID:
+                    weights.append([weight])
+                # If new column append weight as column of current row
+                elif len(weights[out_node_ID]) <= in_node_ID:
+                    weights[out_node_ID].append(weight)
+                # If no new row and no new column (both are 0), then we have a new weight_set and load weights to neural network
+                else:
+                    # Transform weights list into tensor
+                    weights_tensor = torch.tensor(weights)
+                    # Load weights tensor into neural network
+                    self.linear_layer_stack[old_weight_set_ID*2].weight = tensor_to_weights(weights_tensor)
+                    # Update old_weight_set_ID
+                    old_weight_set_ID = weight_set_ID
+                    # Reinitialize weights list with weight as first value of new row
+                    weights = [[weight]]
+            # Transform latest weights list into tensor
+            weights_tensor = torch.tensor(weights)
+            # Load last weights tensor into neural network
+            self.linear_layer_stack[old_weight_set_ID*2].weight = tensor_to_weights(weights_tensor)
+    
     def forward(self, car):
         '''
         Forward propagation through each layer of the neural network

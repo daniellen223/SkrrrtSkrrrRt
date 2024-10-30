@@ -19,14 +19,17 @@ print(" \r\nRunning main.py")
 # Settings
 #--------------------------------------------------------
 data_file_name = "train.csv"    # Which file to get the data from
-train_ratio = 0.05               # How high ratio of data should be used for training
+train_ratio = 0.75               # How high ratio of data should be used for training
 M = 24                          # Number of hidden nodes - 12 dimensional data. - Decided via trial and error or heuristics according to Jón but usually more than number of data dimensions in order to not compress data.
-training_cycles = 1             # A.k.a "epochs" or how many times the training goes through each data point in the training data
+training_cycles = 50             # A.k.a "epochs" or how many times the training goes through each data point in the training data
 learning_rate = 0.01           # The learning rate for the neural network training
 test_eval_method = "percent"    # Which evaluation method for the error is used for testing. See tools.test_on_data for options
-save_weights = True            # If the weights should be saved - NOT YET IMPLEMENTED
-load_weights = False            # If the weights should be loaded - NOT YET IMPLEMENTED
-weight_filename = "weights.csv" # Filename (including path) for the weights to be saved to or read from - NOT YET IMPLEMENTED
+save_initial_weights = True            # If the weights should be saved
+initial_weights_filename = "weights_initial.csv" # Filename (including path) for the weights to be saved to or read from - NOT YET IMPLEMENTED
+save_final_weights = True            # If the weights should be saved
+final_weights_filename = "weights_final.csv" # Filename (including path) for the weights to be saved to or read from - NOT YET IMPLEMENTED
+load_weights = False            # If the weights should be loaded from initial_weights_filename - NOT YET IMPLEMENTED
+should_train    = True          # If the neural network should train or just test
 #--------------------------------------------------------
 
 # Imports
@@ -49,22 +52,20 @@ print("Splitting data................",end="")
 (train_data, train_targets), (test_data, test_targets) = tools.split_data(data,targets, train_ratio=train_ratio)
 print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
-print("NUMBER oF COLUMNS:")
-print(train_data.size())
-
-# Initialize neural network
+# Initialize neural network with random weights or saved ones
 # Based on https://pytorch.org/tutorials/beginner/basics/buildmodel_tutorial.html
 print("Initializing neural network...",end="")
-neural_network = tools.NeuralNetwork(D, M).to(tools.get_device())
-# weights = tools.init_weights(D, D) # Not used by torch so far?
+if load_weights:
+    neural_network = tools.NeuralNetwork(D, M, load_weights_file=initial_weights_filename)
+else:
+    neural_network = tools.NeuralNetwork(D, M).to(tools.get_device())
 print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
 # Save initial weights if save weights
-if save_weights:
+if save_initial_weights:
     print("Saving initial weights........",end="")
-    neural_network.save_weights(weight_filename)
+    neural_network.save_weights(initial_weights_filename)
     print(Fore.GREEN + "Complete" + Style.RESET_ALL)
-
 
 # Test initial weights on test set, log errors
 initial_test_time = time.time()
@@ -74,16 +75,22 @@ print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 initial_test_time = time.time() - initial_test_time
 
 # Train neural network on training set
-train_time = time.time()
-print("Training neural network.......",end="")
-training_loss, n_unclean_points = neural_network.train_on_data(train_data, train_targets,epochs=training_cycles,lr=learning_rate)
-print(Fore.GREEN + "Complete" + Style.RESET_ALL)
-train_time = time.time() - train_time
+if should_train:
+    train_time = time.time()
+    print("Training neural network.......",end="")
+    training_loss, n_unclean_points = neural_network.train_on_data(train_data, train_targets,epochs=training_cycles,lr=learning_rate)
+    print(Fore.GREEN + "Complete" + Style.RESET_ALL)
+    train_time = time.time() - train_time
+
+# Save final weights if save weights
+if save_final_weights:
+    print("Saving final weights..........",end="")
+    neural_network.save_weights(final_weights_filename)
+    print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
 print("Estimated car price of first car (a.k.a. data point): " + str(int(neural_network(train_data[0]).item())))
 print("Supposed to be: " + str(int(train_targets[0].item())))
 print("Unclean points: " + str(n_unclean_points))
-
 
 # Test neural network on test set, log errors
 test_time = time.time()
