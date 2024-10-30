@@ -471,7 +471,7 @@ class NeuralNetwork(torch.nn.Module):
         
         # Find indexes for when to print update messages
         n_loops = epochs*N
-        update_index = n_loops/100
+        update_index = int(n_loops/100)
         
         # Training loop through each epoch
         for epoch in range(epochs):
@@ -501,7 +501,7 @@ class NeuralNetwork(torch.nn.Module):
                     unclean_points = unclean_points + 1
                 
                 # Print status for every whole percent
-                loop = n*epoch
+                loop = n*(epoch+1)
                 if  loop % update_index == 0:
                     print("{:.1f} %\r".format(100*loop/n_loops),end=msg)
 

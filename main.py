@@ -7,6 +7,10 @@ https://www.kaggle.com/competitions/playground-series-s4e9/data
 
 Solves using a single layer neural network, with regression and a basis function as per chapter 4 in Bishop 
 A special interest on missing data
+
+Notes from Jón 2024-10-30
+Hafa percent error fyrir cost function - leita að custom cost function fyrir
+torch til að geta notað autograd og þurfa ekki að diffra fallið sjálf
 '''
 # Start timer import
 import time # For measuring runtime
@@ -21,7 +25,7 @@ print(" \r\nRunning main.py")
 data_file_name = "train.csv"    # Which file to get the data from
 train_ratio = 0.75               # How high ratio of data should be used for training
 M = 24                          # Number of hidden nodes - 12 dimensional data. - Decided via trial and error or heuristics according to Jón but usually more than number of data dimensions in order to not compress data.
-training_cycles = 50             # A.k.a "epochs" or how many times the training goes through each data point in the training data
+training_cycles = 20             # A.k.a "epochs" or how many times the training goes through each data point in the training data
 learning_rate = 0.01           # The learning rate for the neural network training
 test_eval_method = "percent"    # Which evaluation method for the error is used for testing. See tools.test_on_data for options
 save_initial_weights = True            # If the weights should be saved
@@ -81,6 +85,7 @@ if should_train:
     training_loss, n_unclean_points = neural_network.train_on_data(train_data, train_targets,epochs=training_cycles,lr=learning_rate)
     print(Fore.GREEN + "Complete" + Style.RESET_ALL)
     train_time = time.time() - train_time
+    print("Unclean points: " + str(n_unclean_points))
 
 # Save final weights if save weights
 if save_final_weights:
@@ -90,7 +95,6 @@ if save_final_weights:
 
 print("Estimated car price of first car (a.k.a. data point): " + str(int(neural_network(train_data[0]).item())))
 print("Supposed to be: " + str(int(train_targets[0].item())))
-print("Unclean points: " + str(n_unclean_points))
 
 # Test neural network on test set, log errors
 test_time = time.time()
