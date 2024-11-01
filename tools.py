@@ -423,7 +423,11 @@ class NeuralNetwork(torch.nn.Module):
 
     # Train neural network
     # Based on https://pytorch.org/tutorials/beginner/introyt/trainingyt.html ????? At least if it helps
-    def train_on_data(self, train_data: torch.Tensor, train_targets: torch.Tensor, epochs: int=100, lr: float=0.001, msg: str="Training neural network.......") -> Union[torch.Tensor, int]:
+    def train_on_data(self, train_data: torch.Tensor,
+                      train_targets: torch.Tensor,
+                      epochs: int=100,
+                      lr: float=0.001,
+                      msg: str="Training neural network.......",) -> Union[torch.Tensor, int]:
         '''
         Trains the neural network with the given training data and targets by:
         1. forward propagating an input feature through the network
@@ -439,6 +443,7 @@ class NeuralNetwork(torch.nn.Module):
         
         output:
         loss_matrix     : Size (epochs) where the first value is the running loss after propagating through the whole train_data, the second value is the running loss after the second epoch etc.
+        unclean_points  : Number of points with missing data
         
         Possible more inputs:
         - Momentum
@@ -477,13 +482,13 @@ class NeuralNetwork(torch.nn.Module):
         for epoch in range(epochs):
             # Reset runnin_loss
             running_loss = 0.0
-            # Print status
-            # print("{:.1f} %\r".format(100*epoch/epochs),end="Training neural network.......")
-            # Loop through each data point
+            # How many datapoints we've gone through
+            n_data_done = N*epoch
+
+            # Loop through each datapoint
             for n in range(N):
                 # Zero the gradients
                 optimizer.zero_grad()
-                
                 # If data point not clean (has any NaN values), skip that point. Temporary if statement, should be removed from function before project end.
                 if not(torch.isnan(train_data[n]).any() or torch.isnan(train_targets[n]).any()):
                     # Forward pass
@@ -501,9 +506,9 @@ class NeuralNetwork(torch.nn.Module):
                     unclean_points = unclean_points + 1
                 
                 # Print status for every whole percent
-                loop = n*(epoch+1)
+                loop = n_data_done + n
                 if  loop % update_index == 0:
-                    print("{:.1f} %\r".format(100*loop/n_loops),end=msg)
+                    print("{:.0f} %\r".format(100*loop/n_loops),end=msg)
 
             # End for n
             # Log running_loss to loss_matrix
@@ -565,7 +570,7 @@ class NeuralNetwork(torch.nn.Module):
 
             # Print status for every whole percent
             if  n % n_print == 0:
-                print("{:.1f} %\r".format(100*n/N),end=msg)
+                print("{:.0f} %\r".format(100*n/N),end=msg)
 
         # End for n
         # Return loss_matrix as torch.tensor
