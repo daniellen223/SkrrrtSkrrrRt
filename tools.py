@@ -103,7 +103,8 @@ def plot_results(results: torch.Tensor,
     ylabel      : The label for the y axis
     show_plot   : Determines whether the plot should be displayed or not.
     '''
-    # fig = matplotlib.pyplot.figure()
+    # Make new figure
+    fig = matplotlib.pyplot.figure()
     # Find number of data points and make x_values
     N = results.size()[0]
     x_values = range(N)
