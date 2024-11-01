@@ -87,12 +87,21 @@ def read_in_file(filename: str = 'train.csv') -> Union[torch.Tensor, torch.Tenso
         raise("Error reading data:\n" + str(e))
 
 # Plot results
-def plot_results(results: torch.Tensor, filename: str = None, title: str=None, xlabel: str="Data points", ylabel: str="Error"):
+def plot_results(results: torch.Tensor,
+                 filename: str = None,
+                 title: str=None,
+                 xlabel: str="Data points",
+                 ylabel: str="Error",
+                 show_plot: bool=False):
     '''
     Plots the fig and saves it if a filename is given
     
-    input:
-    filename    : The filename to save as without a filetype ending
+    inputs:
+    results     : y values to be plotted, the x values are determined by number of values in tensor
+    filename    : The filename to save as without a filetype ending. If there is a filename the plot is saved
+    xlabel      : The label for the x axis
+    ylabel      : The label for the y axis
+    show_plot   : Determines whether the plot should be displayed or not.
     '''
     # fig = matplotlib.pyplot.figure()
     # Find number of data points and make x_values
@@ -114,7 +123,8 @@ def plot_results(results: torch.Tensor, filename: str = None, title: str=None, x
     matplotlib.pyplot.grid()	#shows a grid under the plot
     if filename != None:
         matplotlib.pyplot.savefig(filename + ".png")	#saves the figure in the present directory
-    matplotlib.pyplot.show()
+    if show_plot:
+        matplotlib.pyplot.show()
 
 # Split data function
 def split_data(

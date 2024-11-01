@@ -23,10 +23,10 @@ print(" \r\nRunning main.py")
 # Settings
 #--------------------------------------------------------
 data_file_name = "train.csv"    # Which file to get the data from
-train_ratio = 0.75               # How high ratio of data should be used for training
+train_ratio = 0.05               # How high ratio of data should be used for training
 M = 24                          # Number of hidden nodes - 12 dimensional data. - Decided via trial and error or heuristics according to Jón but usually more than number of data dimensions in order to not compress data.
-training_cycles = 20             # A.k.a "epochs" or how many times the training goes through each data point in the training data
-learning_rate = 0.01           # The learning rate for the neural network training
+training_cycles = 10             # A.k.a "epochs" or how many times the training goes through each data point in the training data
+learning_rate = 0.005           # The learning rate for the neural network training
 test_eval_method = "percent"    # Which evaluation method for the error is used for testing. See tools.test_on_data for options
 save_initial_weights = True            # If the weights should be saved
 initial_weights_filename = "weights_initial.csv" # Filename (including path) for the weights to be saved to or read from - NOT YET IMPLEMENTED
@@ -34,6 +34,7 @@ save_final_weights = True            # If the weights should be saved
 final_weights_filename = "weights_final.csv" # Filename (including path) for the weights to be saved to or read from - NOT YET IMPLEMENTED
 load_weights = False            # If the weights should be loaded from initial_weights_filename - NOT YET IMPLEMENTED
 should_train    = True          # If the neural network should train or just test
+show_plots      = False         # If the plots should be showed or not. Note: Plots are always saved
 #--------------------------------------------------------
 
 # Imports
@@ -105,9 +106,9 @@ test_time = time.time() - test_time
 
 # Plot results
 print("Plotting results..............",end="")
-tools.plot_results(100*first_testing_loss,filename="Fig_initial_test_loss", ylabel="% error",title="Before training")
-tools.plot_results(100*training_loss,filename="Fig_Training_loss", ylabel="% error",title="Training loss")
-tools.plot_results(100*testing_loss,filename="Fig_after_train_test_loss", ylabel="% error",title="After training")
+tools.plot_results(100*first_testing_loss,filename="Fig_initial_test_loss", ylabel="% error",title="Before training", show_plot=show_plots)
+tools.plot_results(100*training_loss,filename="Fig_Training_loss", xlabel="Training cycles", ylabel="% error",title=("Training loss, learning rate: " + str(learning_rate)), show_plot=show_plots)
+tools.plot_results(100*testing_loss,filename="Fig_after_train_test_loss", ylabel="% error",title=("After training " + str(training_cycles) + " cycles, learning rate: " + str(learning_rate)), show_plot=show_plots)
 print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
 # For when the above code is already working, implement the following:
