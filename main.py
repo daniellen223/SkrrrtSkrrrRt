@@ -103,7 +103,6 @@ for i in range(len(learning_rate)):
 
     # Plot results with learning rate in filenames
     print("Plotting results..............",end="")
-    tools.plot_results(100*first_testing_loss,filename=f"FigBeforetrainingLearnrate{learning_rate[i]}", ylabel="% error",title="Before training", show_plot=show_plots)
     tools.plot_results(100*training_loss,filename=f"FigTrainingloss{learning_rate[i]}", xlabel="Training cycles", ylabel="% error",title=("Training loss, learning rate: " + str(learning_rate[i])), show_plot=show_plots)
     tools.plot_results(100*testing_loss,filename=f"Figaftertrainingtestloss{learning_rate[i]}", ylabel="% error",title=("After training " + str(training_cycles) + " cycles, learning rate: " + str(learning_rate[i])), show_plot=show_plots)
     print(Fore.GREEN + "Complete" + Style.RESET_ALL)
