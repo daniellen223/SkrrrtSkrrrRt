@@ -72,21 +72,18 @@ for i in range(len(learning_rate)):
         neural_network.save_weights(initial_weights_filename)
         print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
-    # Test initial weights on test set, log errors
-    initial_test_time = time.time()
-    print("1st testing neural network....",end="")
-    first_testing_loss = neural_network.test_on_data(test_data, test_targets,eval_method=test_eval_method, msg="1st testing neural network....")
-    print(Fore.GREEN + "Complete" + Style.RESET_ALL)
-    initial_test_time = time.time() - initial_test_time
-
     # Train neural network on training set
     if should_train:
         train_time = time.time()
         print("Training neural network.......",end="")
-        training_loss, n_unclean_points = neural_network.train_on_data(train_data, train_targets,epochs=training_cycles,lr=learning_rate[i])
+        training_MSE_loss, training_percent_loss, n_unclean_points = neural_network.train_on_data(train_data, train_targets,epochs=training_cycles,lr=learning_rate[i])
         print(Fore.GREEN + "Complete" + Style.RESET_ALL)
         train_time = time.time() - train_time
         print("Unclean points: " + str(n_unclean_points))
+        
+    # Save errors as CSV file
+    tools.error_to_csv(training_MSE_loss, ("MSE_loss_LR" + str(learning_rate[i])))
+    tools.error_to_csv(training_percent_loss, ("percent_loss_LR" + str(learning_rate[i])))
 
     # Save final weights if save weights
     if save_final_weights:

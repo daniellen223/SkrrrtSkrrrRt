@@ -1,0 +1,3 @@
+Training_cycle,Mean_error
+0,tensor(1.1837e+10)
+1,tensor(1.1160e+10)

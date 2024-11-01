@@ -253,6 +253,30 @@ def tensor_to_weights(t: torch.Tensor) -> torch.nn.parameter.Parameter:
     '''
     return torch.nn.parameter.Parameter(t,requires_grad=True)
 
+def error_to_csv(loss_matrix: torch.Tensor, filename: str):
+    '''
+    Saves the loss matrix as a csv file
+    
+    inputs:
+    loss_matrix : The loss matrix from NeuralNetwork.train_on_data
+    filename    : The name of the file (including path)
+    '''
+    train_cycles = loss_matrix.shape[0]
+    
+    # Init csv file with writing permissions and no newline at end of row for condensed data
+    with open(filename, 'w', newline='') as csvfile:
+        # Header
+        fieldnames = ['Training_cycle', 'Mean_error']
+        # Init writer
+        writer = csv.DictWriter(csvfile, delimiter=',', fieldnames=fieldnames)
+        # Write header with fieldnames
+        writer.writeheader()
+        # For each training cycle, write mean error
+        for cycle in range(train_cycles):
+            # Write errors to csv file
+            writer.writerow({'Training_cycle'   : cycle,
+                            'Mean_error'   : loss_matrix[cycle]})
+
 # Get device for torch
 # Based on https://pytorch.org/tutorials/beginner/basics/buildmodel_tutorial.html
 def get_device() -> str:
@@ -323,7 +347,7 @@ class NeuralNetwork(torch.nn.Module):
         
         input:
         filename    : The file name (including path) to a csv file with the weights to load.        
-        '''        
+        '''
         # Init csv file with writing permissions and no newline at end of row for condensed data
         with open(filename, 'w', newline='') as csvfile:
             # Header
@@ -346,14 +370,6 @@ class NeuralNetwork(torch.nn.Module):
                                         'in_node_ID'   : in_node_ID,
                                         'out_node_ID'  : out_node_ID,
                                         'weight'       : self.linear_layer_stack[w_set_ID*2].weight[out_node_ID][in_node_ID].item()})  # Times 2 because of activation functions
-        '''
-        Info about weights (if it was a tensor) - This comment can probably be deleted
-        weights     : All weights of the neural network where weights[0] is a torch.Tensor with the
-                weights between the first layer and the second layer, weights[1] for the weights
-                between the second and third layers etc.
-                Subtensor format has the output layer node number as a row number and the input
-                layer node number as a column number.
-        '''        
 
     def load_weights(self, filename: str = 'initial_weights.csv'):
         '''
@@ -438,7 +454,7 @@ class NeuralNetwork(torch.nn.Module):
                       train_targets: torch.Tensor,
                       epochs: int=100,
                       lr: float=0.001,
-                      msg: str="Training neural network.......",) -> Union[torch.Tensor, int]:
+                      msg: str="Training neural network.......",) -> Union[torch.Tensor, torch.Tensor, int]:
         '''
         Trains the neural network with the given training data and targets by:
         1. forward propagating an input feature through the network
@@ -453,8 +469,9 @@ class NeuralNetwork(torch.nn.Module):
         msg             : The printing message before the percent update
         
         output:
-        loss_matrix     : Size (epochs) where the first value is the running loss after propagating through the whole train_data, the second value is the running loss after the second epoch etc.
-        unclean_points  : Number of points with missing data
+        MSE_loss_matrix     : Size (epochs) where the first value is the mean loss of mean square error after propagating through the whole train_data, the second value is the running loss after the second epoch etc.
+        percent_loss_matrix : Size (epochs) where the first value is the running loss of percent error after propagating through the whole train_data, the second value is the running loss after the second epoch etc.
+        unclean_points      : Number of points with missing data
         
         Possible more inputs:
         - Momentum
@@ -480,8 +497,9 @@ class NeuralNetwork(torch.nn.Module):
         # train_loader = torch.utils.data.DataLoader(train_data, batch_size=32, shuffle=True)
         
         # Initialize loss_matrix
-        loss_matrix = torch.zeros(epochs)
-        
+        MSE_loss_matrix = torch.zeros(epochs)
+        percent_loss_matrix = torch.zeros(epochs)
+
         # Initialize unclean points counter - Temporary value, should be removed from this function before project end
         unclean_points = 0
         
@@ -492,7 +510,8 @@ class NeuralNetwork(torch.nn.Module):
         # Training loop through each epoch
         for epoch in range(epochs):
             # Reset runnin_loss
-            running_loss = 0.0
+            MSE_running_loss = 0.0
+            percent_running_loss = 0.0
             # How many datapoints we've gone through
             n_data_done = N*epoch
 
@@ -507,12 +526,14 @@ class NeuralNetwork(torch.nn.Module):
                     # If forward pass results in NaN, skip that point
                     if not(torch.isnan(car_price)):
                         # Calculate loss
-                        loss = MSE_Loss(train_targets[n].unsqueeze(0), car_price) # Unsqueeze so that the tensor sizes match                
+                        loss = MSE_Loss(train_targets[n].unsqueeze(0), car_price) # Unsqueeze so that the tensor sizes match
+                        # loss = percent_error(train_targets[n].unsqueeze(0), car_price) # Unsqueeze so that the tensor sizes match
                         # Backward pass and optimization
                         loss.backward()
                         optimizer.step()
                         # Add loss to running loss
-                        running_loss += loss.item()
+                        MSE_running_loss += loss.item()
+                        percent_running_loss += percent_error(train_targets[n].unsqueeze(0), car_price)
                 else:
                     unclean_points = unclean_points + 1
                 
@@ -523,7 +544,8 @@ class NeuralNetwork(torch.nn.Module):
 
             # End for n
             # Log running_loss to loss_matrix
-            loss_matrix[epoch] = running_loss
+            MSE_loss_matrix[epoch] = MSE_running_loss/N
+            percent_loss_matrix[epoch] = percent_running_loss/N
         # End for epoch
             
         # Modified code from ChatGPT end
@@ -533,7 +555,7 @@ class NeuralNetwork(torch.nn.Module):
         self.eval()
         
         # Return loss_matrix
-        return loss_matrix, unclean_points
+        return MSE_loss_matrix, percent_loss_matrix, unclean_points
 
     # Test neural network
     # Based on self.train_on_data()
