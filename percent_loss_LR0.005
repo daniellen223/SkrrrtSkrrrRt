@@ -1,0 +1,6 @@
+Training_cycle,Mean_error
+0,"tensor(0.7648, grad_fn=<SelectBackward0>)"
+1,"tensor(0.4234, grad_fn=<SelectBackward0>)"
+2,"tensor(0.4233, grad_fn=<SelectBackward0>)"
+3,"tensor(0.4223, grad_fn=<SelectBackward0>)"
+4,"tensor(0.4240, grad_fn=<SelectBackward0>)"
