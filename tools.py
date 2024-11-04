@@ -12,6 +12,7 @@ import pandas as pd # For loading data
 import matplotlib.pyplot # For plotting results
 from sklearn.preprocessing import LabelEncoder # For loading data
 import csv      # To write to csv files e.g. for saving weights
+import collections # For option of variable number of layers in neural networks
 
 # Read data function
 def read_in_file(filename: str = 'train.csv') -> Union[torch.Tensor, torch.Tensor] :
@@ -29,18 +30,17 @@ def read_in_file(filename: str = 'train.csv') -> Union[torch.Tensor, torch.Tenso
     target_tensor : Size (N) where N is the number of data points. Contains the price of each car.
     
     data_tensor column meanings:
-    0 : id
-    1 : brand
-    2 : model
-    3 : model\_year
-    4 : milage
-    5 : fuel\_type
-    6 : engine
-    7 : transmission
-    8 : ext\_col
-    9 : int\_col
-    10 : accident
-    11 : clean\_title
+    0 : brand
+    1 : model
+    2 : model\_year
+    3 : milage
+    4 : fuel\_type
+    5 : engine
+    6 : transmission
+    7 : ext\_col
+    8 : int\_col
+    9 : accident
+    10 : clean\_title
     '''
     # Try except in case something goes wrong
     try:
@@ -107,7 +107,7 @@ def plot_results(results: torch.Tensor,
     fig = matplotlib.pyplot.figure()
     # Find number of data points and make x_values
     N = results.size()[0]
-    x_values = range(N)
+    x_values = range(1,N+1)
 
     # Detach the tensor if it requires gradients
     if results.requires_grad:
@@ -305,28 +305,38 @@ class NeuralNetwork(torch.nn.Module):
     Class for neural network, contains layers and weights.
     '''
     # Initialize network
-    def __init__(self, D, M, load_weights_file: str=None):
+    def __init__(self, nodes: list, load_weights_file: str=None):
         '''
         Initializes the neural network with random initial weights with default values from PyTorch
         unless given a weight file.
+        All layers are linear combinations with ReLU activation functions
         
         inputs:
-        D   : Number of dimensions in the dataset
-        M   : Number of hidden layer nodes
+        nodes   : List of how many nodes are in each layer. The first value is the number of dimensions in the input data, the last layer is the number of output nodes. Must always have at least 2 values
         load_weights_file   : Filename (including path) to load initial weights from, if None, does not load weights but initializes random ones with torch default settings
         '''
         # WHAT IS THIS? Was copied from tutorial
         super().__init__()
         # WHAT IS THIS?  Was copied from tutorial. Probably related to having RGB layers in images.
         self.flatten = torch.nn.Flatten()
-        # Create layer_stack containing instructions for each layer
-        self.linear_layer_stack = torch.nn.Sequential(
-            torch.nn.Linear(D, M),  # First linear combination between each dimension and weights to hidden layer
-            torch.nn.ReLU(),        # ReLU activation function inside hidden layer
-            torch.nn.Linear(M, 1),  # Last output is 1 value which should be the car price
-        )
+        
+        # Initialize layers ordered dictionary with first layer as a linear combination between each dimension and weights to hidden layer
+        layer_stack_dict = collections.OrderedDict([('layer1', torch.nn.Linear(nodes[0],nodes[1]))])
+        # Get number of layers
+        num_layers = len(nodes)
+        # For each layer, add to the layer_stack_dict
+        for layer in range(1, num_layers-1):
+            # Add ReLu activation function between layers
+            layer_stack_dict.update([(('relu' + str(layer)),torch.nn.ReLU())])
+            # Add next layer
+            layer_stack_dict.update({('l' + str(layer)): torch.nn.Linear(nodes[layer],nodes[layer+1])})
+        # End for layer
+   
+        # Create layer_stack containing instructions for each layer from dict
+        self.layer_stack = torch.nn.Sequential(layer_stack_dict)
+
         # Save number of weight sets
-        self.n_weight_sets = int(torch.round(torch.tensor((len(self.linear_layer_stack)+1)/2)).item())
+        self.n_weight_sets = int(torch.round(torch.tensor((len(self.layer_stack)+1)/2)).item())
         if load_weights_file != None:
             self.load_weights(load_weights_file)
 
@@ -359,7 +369,7 @@ class NeuralNetwork(torch.nn.Module):
             # For each weigth set, write all weights
             for w_set_ID in range(self.n_weight_sets):
                 # Get number of nodes in input layer and number of nodes in output layer
-                n_out_nodes, n_in_nodes = self.linear_layer_stack[w_set_ID*2].weight.size()
+                n_out_nodes, n_in_nodes = self.layer_stack[w_set_ID*2].weight.size()
                 
                 # Loop through each node of the input layer:
                 for in_node_ID in range(n_in_nodes):
@@ -369,7 +379,7 @@ class NeuralNetwork(torch.nn.Module):
                         writer.writerow({'weight_set_ID'  : w_set_ID,
                                         'in_node_ID'   : in_node_ID,
                                         'out_node_ID'  : out_node_ID,
-                                        'weight'       : self.linear_layer_stack[w_set_ID*2].weight[out_node_ID][in_node_ID].item()})  # Times 2 because of activation functions
+                                        'weight'       : self.layer_stack[w_set_ID*2].weight[out_node_ID][in_node_ID].item()})  # Times 2 because of activation functions
 
     def load_weights(self, filename: str = 'initial_weights.csv'):
         '''
@@ -423,7 +433,7 @@ class NeuralNetwork(torch.nn.Module):
                     # Transform weights list into tensor
                     weights_tensor = torch.tensor(weights)
                     # Load weights tensor into neural network
-                    self.linear_layer_stack[old_weight_set_ID*2].weight = tensor_to_weights(weights_tensor)
+                    self.layer_stack[old_weight_set_ID*2].weight = tensor_to_weights(weights_tensor)
                     # Update old_weight_set_ID
                     old_weight_set_ID = weight_set_ID
                     # Reinitialize weights list with weight as first value of new row
@@ -431,7 +441,7 @@ class NeuralNetwork(torch.nn.Module):
             # Transform latest weights list into tensor
             weights_tensor = torch.tensor(weights)
             # Load last weights tensor into neural network
-            self.linear_layer_stack[old_weight_set_ID*2].weight = tensor_to_weights(weights_tensor)
+            self.layer_stack[old_weight_set_ID*2].weight = tensor_to_weights(weights_tensor)
     
     def forward(self, car):
         '''
@@ -445,7 +455,7 @@ class NeuralNetwork(torch.nn.Module):
         '''
         # car = self.flatten(car) # Used for multilayer input data, like images with RGB values (3 layers)
         # Run the input data through the layers, return output
-        car_price = self.linear_layer_stack(car)
+        car_price = self.layer_stack(car)
         return car_price
 
     # Train neural network

@@ -23,10 +23,10 @@ print(" \r\nRunning main.py")
 # Settings
 #--------------------------------------------------------
 data_file_name = "train.csv"    # Which file to get the data from
-train_ratio = 0.01               # How high ratio of data should be used for training
-M = 24                          # Number of hidden nodes - 12 dimensional data. - Decided via trial and error or heuristics according to Jón but usually more than number of data dimensions in order to not compress data.
-training_cycles = 2            # A.k.a "epochs" or how many times the training goes through each data point in the training data
-learning_rate = [0.001,0.005,0.01,0.05,0.1,0.5,1,5,10,50,100,500,1000]              # The learning rate for the neural network training
+train_ratio = 0.25               # How high ratio of data should be used for training
+nodes = [11, 18, 23, 1]                # Number of hidden nodes per layer - 11 dimensional data. First layer is equal to number of data dimensions, last layer is equal to output dimensions (1 in this case) - Decided via trial and error or heuristics according to Jón but usually more than number of data dimensions in order to not compress data.
+training_cycles = 5            # A.k.a "epochs" or how many times the training goes through each data point in the training data
+learning_rate = [0.005] #[0.001,0.005,0.01,0.05,0.1,0.5,1,5,10,50,100,500,1000]              # The learning rate for the neural network training
 test_eval_method = "percent"    # Which evaluation method for the error is used for testing. See tools.test_on_data for options
 save_initial_weights = True            # If the weights should be saved
 initial_weights_filename = "weights_initial.csv" # Filename (including path) for the weights to be saved to or read from - NOT YET IMPLEMENTED
@@ -46,6 +46,11 @@ import tools # Group tools
 from colorama import Fore, Style  # For coloring terminal messages
 print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
+# Testing area
+#--------------------------------------------------------
+
+#--------------------------------------------------------
+
 # Load data and transform data into manageable form
 print("Loading data..................",end="")
 data, targets = tools.read_in_file(data_file_name)
@@ -61,10 +66,13 @@ for i in range(len(learning_rate)):
     # Initialize neural network with random weights or saved ones
     print("Initializing neural network...",end="")
     if load_weights:
-        neural_network = tools.NeuralNetwork(D, M, load_weights_file=initial_weights_filename)
+        neural_network = tools.NeuralNetwork(nodes, load_weights_file=initial_weights_filename)
     else:
-        neural_network = tools.NeuralNetwork(D, M).to(tools.get_device())
+        neural_network = tools.NeuralNetwork(nodes).to(tools.get_device())
     print(Fore.GREEN + "Complete" + Style.RESET_ALL)
+    print("Layer stack:")
+    print(neural_network.layer_stack)
+
 
     # Save initial weights if save weights
     if save_initial_weights:
@@ -110,8 +118,8 @@ for i in range(len(learning_rate)):
 
     # Run final messages and print times
     print("\nTraining took {:0.1f} minutes with a train ratio of {:0.1f} %".format(train_time/60, 100*train_ratio))
-    print("Initial testing took {:0.1f} seconds".format(initial_test_time))
     print("Testing took {:0.1f} seconds".format(test_time))
+    print("Mean error: {:.2} %".format(100*torch.mean(testing_loss).item()))
     print("Max error: {:.2} %".format(100*torch.max(testing_loss).item()))
 
 # Calculate runtime and print successful run message
