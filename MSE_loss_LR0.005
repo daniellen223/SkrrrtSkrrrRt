@@ -1,6 +1,6 @@
 Training_cycle,Mean_error
-0,tensor(4.6922e+09)
-1,tensor(4.6138e+09)
-2,tensor(4.6070e+09)
-3,tensor(4.6056e+09)
-4,tensor(4.6049e+09)
+0,tensor(4.7913e+09)
+1,tensor(4.7300e+09)
+2,tensor(4.7253e+09)
+3,tensor(4.7229e+09)
+4,tensor(4.7228e+09)
