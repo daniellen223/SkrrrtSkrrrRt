@@ -13,9 +13,8 @@ import matplotlib.pyplot # For plotting results
 from sklearn.preprocessing import LabelEncoder # For loading data
 import csv      # To write to csv files e.g. for saving weights
 import collections # For option of variable number of layers in neural networks
-import os       # For paths
-from pathlib import Path # To replace os????
-
+from pathlib import Path # For paths of files
+from colorama import Fore, Style  # For coloring terminal messages
 
 # Read data function
 def read_in_file(filename: str = 'train.csv',
@@ -50,6 +49,8 @@ def read_in_file(filename: str = 'train.csv',
     '''
     # Try except in case something goes wrong
     try:
+        # Status message start
+        print("Loading data..................",end="")
         # Load the data
         data = pd.read_csv(filename)
 
@@ -102,6 +103,9 @@ def read_in_file(filename: str = 'train.csv',
         # Convert to tensor
         data_tensor = torch.tensor(arraydata.values, dtype=torch.float32)
         target_tensor = torch.tensor(arraytarget.values, dtype=torch.float32)
+        
+        # Status message end
+        print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
         # Return data_tensor and target_tensor
         return data_tensor, target_tensor
@@ -188,7 +192,7 @@ def split_data(
     targets: torch.Tensor,
     train_ratio: float = 0.8,
     shuffle: bool = False,
-    normalize: bool = True) -> Union[tuple, tuple, tuple]:
+    normalize: bool = True) -> Union[tuple, tuple, tuple, tuple]:
     '''
     Splits the data and targets into a train and test set with the train_ratio.
     
@@ -206,11 +210,16 @@ def split_data(
     train_targets   : Size (split_index x 1). The training targets.
     test_data       : Size ((N-split_index) x D). The testing data
     test_targets    : Size ((N-split_index) x 1). The testing targets
-    data_normalizer : Size (D X 2). The mean and standard deviation of each column of the data before normalizing
-    target_normalizer : Size (1 X 2). The mean and standard deviation of the target before normalizing.
+    data_mean       : Size (D X 1). The mean of each column of the data before normalizing
+    data_std        : Size (D X 1). The standard deviation of each column of the data before normalizing
+    target_mean     : Size (1 X 1). The mean of the target before normalizing.
+    target_std      : Size (1 X 1). The standard deviation of the target before normalizing.
     '''
     # Try except in case something goes wrong
     try:
+        # Status message
+        print("Splitting data................",end="")
+
         # validate train_ratio, if out of bounds, throw error
         if train_ratio < 0 or train_ratio > 1:
             raise ValueError("train_ratio must be a value from 0 to 1 (both included)")
@@ -231,9 +240,9 @@ def split_data(
         target_normalizer = None
         # If normalize is True, normalize data
         if normalize:
-            data, data_normalizer = normalize_tensor(data)
-            targets, target_normalizer = normalize_tensor(targets)
-            
+            data, data_mean, data_std = normalize_tensor(data)
+            targets, target_mean, target_std = normalize_tensor(targets)
+
         # Find split_index between training data and test data.
         split_index = int(N * train_ratio)
 
@@ -249,8 +258,10 @@ def split_data(
             test_data   =   data[split_index:]
             test_targets    =   targets[split_index:]
 
+        print(Fore.GREEN + "Complete" + Style.RESET_ALL)
+
         # Returned split training and testing sets
-        return (train_data, train_targets), (test_data, test_targets)
+        return (train_data, train_targets), (test_data, test_targets), (data_mean, data_std), (target_mean, target_std)
 
     # Except statement
     except Exception as e:
@@ -382,6 +393,8 @@ class NeuralNetwork(torch.nn.Module):
         nodes   : List of how many nodes are in each layer. The first value is the number of dimensions in the input data, the last layer is the number of output nodes. Must always have at least 2 values
         load_weights_file   : Filename (including path) to load initial weights from, if None, does not load weights but initializes random ones with torch default settings
         '''
+        print("Initializing neural network...",end="")
+
         # WHAT IS THIS? Was copied from tutorial
         super().__init__()
         # WHAT IS THIS?  Was copied from tutorial. Probably related to having RGB layers in images.
@@ -407,6 +420,8 @@ class NeuralNetwork(torch.nn.Module):
         if load_weights_file != None:
             self.load_weights(load_weights_file)
 
+        print(Fore.GREEN + "Complete" + Style.RESET_ALL)
+
     def save_weights(self, filename: str = 'weights.csv'):
         '''
         Saves the weights from filename to each layer.
@@ -425,6 +440,8 @@ class NeuralNetwork(torch.nn.Module):
         input:
         filename    : The file name (including path) to a csv file with the weights to load.        
         '''
+        print("Saving weights................",end="")
+
         # Init csv file with writing permissions and no newline at end of row for condensed data
         with open(filename, 'w', newline='') as csvfile:
             # Header
@@ -447,6 +464,7 @@ class NeuralNetwork(torch.nn.Module):
                                         'in_node_ID'   : in_node_ID,
                                         'out_node_ID'  : out_node_ID,
                                         'weight'       : self.layer_stack[w_set_ID*2].weight[out_node_ID][in_node_ID].item()})  # Times 2 because of activation functions
+        print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
     def load_weights(self, filename: str = 'initial_weights.csv'):
         '''
@@ -554,6 +572,8 @@ class NeuralNetwork(torch.nn.Module):
         - Momentum
         - More?
         '''
+        print("Training neural network.......",end="")
+        
         # N number of data points and D number of dimensions
         N, D = train_data.size()
         #print("\nTrain data size: " + str(train_data.size()))
@@ -631,6 +651,8 @@ class NeuralNetwork(torch.nn.Module):
         # Set neural network back to evaluation mode
         self.eval()
         
+        print(Fore.GREEN + "Complete" + Style.RESET_ALL)
+        
         # Return loss_matrix
         return MSE_loss_matrix, percent_loss_matrix, unclean_points
 
@@ -651,6 +673,8 @@ class NeuralNetwork(torch.nn.Module):
         output:
         loss_matrix     : Size (N) where N is the number of data points and each value is the error between the test_target and the neural networks guess using test_data.
         '''
+        print("Testing neural network........",end="")
+
         # N number of data points and D number of dimensions
         N, D = test_data.size()
 
@@ -681,8 +705,10 @@ class NeuralNetwork(torch.nn.Module):
             # Print status for every whole percent
             if  n % n_print == 0:
                 print("{:.0f} %\r".format(100*n/N),end=msg)
-
         # End for n
+        
+        print(Fore.GREEN + "Complete" + Style.RESET_ALL)
+
         # Return loss_matrix as torch.tensor
         return torch.Tensor(loss_matrix)
 

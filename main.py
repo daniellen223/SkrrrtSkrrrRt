@@ -56,41 +56,28 @@ print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 #--------------------------------------------------------
 
 # Load data and transform data into manageable form
-print("Loading data..................",end="")
 data, targets = tools.read_in_file(data_file_name, save_mapping=save_mapping, mapping_folder_name=mapping_folder)
 N, D = data.size()  # Get number of data points, N, and number of data dimensions, D.
-print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
 # Split data into training_data, training_targets, test_data & test_targets
-print("Splitting data................",end="")
-(train_data, train_targets), (test_data, test_targets), (data_normalizer, target_normalizer) = tools.split_data(data,targets, train_ratio=train_ratio, shuffle=shuffle_data, normalize=normalize_data)
-print(Fore.GREEN + "Complete" + Style.RESET_ALL)
-
-print("DATA NORMALIZER:")
-print(data_normalizer)
+(train_data, train_targets), (test_data, test_targets), (data, target_normalizer) = tools.split_data(data,targets, train_ratio=train_ratio, shuffle=shuffle_data, normalize=normalize_data)
 
 for i in range(len(learning_rate)):
     # Initialize neural network with random weights or saved ones
-    print("Initializing neural network...",end="")
     if load_weights:
         neural_network = tools.NeuralNetwork(nodes, load_weights_file=initial_weights_filename)
     else:
         neural_network = tools.NeuralNetwork(nodes).to(tools.get_device())
-    print(Fore.GREEN + "Complete" + Style.RESET_ALL)
     print("Nodes in layers: " + str(nodes))
 
     # Save initial weights if save weights
     if save_initial_weights:
-        print("Saving initial weights........",end="")
         neural_network.save_weights(initial_weights_filename)
-        print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
     # Train neural network on training set
     if should_train:
         train_time = time.time()
-        print("Training neural network.......",end="")
         training_MSE_loss, training_percent_loss, n_unclean_points = neural_network.train_on_data(train_data, train_targets,epochs=training_cycles,lr=learning_rate[i])
-        print(Fore.GREEN + "Complete" + Style.RESET_ALL)
         train_time = time.time() - train_time
         print("Unclean points: " + str(n_unclean_points))
         
@@ -100,18 +87,14 @@ for i in range(len(learning_rate)):
 
     # Save final weights if save weights
     if save_final_weights:
-        print("Saving final weights..........",end="")
         neural_network.save_weights(final_weights_filename)
-        print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
     print("Estimated car price of first car (a.k.a. data point): " + str(int(neural_network(train_data[0]).item())))
     print("Supposed to be: " + str(int(train_targets[0].item())))
 
     # Test neural network on test set, log errors
     test_time = time.time()
-    print("Testing neural network........",end="")
     testing_loss = neural_network.test_on_data(test_data, test_targets,eval_method=test_eval_method)
-    print(Fore.GREEN + "Complete" + Style.RESET_ALL)
     test_time = time.time() - test_time
 
     # Plot results with learning rate in filenames
