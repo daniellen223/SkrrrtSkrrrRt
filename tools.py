@@ -18,7 +18,9 @@ from pathlib import Path # To replace os????
 
 
 # Read data function
-def read_in_file(filename: str = 'train.csv', save_mapping: bool=False, mapping_folder_name: str="data_mapping") -> Union[torch.Tensor, torch.Tensor] :
+def read_in_file(filename: str = 'train.csv',
+                 save_mapping: bool=False,
+                 mapping_folder_name: str="data_mapping") -> Union[torch.Tensor, torch.Tensor] :
     '''
     Reads in the data from a csv file, given the filename.
     Formats the data in a workable format and splits it into data and targets.
@@ -149,12 +151,44 @@ def plot_results(results: torch.Tensor,
     if show_plot:
         matplotlib.pyplot.show()
 
+# Normalize data
+def normalize_tensor(abnormal_tensor: torch.Tensor) -> Union [torch.Tensor, torch.Tensor, torch.Tensor]:
+    '''
+    Normalizes the input tensor by column and returns it
+    
+    input:
+    abnormal_tensor : Size (N X D). The tensor before normalizing by column
+    
+    output:
+    normal_tensor   : Size (N X D). The tensor after normalization by column
+    mean            : Size (D X 1). The means for each column of the abnormal_tensor
+    std             : Size (D X 1). The standard deviations for each column of the abnormal_tensor
+    '''
+    # Get dimensions
+    N, D = abnormal_tensor.shape
+    
+    # Init normal_tensor
+    normal_tensor = torch.zeros([N, D])
+    
+    # Get mean and standard deviation
+    mean = torch.mean(abnormal_tensor, 0)
+    std = torch.std(abnormal_tensor, 0)
+
+    # For each column and each row, normalize the value
+    for col in range(D):        
+        for row in range(N):
+            normal_tensor[row, col] = (abnormal_tensor[row, col].item()-mean[col])/std[col]
+        
+    # Return normal_tensor, mean and std
+    return normal_tensor, mean, std
+
 # Split data function
 def split_data(
     data: torch.Tensor,
     targets: torch.Tensor,
     train_ratio: float = 0.8,
-    shuffle: bool = False) -> Union[tuple, tuple]:
+    shuffle: bool = False,
+    normalize: bool = True) -> Union[tuple, tuple, tuple]:
     '''
     Splits the data and targets into a train and test set with the train_ratio.
     
@@ -165,12 +199,15 @@ def split_data(
     targets     : Size (N x 1). The targets, tensor where N is the number of data points, includes the real value the neural network tries to estimate
     train_ratio : Value from 0 to 1 (both included) accepted. How high ratio of the inputted data should be used for training, the rest is used for testing
     shuffle     : If the data should be shuffled before splitting.
+    normalize : If the data should be standardized before splitting
 
     outputs:
     train_data      : Size (split_index x D). The training data. split_index is N*train_ratio and D is how many dimensions each data point has,
     train_targets   : Size (split_index x 1). The training targets.
     test_data       : Size ((N-split_index) x D). The testing data
     test_targets    : Size ((N-split_index) x 1). The testing targets
+    data_normalizer : Size (D X 2). The mean and standard deviation of each column of the data before normalizing
+    target_normalizer : Size (1 X 2). The mean and standard deviation of the target before normalizing.
     '''
     # Try except in case something goes wrong
     try:
@@ -188,6 +225,14 @@ def split_data(
             # Shuffle data and targets with new indices
             data = data[indices_new]
             targets = targets[indices_new]
+
+        # Init normalizers
+        data_normalizer = None
+        target_normalizer = None
+        # If normalize is True, normalize data
+        if normalize:
+            data, data_normalizer = normalize_tensor(data)
+            targets, target_normalizer = normalize_tensor(targets)
             
         # Find split_index between training data and test data.
         split_index = int(N * train_ratio)
