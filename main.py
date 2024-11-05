@@ -22,11 +22,12 @@ print(" \r\nRunning main.py")
 
 # Settings
 #--------------------------------------------------------
-data_file_name = "train.csv"    # Which file to get the data from
+data_file_name = "Data_Normalized.csv"    # Which file to get the data from
 save_mapping = True            # Saves the data mapping for the read data to a csv file
 mapping_folder = "Data_mapping" # Name of mapping folder
+normalize_data = False           # If the data should be normalized before splitting into training and testing
+normalized_data_filename = "Data_Normalized.csv" # The filename to save the normalized data to
 shuffle_data = True             # If the data should be randomized before splitting into training and testing
-normalize_data = True           # If the data should be normalized before splitting into training and testing
 load_weights = False            # If the weights should be loaded from initial_weights_filename
 initial_weights_filename = "weights_initial.csv" # Filename (including path) for the weights to be saved to or read from
 should_train    = True          # If the neural network should train or just test
@@ -59,8 +60,18 @@ print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 data, targets = tools.read_in_file(data_file_name, save_mapping=save_mapping, mapping_folder_name=mapping_folder)
 N, D = data.size()  # Get number of data points, N, and number of data dimensions, D.
 
+# Normalize data
+# If normalize is True, normalize data
+if normalize_data:
+    data, means, stds = tools.normalize_tensor(torch.cat((data,targets.unsqueeze(1)),1))
+    tools.tensor_to_csv(data, normalized_data_filename, fieldnames=['id','brand','model','model_year','milage','fuel_type','engine','transmission','ext_col','int_col','accident','clean_title', 'price'])
+    targets = data[:][11]
+    data = data[:][0:11]
+    
+    # targets, target_mean, target_std = tools.normalize_tensor(targets)
+
 # Split data into training_data, training_targets, test_data & test_targets
-(train_data, train_targets), (test_data, test_targets), (data, target_normalizer) = tools.split_data(data,targets, train_ratio=train_ratio, shuffle=shuffle_data, normalize=normalize_data)
+(train_data, train_targets), (test_data, test_targets) = tools.split_data(data,targets, train_ratio=train_ratio, shuffle=shuffle_data)
 
 for i in range(len(learning_rate)):
     # Initialize neural network with random weights or saved ones
@@ -82,8 +93,8 @@ for i in range(len(learning_rate)):
         print("Unclean points: " + str(n_unclean_points))
         
     # Save errors as CSV file
-    tools.error_to_csv(training_MSE_loss, ("MSE_loss_LR" + str(learning_rate[i])))
-    tools.error_to_csv(training_percent_loss, ("percent_loss_LR" + str(learning_rate[i])))
+    tools.tensor_to_csv(training_MSE_loss, ("MSE_loss_LR" + str(learning_rate[i])),fieldnames=['Data point', 'Error'])
+    tools.tensor_to_csv(training_percent_loss, ("percent_loss_LR" + str(learning_rate[i])),fieldnames=['Data point', 'Error'])
 
     # Save final weights if save weights
     if save_final_weights:

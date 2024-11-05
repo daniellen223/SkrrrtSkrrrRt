@@ -1,1898 +1,1898 @@
 model,model_map
-124 Spider Abarth,0
-128 i,1
-135 i,2
-135 is,3
-1500 Big Horn,4
-1500 Cheyenne,5
-1500 Cheyenne Extended Cab,6
-1500 Classic SLT,7
-1500 Classic Tradesman,8
-1500 Classic Warlock,9
-1500 Laramie,10
-1500 Limited,11
-1500 Longhorn,12
-1500 Rebel,13
-1500 SLT,14
-1500 Sport,15
-1500 TRX,16
-1500 Tradesman/Express,17
-2 Launch Edition,18
-200 C,19
-200 Limited,20
-228 Gran Coupe i xDrive,21
-228 i,22
-230 i,23
-240SX Base,24
-2500 Big Horn,25
-2500 Laramie,26
-2500 Longhorn,27
-2500 Powerwagon,28
-2500 SLT,29
-2500 Tradesman,30
-300 Base,31
-300 S,32
-300 Touring,33
-300C Base,34
-300C SRT8,35
-300M Base,36
-300ZX Base,37
-320 i xDrive,38
-323 Ci,39
-325 Ci,40
-325 i,41
-325 xi,42
-328 i,43
-328 i xDrive,44
-328 xi,45
-330 330i xDrive,46
-330 i,47
-330 i xDrive,48
-330e iPerformance,49
-335 i,50
-335 i xDrive,51
-335 is,52
-340 i,53
-3500 Laramie,54
-3500 SLT,55
-3500 Tradesman,56
-350Z Enthusiast,57
-350Z NISMO,58
-350Z Touring,59
-370Z Base,60
-370Z NISMO,61
-370Z NISMO Tech,62
-370Z Touring,63
-428 Gran Coupe i xDrive,64
-428 i,65
-428 i xDrive,66
-428 i xDrive SULEV,67
-430 430i,68
-430 Gran Coupe i xDrive,69
-430 i,70
-430 i xDrive,71
-435 Gran Coupe i,72
-435 i,73
-435 i xDrive,74
-440 Gran Coupe 440i xDrive,75
-440 Gran Coupe i,76
-440 i xDrive,77
-488 GTB Base,78
-488 Spider Base,79
-4Runner 4WD,80
-4Runner Limited,81
-4Runner Limited Nightshade,82
-4Runner SR5,83
-4Runner SR5 Premium,84
-4Runner Sport,85
-4Runner TRD Off Road,86
-4Runner TRD Pro,87
-4Runner TRD Sport,88
-4Runner Trail,89
-4Runner Venture,90
-4Runner Venture Special Edition,91
-500 Lounge,92
-500 Sport,93
-500X Trekking Plus,94
-500e Battery Electric,95
-525 i,96
-528 i,97
-528 i xDrive,98
-530 i,99
-530 i xDrive,100
-530e Base,101
-535 i,102
-535 i xDrive,103
-540 i,104
-540 i xDrive,105
-550 Gran Turismo i,106
-550 i xDrive,107
-570S Base,108
-570S Spider,109
-640 Gran Coupe i,110
-640 Gran Coupe i xDrive,111
-640 i,112
-650 Gran Coupe i,113
-650 Gran Coupe i xDrive,114
-650 i,115
-650 i xDrive,116
-718 Boxster Base,117
-718 Boxster GTS,118
-718 Boxster S,119
-718 Cayman GT4,120
-718 Cayman GTS,121
-718 Cayman S,122
-718 Spyder Base,123
-720S Performance,124
-740 Li,125
-740 i,126
-740 iL,127
-740e xDrive iPerformance,128
-750 750i xDrive,129
-750 Li,130
-750 Li xDrive,131
-750 i,132
-750 i xDrive,133
-750 iL,134
-812 Superfast Base,135
-840 Gran Coupe i xDrive,136
-840 i xDrive,137
-850 Turbo,138
-86 860 Special Edition,139
-86 Base,140
-9-3 Aero,141
-9-3 SE,142
-911 Carrera,143
-911 Carrera 4,144
-911 Carrera 4 Cabriolet,145
-911 Carrera 4 GTS,146
-911 Carrera 4S,147
-911 Carrera 4S Cabriolet,148
-911 Carrera C2S,149
-911 Carrera C4S,150
-911 Carrera Cabriolet,151
-911 Carrera GTS,152
-911 Carrera S,153
-911 Carrera S Cabriolet,154
-911 Carrera Turbo,155
-911 GT2 RS,156
-911 GT3,157
-911 GT3 RS,158
-911 R,159
-911 Targa 4 GTS,160
-911 Turbo,161
-911 Turbo Cabriolet,162
-911 Turbo S,163
-A-Class A 220 4MATIC,164
-A3 2.0 TDI Premium Plus,165
-A3 2.0T,166
-A3 2.0T Premium,167
-A3 2.0T Tech Premium,168
-A4 2.0T Premium,169
-A4 2.0T Premium Plus,170
-A4 2.0T Premium Plus quattro,171
-A4 2.0T Premium quattro,172
-A4 2.0T Tech Premium,173
-A4 2.0T Titanium Premium,174
-A4 3.2 Premium Plus quattro,175
-A5 2.0T Premium,176
-A5 2.0T Premium Plus,177
-A5 2.0T Prestige,178
-A5 45 S line Premium Plus,179
-A5 Sportback S line Premium Plus,180
-A6 2.0T Premium Plus,181
-A6 2.0T Sport,182
-A6 3.0 TDI Premium Plus,183
-A6 3.0T Premium Plus,184
-A6 3.0T Prestige,185
-A6 3.2 quattro,186
-A6 45 Premium Plus,187
-A6 55 Premium,188
-A6 55 Premium Plus,189
-A6 55 Prestige,190
-A7 3.0T Premium,191
-A7 3.0T Premium Plus,192
-A7 3.0T Prestige,193
-A7 55 Premium,194
-A7 55 Premium Plus,195
-A7 Premium,196
-A7 Premium Plus,197
-A8 4.0,198
-A8 4.0T,199
-A8 L 3.0T,200
-A8 L 4.0T,201
-A8 L 55,202
-ALPINA B7 ALPINA B7 xDrive,203
-ALPINA B7 Base,204
-ALPINA B7 xDrive,205
-AMG C 43 AMG C 43 4MATIC,206
-AMG C 43 Base,207
-AMG C 43 Base 4MATIC,208
-AMG C 63 Base,209
-AMG C 63 S,210
-AMG C AMG C 63,211
-AMG C AMG C 63 S,212
-AMG CLA 45 Base 4MATIC,213
-AMG E 53 4MATIC,214
-AMG E 53 Base 4MATIC,215
-AMG E 63 S 4MATIC,216
-AMG G 63 4MATIC,217
-AMG G 63 Base,218
-AMG G AMG G 63 4MATIC,219
-AMG GL AMG GL 63 4MATIC,220
-AMG GLA 45 Base 4MATIC,221
-AMG GLC 43 AMG GLC 43,222
-AMG GLC 63 Base 4MATIC,223
-AMG GLE 43 4MATIC Coupe,224
-AMG GLE 43 Coupe 4MATIC,225
-AMG GLE 53 AMG GLE 53,226
-AMG GLE 63 S Coupe 4MATIC,227
-AMG GLE AMG GLE 63 S-Model 4MATIC,228
-AMG GLS 63 4MATIC,229
-AMG GT 53 Base,230
-AMG GT 63 S 4-Door,231
-AMG GT AMG GT,232
-AMG GT AMG GT S,233
-AMG GT Base,234
-AMG GT C,235
-AMG GT R,236
-AMG S 63 Base 4MATIC,237
-ATS 2.0L Turbo,238
-ATS 2.0L Turbo Luxury,239
-ATS 2.5L,240
-ATS 2.5L Luxury,241
-ATS 3.6L Luxury,242
-Acadia Denali,243
-Acadia SLE,244
-Acadia SLE-1,245
-Acadia SLE-2,246
-Acadia SLT-1,247
-Acadia SLT-2,248
-Accent GL,249
-Accent GLS,250
-Accent SEL,251
-Accord Crosstour EX-L,252
-Accord EX-L,253
-Accord EX-L 2.0T,254
-Accord Hybrid Base,255
-Accord Hybrid Touring,256
-Accord Sport,257
-Air Grand Touring,258
-Air Pure,259
-Altima 2.5 S,260
-Altima 2.5 SL,261
-Altima 2.5 SV,262
-Armada LE,263
-Armada Platinum,264
-Armada SL,265
-Armada SV,266
-Arnage R,267
-Arteon 2.0T SE,268
-Arteon 2.0T SEL Premium R-Line,269
-Arteon 2.0T SEL R-Line,270
-Arteon SEL R-Line,271
-Ascent Limited 7-Passenger,272
-Ascent Touring 7-Passenger,273
-Atlas 3.6L SE w/Technology,274
-Atlas 3.6L SEL Premium,275
-Atlas 3.6L SEL Premium R-Line,276
-Atlas Cross Sport 3.6L V6 SEL Premium,277
-Avalanche 1500 LS,278
-Avalanche 1500 LT,279
-Avalanche 1500 LTZ,280
-Avalanche LTZ,281
-Avalon Hybrid XLE Premium,282
-Avalon Limited,283
-Avalon Touring,284
-Avalon XLE,285
-Avalon XLS,286
-Avenger SE,287
-Aventador LP700-4,288
-Aventador LP750-4 Superveloce,289
-Aventador S Base,290
-Aventador SVJ Base,291
-Aviator Luxury,292
-Aviator Reserve AWD,293
-BRZ Limited,294
-BRZ Premium,295
-Baja Base,296
-Beetle 1.8T,297
-Beetle 2.0T Final Edition SE,298
-Beetle 2.0T S,299
-Bentayga Activity Edition,300
-Bentayga Azure First Edition,301
-Bentayga Onyx Edition,302
-Bentayga S,303
-Bentayga Speed,304
-Bentayga V8,305
-Bentayga W12 Signature,306
-Blazer 1LT,307
-Blazer Premier,308
-Bolt EUV Premier,309
-Bolt EV LT,310
-Boxster Base,311
-Boxster Black Edition,312
-Boxster GTS,313
-Boxster RS 60 Spyder,314
-Boxster S,315
-Bronco,316
-Bronco Badlands,317
-Bronco Badlands Advanced,318
-Bronco Base,319
-Bronco Big Bend,320
-Bronco Big Bend Advanced,321
-Bronco Heritage Edition Advanced,322
-Bronco Outer Banks,323
-Bronco Outer Banks Advanced,324
-Bronco Raptor,325
-Bronco Sport Base,326
-Bronco Sport Big Bend,327
-Bronco Sport Outer Banks,328
-Bronco Wildtrak Advanced,329
-Bronco XLT,330
-C-Class 4MATIC Sedan,331
-C-Class C 250 Luxury,332
-C-Class C 250 Sport,333
-C-Class C 300,334
-C-Class C 300 4MATIC,335
-C-Class C 300 4MATIC Luxury,336
-C-Class C 300 4MATIC Sport,337
-C-Class C 300 Luxury,338
-C-Class C 63 AMG,339
-C-Class C280 4MATIC,340
-C-Class C300 4MATIC,341
-C-Class C55 AMG Sport,342
-C-HR LE,343
-C-Max Energi SE,344
-C30 T5 Premier Plus,345
-C40 Recharge Pure Electric Twin Ultimate,346
-C70 T5,347
-CC 2.0T Sport,348
-CC Sport,349
-CLA-Class CLA 250,350
-CLK-Class 500 Cabriolet,351
-CLK-Class 550,352
-CLK-Class CLK 350,353
-CLS 450 Base,354
-CLS-Class CLS 400 4MATIC,355
-CLS-Class CLS 550,356
-CLS-Class CLS 63 AMG S-Model 4MATIC,357
-CLS-Class CLS500,358
-CR-V EX,359
-CR-V EX-L,360
-CR-V LX,361
-CR-V Touring,362
-CT 200h Base,363
-CT 200h Premium,364
-CT4 Luxury,365
-CT5 Premium Luxury,366
-CT5-V Blackwing,367
-CT5-V V-Series,368
-CT6 Luxury,369
-CT6-V 4.2L Blackwing Twin Turbo,370
-CTS 2.0L Turbo Luxury,371
-CTS 3.6L Luxury,372
-CTS 3.6L Premium,373
-CTS 3.6L Premium Luxury,374
-CTS Base,375
-CTS Luxury,376
-CTS Performance,377
-CTS Premium,378
-CTS-V Base,379
-CX-30 2.5 S Select Package,380
-CX-30 Base,381
-CX-30 Preferred,382
-CX-30 Premium Package,383
-CX-30 Select,384
-CX-5 Grand Touring,385
-CX-5 Touring,386
-CX-50 2.5 Turbo Premium Package,387
-CX-7 Grand Touring,388
-CX-7 Sport,389
-CX-9 Carbon Edition,390
-CX-9 Grand Touring,391
-CX-9 Signature,392
-CX-9 Touring,393
-CX-9 Touring Plus,394
-CX-90 Premium,395
-Caliber Express,396
-California T,397
-Camaro 1LT,398
-Camaro 1SS,399
-Camaro 2LT,400
-Camaro 2SS,401
-Camaro Base,402
-Camaro LT1,403
-Camaro Z28,404
-Camaro ZL1,405
-Camry Hybrid Base,406
-Camry Hybrid LE,407
-Camry Hybrid XLE,408
-Camry LE,409
-Camry SE,410
-Camry Solara SE,411
-Camry Solara SLE,412
-Camry Solara SLE V6,413
-Camry XLE,414
-Camry XSE,415
-Canyon Denali,416
-Canyon Elevation Standard,417
-Capri XR2,418
-Caprice Classic Base,419
-Carrera GT Base,420
-Cascada Base,421
-Cayenne AWD,422
-Cayenne Base,423
-Cayenne Diesel,424
-Cayenne E-Hybrid S,425
-Cayenne E-Hybrid S Platinum Edition,426
-Cayenne GTS,427
-Cayenne GTS Coupe AWD,428
-Cayenne Platinum Edition,429
-Cayenne S,430
-Cayenne Turbo,431
-Cayenne Turbo GT,432
-Cayenne Turbo S,433
-Cayman Base,434
-Cayman GT4,435
-Cayman GTS,436
-Cayman R,437
-Cayman S,438
-Celica GT,439
-Challenger GT,440
-Challenger R/T,441
-Challenger R/T Scat Pack,442
-Challenger SE,443
-Challenger SRT 392,444
-Challenger SRT Demon,445
-Challenger SRT Hellcat,446
-Challenger SRT8,447
-Challenger SRT8 392,448
-Challenger SXT,449
-Charger Base,450
-Charger GT,451
-Charger R/T,452
-Charger R/T 392,453
-Charger R/T Scat Pack,454
-Charger SE,455
-Charger SRT Hellcat,456
-Charger SRT Hellcat Widebody,457
-Charger SRT8,458
-Charger Scat Pack,459
-Cherokee Sport,460
-Cherokee X,461
-Civic EX,462
-Civic LX,463
-Civic Si,464
-Civic Si Base,465
-Civic Sport,466
-Civic Type R Touring,467
-Clarity Plug-In Hybrid Base,468
-Clubman Cooper S ALL4,469
-Colorado LT,470
-Colorado LT Crew Cab,471
-Colorado Z71,472
-Colorado Z85,473
-Colorado ZR2,474
-Commander Base,475
-Commander Sport,476
-Compass High Altitude,477
-Compass Latitude,478
-Compass Limited,479
-Compass Sport,480
-Compass Trailhawk,481
-Continental GT Base,482
-Continental GT GT Speed,483
-Continental GT Speed,484
-Continental GT V8,485
-Continental GT V8 First Edition,486
-Continental GT V8 S,487
-Continental GT W12,488
-Continental GTC Base,489
-Continental GTC V8,490
-Continental Reserve,491
-Convertible Cooper,492
-Convertible John Cooper Works,493
-Cooper Base,494
-Cooper S Base,495
-Cooper S Clubman Base,496
-Corolla CE,497
-Corolla Hybrid LE,498
-Corolla LE,499
-Corolla S Plus,500
-Corolla iM Base,501
-Corsair Grand Touring,502
-Corsair Reserve,503
-Corsair Standard,504
-Corvette Base,505
-Corvette Grand Sport,506
-Corvette Stingray,507
-Corvette Stingray Z51,508
-Corvette Stingray w/1LT,509
-Corvette Stingray w/2LT,510
-Corvette Stingray w/3LT,511
-Corvette Z06,512
-Corvette Z06 w/2LZ,513
-Corvette ZR-1,514
-Countryman Cooper,515
-Countryman Cooper S,516
-Countryman Cooper S ALL4,517
-Coupe Cambiocorsa,518
-Crossfire Limited,519
-Crosstour EX-L,520
-Crosstrek 2.0i Limited,521
-Crosstrek 2.0i Premium,522
-Crosstrek Premium,523
-Cruze LS,524
-Cruze LT,525
-Cruze LT Automatic,526
-Cruze LTZ,527
-Cube 1.8 S,528
-Cullinan,529
-DTS Base,530
-DTS Luxury,531
-DTS Luxury II,532
-Dakota Big Horn/Lone Star,533
-Dakota SLT,534
-Dakota SLT Quad Cab,535
-Dakota Sport,536
-Dart SE,537
-DeVille Base,538
-Durango GT,539
-Durango R/T,540
-Durango SLT,541
-Durango SRT,542
-Durango SRT 392,543
-E-Class 400E,544
-E-Class AMG E 53,545
-E-Class D 2.5 Turbo,546
-E-Class E 300,547
-E-Class E 300 4MATIC,548
-E-Class E 350,549
-E-Class E 350 4MATIC,550
-E-Class E 400,551
-E-Class E 400 4MATIC,552
-E-Class E 450 4MATIC,553
-E-Class E 550,554
-E-Class E 550 4MATIC,555
-E-Class E500,556
-E-Class E55 AMG,557
-E-PACE 300 Sport,558
-E-PACE S,559
-E150 XLT,560
-E250 Cargo,561
-E350 Super Duty Base,562
-E350 Super Duty XLT,563
-EQS 450 4MATIC,564
-EQS 450+ Base,565
-ES 250 Base,566
-ES 300h Base,567
-ES 330 Base,568
-ES 350 Base,569
-EV6 GT-Line,570
-EV6 Wind,571
-Eclipse GS,572
-Eclipse GT,573
-Eclipse Spyder GS,574
-Eclipse Spyder GT,575
-EcoSport SES,576
-Edge SE,577
-Edge SEL,578
-Edge Sport,579
-Edge Titanium,580
-Elantra GLS,581
-Elantra HEV Limited,582
-Elantra N Base,583
-Elantra SE,584
-Element EX,585
-Elise Base,586
-Enclave 1XL,587
-Enclave Avenir,588
-Enclave Essence,589
-Enclave Leather,590
-Enclave Premium,591
-Encore GX Essence,592
-Encore Preferred,593
-Envision Essence,594
-Envision Preferred,595
-Eos 2.0T,596
-Equinox 2LT,597
-Equinox LT,598
-Equinox Premier w/2LZ,599
-Equus Signature,600
-Escalade Base,601
-Escalade ESV Base,602
-Escalade ESV Luxury,603
-Escalade ESV Platinum,604
-Escalade ESV Platinum Edition,605
-Escalade ESV Premium Luxury,606
-Escalade ESV Premium Luxury Platinum,607
-Escalade ESV Sport,608
-Escalade EXT Base,609
-Escalade Luxury,610
-Escalade Platinum,611
-Escalade Platinum Edition,612
-Escalade Premium,613
-Escalade Premium Luxury,614
-Escalade Premium Luxury Platinum,615
-Escalade Sport,616
-Escalade Sport Platinum,617
-Escape Limited,618
-Escape PHEV SE,619
-Escape SE,620
-Escape SEL,621
-Escape XLT,622
-Eurovan MV,623
-Evora 2+2,624
-Evora 400 Base,625
-Evora Base,626
-Excursion Limited,627
-Excursion Limited 4WD,628
-Excursion Limited Ultimate,629
-Excursion XLS,630
-Excursion XLT 4WD,631
-Expedition EL King Ranch,632
-Expedition EL Limited,633
-Expedition EL XLT,634
-Expedition King Ranch,635
-Expedition Limited,636
-Expedition Max King Ranch,637
-Expedition Max Limited,638
-Expedition Max XLT,639
-Expedition Platinum,640
-Expedition Timberline,641
-Expedition XLT,642
-Explorer Eddie Bauer,643
-Explorer Limited,644
-Explorer Platinum,645
-Explorer ST,646
-Explorer Sport,647
-Explorer Sport Trac XLT,648
-Explorer Timberline,649
-Explorer XLT,650
-Explorer sport,651
-Express 1500 Base,652
-Express 1500 Cargo,653
-Express 1500 Work Van,654
-Express 2500 Work Van,655
-Express 3500 Base,656
-Express 3500 LT,657
-F-150 FX4,658
-F-150 Heritage XL SuperCab Flareside,659
-F-150 Lariat,660
-F-150 Lariat SuperCrew,661
-F-150 Lightning LARIAT,662
-F-150 Lightning XLT,663
-F-150 Limited,664
-F-150 Platinum,665
-F-150 Raptor,666
-F-150 SVT Raptor,667
-F-150 Tremor,668
-F-150 XL,669
-F-150 XLT,670
-F-150 XLT SuperCab,671
-F-250 Base,672
-F-250 King Ranch,673
-F-250 LARIAT,674
-F-250 Lariat,675
-F-250 Limited,676
-F-250 Platinum,677
-F-250 XL,678
-F-250 XL Crew Cab Super Duty,679
-F-250 XL SuperCab H/D,680
-F-250 XLT,681
-F-250 XLT Crew Cab Super Duty,682
-F-250 XLT Super Duty,683
-F-250 XLT SuperCab Super Duty,684
-F-350 King Ranch,685
-F-350 Lariat,686
-F-350 Lariat Crew Cab Super Duty DRW,687
-F-350 Lariat Super Duty Crew Cab,688
-F-350 Platinum,689
-F-350 XL,690
-F-350 XLT,691
-F-PACE 25t Premium,692
-F-PACE 30t R-Sport,693
-F-PACE 35t Premium,694
-F-PACE S,695
-F-PACE SVR,696
-F-TYPE,697
-F-TYPE R,698
-F-TYPE S,699
-F-TYPE S British Design Edition,700
-F-TYPE V6 S,701
-F12berlinetta Base,702
-F430 Berlinetta,703
-FF Base,704
-FJ Cruiser Base,705
-FR-S Monogram,706
-FX37 Base,707
-FX50 Base,708
-Fiesta ST,709
-Firebird Base,710
-Firebird Trans Am,711
-Fit Sport,712
-Flex Limited,713
-Flex SEL,714
-Flying Spur V8,715
-Focus RS Base,716
-Focus SE,717
-Focus SEL,718
-Focus ST Base,719
-ForTwo Pure,720
-Forester 2.5 X,721
-Forester 2.5 XT,722
-Forester 2.5i Limited,723
-Forester Base,724
-Forester Premium,725
-Forte GT-Line,726
-Forte Koup EX,727
-Forte LX,728
-Forte LXS,729
-Frontier SE Crew Cab,730
-Frontier SL,731
-Frontier SV,732
-Fusion Energi Titanium,733
-Fusion Hybrid Base,734
-Fusion Hybrid SE,735
-Fusion Hybrid SE Hybrid,736
-Fusion Hybrid Titanium,737
-Fusion SE,738
-G 550 4x4 Squared Base,739
-G-Class G 550,740
-G-Class G 550 4MATIC,741
-G-Class G 63 AMG,742
-G35 Base,743
-G35 Sport,744
-G37 Journey,745
-G37 S Sport,746
-G37 Sport,747
-G37 x,748
-G6 GTP,749
-G70 2.0T,750
-G70 3.3T,751
-G70 3.3T Advanced,752
-G8 GT,753
-G80 2.5T,754
-G80 3.3T Sport,755
-G80 3.8,756
-G90 3.3T Premium,757
-G90 5.0 Ultimate,758
-GL-Class GL 450,759
-GL-Class GL 450 4MATIC,760
-GL-Class GL 550,761
-GL-Class GL 550 4MATIC,762
-GLA 250 Base 4MATIC,763
-GLA-Class GLA 250 4MATIC,764
-GLA-Class GLA 45 AMG,765
-GLB 250 Base 4MATIC,766
-GLC 300 Base,767
-GLC 300 Base 4MATIC,768
-GLC 300 GLC 300,769
-GLE 350 Base,770
-GLE 350 Base 4MATIC,771
-GLE 350 GLE 350,772
-GLE 450 GLE 450,773
-GLK-Class GLK 350,774
-GLS 450 Base,775
-GLS 450 Base 4MATIC,776
-GLS 550 Base 4MATIC,777
-GR Corolla Circuit Edition,778
-GR86 Base,779
-GR86 Premium,780
-GS 350 Base,781
-GS 350 F Sport,782
-GT,783
-GT-R Black Edition,784
-GT-R Premium,785
-GTC4Lusso T,786
-GTI Base,787
-GTO Base,788
-GV70 2.5T,789
-GV70 3.5T Sport,790
-GV80 2.5T,791
-GX 460 Base,792
-GX 460 Luxury,793
-GX 460 Premium,794
-GX 470 Base,795
-Gallardo Base,796
-Gallardo LP550-2,797
-Gallardo LP560-4,798
-Gallardo LP570-4 Superleggera,799
-Gallardo SE,800
-Genesis 3.8,801
-Genesis 4.6,802
-Genesis 5,803
-Genesis Coupe 2.0T,804
-Genesis Coupe 2.0T R-Spec,805
-Genesis Coupe 3.8 Base,806
-Genesis Coupe 3.8 Grand Touring,807
-Genesis Coupe 3.8 R-Spec,808
-Genesis Coupe 3.8 Track,809
-Ghibli Base,810
-Ghibli S GranLusso,811
-Ghibli S Q4,812
-Ghibli S Q4 GranSport,813
-Ghost Base,814
-Gladiator Freedom,815
-Gladiator Mojave,816
-Gladiator Overland,817
-Gladiator Rubicon,818
-Gladiator Sport,819
-Gladiator Sport S,820
-Gladiator Willys,821
-Golf Alltrack TSI SE,822
-Golf Auto TSI S,823
-Golf GTI 2.0T Autobahn,824
-Golf GTI 2.0T Autobahn 4-Door,825
-Golf GTI 2.0T S 4-Door,826
-Golf GTI 2.0T SE 4-Door,827
-Golf GTI 2.0T SE w/Performance Package 4-Door,828
-Golf R 20th Anniversary Edition,829
-Golf R 4-Door,830
-Golf R 4-Door w/DCC & Navigation,831
-Golf R Base,832
-Golf SportWagen TSI S 4-Door,833
-Golf SportWagen TSI SE,834
-GranTurismo Base,835
-GranTurismo MC,836
-GranTurismo Sport,837
-Grand Caravan R/T,838
-Grand Caravan SE,839
-Grand Cherokee Altitude,840
-Grand Cherokee L Laredo,841
-Grand Cherokee L Limited,842
-Grand Cherokee L Overland,843
-Grand Cherokee L Summit,844
-Grand Cherokee Laredo,845
-Grand Cherokee Limited,846
-Grand Cherokee Summit,847
-Grand Cherokee WK Laredo X,848
-Grand Wagoneer Base,849
-Grand Wagoneer Series III,850
-Grecale Modena,851
-H2 Base,852
-H2 SUT,853
-H3 Base,854
-HS 250h Premium,855
-HUMMER EV Edition 1,856
-Hardtop Cooper,857
-Hardtop Cooper S,858
-Highlander Base,859
-Highlander Hybrid Limited,860
-Highlander Hybrid Limited Platinum,861
-Highlander Hybrid XLE,862
-Highlander LE Plus,863
-Highlander Limited,864
-Highlander Limited Platinum,865
-Highlander Platinum,866
-Highlander SE,867
-Highlander XLE,868
-Huracan EVO Base,869
-Huracan EVO Coupe,870
-Huracan LP580-2,871
-Huracan LP580-2S,872
-Huracan LP610-4,873
-Huracan Tecnica Coupe,874
-ID.4 Pro S,875
-ILX 2.0L w/Premium Package,876
-ILX 2.4L,877
-ILX Premium & A-SPEC Packages,878
-ILX Premium Package,879
-ILX Technology Plus Package,880
-IONIQ 5 SE,881
-IONIQ Plug-In Hybrid SEL,882
-IS 250 Base,883
-IS 250C Base,884
-IS 300 Base,885
-IS 350 Base,886
-IS 350 F Sport,887
-IS-F Base,888
-Impala 1LT,889
-Impala 2LZ,890
-Impala Base,891
-Impreza 2.0i,892
-Impreza 2.0i Premium,893
-Impreza 2.0i Sport,894
-Impreza Outback Sport Wagon,895
-Impreza Premium,896
-Impreza WRX,897
-Impreza WRX Base,898
-Impreza WRX Premium,899
-Impreza WRX STI,900
-Impreza WRX Sti,901
-Impreza WRX Sti Special Edition,902
-Insight EX,903
-Integra GS-R,904
-Integra LS,905
-Integra w/A-Spec Tech Package,906
-Jetta 1.4T R-Line,907
-Jetta 1.4T S,908
-Jetta 1.4T SE,909
-Jetta GLI,910
-Jetta GLX VR6,911
-Jetta S,912
-Jetta SportWagen SE,913
-Juke NISMO RS,914
-Juke SL,915
-Juke SV,916
-K5 EX,917
-K5 GT-Line,918
-K900 5.0L,919
-Kicks S,920
-Kona EV SEL,921
-Kona N Base,922
-LC 500 Base,923
-LS 430 Base,924
-LS 460 Base,925
-LS 460 Crafted Line,926
-LS 460 L,927
-LS 500 Base,928
-LS 500 F Sport,929
-LS V8,930
-LX 470 Base,931
-LX 570 Base,932
-LX 570 Three-Row,933
-LX 600 F SPORT,934
-LX 600 Premium,935
-LYRIQ Luxury,936
-LaCrosse Base,937
-LaCrosse CX,938
-LaCrosse Leather,939
-Lancer DE,940
-Lancer Evolution Base,941
-Lancer Evolution GSR,942
-Lancer Evolution IX,943
-Lancer Evolution MR,944
-Lancer GTS,945
-Lancer Sportback ES,946
-Land Cruiser,947
-Land Cruiser Base,948
-Leaf S,949
-Leaf SL,950
-Leaf SV PLUS,951
-Legacy 2.5 GT spec.B,952
-Legacy 2.5 i Premium,953
-Legacy 2.5i Premium,954
-Levante GTS,955
-Levante Modena,956
-Levante S,957
-Liberty Limited,958
-Liberty Renegade,959
-Liberty Sport,960
-Lucerne CXL,961
-M-Class ML 350,962
-M-Class ML 350 4MATIC,963
-M2 Base,964
-M2 CS,965
-M2 Competition,966
-M235 i,967
-M240 i,968
-M240 i xDrive,969
-M3 Base,970
-M3 CS,971
-M3 Competition,972
-M3 Competition xDrive,973
-M340 i xDrive,974
-M37 x,975
-M4 Base,976
-M4 CS,977
-M4 Competition,978
-M4 Competition xDrive,979
-M440 i,980
-M440 i xDrive,981
-M5 Base,982
-M5 Competition,983
-M550 i xDrive,984
-M56 Base,985
-M6 Base,986
-M6 Gran Coupe Base,987
-M760 M760i xDrive,988
-M760 i xDrive,989
-M8 Base,990
-M8 Competition,991
-M8 Gran Coupe Competition,992
-M850 i xDrive,993
-MC20 Base,994
-MC20 MC20,995
-MDX 3.5L Technology Package,996
-MDX 3.5L w/Advance & Entertainment Pkgs,997
-MDX 3.5L w/Technology Package,998
-MDX 3.7L Advance,999
-MDX Sport,1000
-MDX Sport Hybrid 3.0L w/Technology Package,1001
-MDX Technology,1002
-MDX Touring,1003
-MDX w/Advance Package,1004
-MDX w/Technology Package,1005
-MKC Base,1006
-MKC Reserve,1007
-MKC Select,1008
-MKS Base,1009
-MKS EcoBoost,1010
-MKT Base,1011
-MKX Base,1012
-MKX Black Label,1013
-MKX Reserve,1014
-MKZ Base,1015
-MKZ Hybrid Base,1016
-MKZ Reserve,1017
-MKZ Reserve I,1018
-MKZ Select,1019
-MX-5 Miata Base,1020
-MX-5 Miata Club,1021
-MX-5 Miata Grand Touring,1022
-MX-5 Miata RF Club,1023
-MX-5 Miata RF Grand Touring,1024
-MX-5 Miata Shinsen,1025
-MX-5 Miata Sport,1026
-Macan,1027
-Macan Base,1028
-Macan GTS,1029
-Macan S,1030
-Macan Turbo,1031
-Magnum Base,1032
-Magnum R/T,1033
-Malibu 1LT,1034
-Malibu LT,1035
-Malibu LTZ,1036
-Malibu Limited LT,1037
-Malibu Premier,1038
-Marauder Base,1039
-Mark LT Base,1040
-Martin DB7 Vantage Volante,1041
-Martin DBS Superleggera,1042
-Martin DBX Base,1043
-Martin V8 Vantage Base,1044
-Martin Vantage Base,1045
-Martin Vantage GT Base,1046
-Matrix XR,1047
-Matrix XRS,1048
-Maverick Lariat,1049
-Maverick XL,1050
-Maverick XLT,1051
-Maxima 3.5 SR,1052
-Maxima GLE,1053
-Maxima SL,1054
-Maxima SV,1055
-Maybach S 580 4MATIC,1056
-Maybach S S 600,1057
-Mazda3 FWD w/Preferred Package,1058
-Mazda3 FWD w/Premium Package,1059
-Mazda3 Grand Touring,1060
-Mazda3 Touring,1061
-Mazda3 i SV,1062
-Mazda3 i Sport,1063
-Mazda3 i Touring,1064
-Mazda3 s Grand Touring,1065
-Mazda3 s Sport,1066
-Mazda6 Carbon Edition,1067
-Mazda6 Grand Touring,1068
-Mazda6 Grand Touring Reserve,1069
-Mazda6 Signature,1070
-Mazda6 Touring,1071
-Mazda6 i Grand Touring,1072
-Mazda6 i Touring,1073
-Mazda6 iSport VE,1074
-MazdaSpeed Miata MX-5 Base,1075
-MazdaSpeed3 Grand Touring,1076
-Metris Base,1077
-Mirage ES,1078
-Mirai Base,1079
-Mirai Limited,1080
-Model 3,1081
-Model 3 Base,1082
-Model 3 Long Range,1083
-Model 3 Mid Range,1084
-Model 3 Performance,1085
-Model 3 Standard Range,1086
-Model 3 Standard Range Plus,1087
-Model S 100D,1088
-Model S 70D,1089
-Model S 75D,1090
-Model S 85,1091
-Model S 85D,1092
-Model S 90D,1093
-Model S Long Range,1094
-Model S Long Range Plus,1095
-Model S P100D,1096
-Model S Performance,1097
-Model S Plaid,1098
-Model X 100D,1099
-Model X 75D,1100
-Model X Base,1101
-Model X Long Range,1102
-Model X Long Range Plus,1103
-Model X P100D,1104
-Model X P90D,1105
-Model X Performance,1106
-Model X Plaid,1107
-Model Y Long Range,1108
-Model Y Performance,1109
-Monte Carlo SS,1110
-Monte Carlo Supercharged SS,1111
-Montero Limited,1112
-Murano SL,1113
-Murano SV,1114
-Murcielago Base,1115
-Mustang Base,1116
-Mustang Boss 302,1117
-Mustang Bullitt,1118
-Mustang EcoBoost,1119
-Mustang EcoBoost Premium,1120
-Mustang GT,1121
-Mustang GT Premium,1122
-Mustang Mach-E California Route 1,1123
-Mustang Mach-E GT,1124
-Mustang Mach-E Premium,1125
-Mustang Mach-E Select,1126
-Mustang Premium,1127
-Mustang SVT Cobra,1128
-Mustang Shelby GT500,1129
-Mustang V6,1130
-Mustang V6 Premium,1131
-NSX Base,1132
-NV Passenger NV3500 HD SL V8,1133
-NV Passenger NV3500 HD SV V8,1134
-NV200 S,1135
-NV200 SV,1136
-NX 200t Base,1137
-NX 300 Base,1138
-NX 300h Base,1139
-NX 350 F SPORT Handling,1140
-NX 350h Premium,1141
-Nautilus Reserve,1142
-Navigator Base,1143
-Navigator L,1144
-Navigator L Reserve,1145
-Navigator L Select,1146
-Navigator Premiere,1147
-Navigator Reserve,1148
-Navigator Select,1149
-New Beetle GLS,1150
-New Compass Trailhawk,1151
-Niro EV EX,1152
-Niro EX,1153
-Niro Plug-In Hybrid EX,1154
-Niro Plug-In Hybrid EX Premium,1155
-Odyssey EX-L,1156
-Odyssey Elite,1157
-Odyssey LX,1158
-Optima EX,1159
-Optima Hybrid EX,1160
-Optima Hybrid LX,1161
-Optima LX,1162
-Optima S,1163
-Optima SX Turbo,1164
-Outback 2.5 i Special Edition,1165
-Outback 2.5i Limited,1166
-Outback 2.5i Premium,1167
-Outback 3.0 R VDC Limited,1168
-Outback 3.6R Limited,1169
-Outback 3.6R Touring,1170
-Outback Limited,1171
-Outback Limited XT,1172
-Outback Touring XT,1173
-Outlander SEL,1174
-Outlander Sport 2.4 SE,1175
-Outlander Sport ES,1176
-Pacifica Hybrid Touring L,1177
-Pacifica Launch Edition,1178
-Pacifica Touring,1179
-Palisade Calligraphy,1180
-Palisade Limited,1181
-Palisade SEL,1182
-Panamera 2,1183
-Panamera 4,1184
-Panamera 4 Edition,1185
-Panamera 4 Platinum Edition,1186
-Panamera 4S,1187
-Panamera Base,1188
-Panamera Edition,1189
-Panamera GTS,1190
-Panamera Platinum Edition,1191
-Panamera S,1192
-Panamera Turbo,1193
-Passat 2.0T R-Line,1194
-Passat 2.0T SE,1195
-Passat 2.5 SE,1196
-Passport Elite,1197
-Passport TrailSport,1198
-Pathfinder Platinum,1199
-Pathfinder S,1200
-Pathfinder SL,1201
-Pathfinder SV,1202
-Pathfinder Silver,1203
-Patriot Latitude,1204
-Phantom,1205
-Phantom Drophead Coupe Drophead,1206
-Pickup Truck XE,1207
-Pilot Black Edition,1208
-Pilot EX,1209
-Pilot EX-L,1210
-Pilot Elite,1211
-Prelude Type SH,1212
-Prius Plug-in Base,1213
-Prius Touring,1214
-Prius Two,1215
-Prius v Three,1216
-ProMaster 2500 High Roof,1217
-ProMaster 2500 Window Van High Roof,1218
-ProMaster 3500 High Roof,1219
-ProMaster 3500 Tradesman,1220
-Protege DX,1221
-Prowler Base,1222
-Q3 2.0T Premium Plus,1223
-Q3 45 S line Premium,1224
-Q3 45 S line Premium Plus,1225
-Q3 S line Premium Plus,1226
-Q4 e-tron 50 Premium Plus,1227
-Q4 e-tron Sportback Premium,1228
-Q40 Base,1229
-Q5 2.0T Premium,1230
-Q5 2.0T Premium Plus,1231
-Q5 3.0 TDI Premium Plus,1232
-Q5 3.0T Premium Plus,1233
-Q5 40 Premium,1234
-Q5 Premium,1235
-Q5 S line Premium,1236
-Q5 S line Premium Plus,1237
-Q50 3.0T Premium,1238
-Q50 3.0t Red Sport 400,1239
-Q50 3.0t Signature Edition,1240
-Q50 Hybrid Premium,1241
-Q50 Hybrid Sport,1242
-Q50 Premium,1243
-Q60 3.0T Premium,1244
-Q60 3.0t Red Sport 400,1245
-Q7 3.0T Premium,1246
-Q7 3.0T Premium Plus,1247
-Q7 3.0T Prestige,1248
-Q7 45 Premium Plus,1249
-Q7 55 Prestige,1250
-Q7 Premium Plus,1251
-Q70 3.7,1252
-Q70 3.7X,1253
-Q70h Base,1254
-Q8 3.0T Premium,1255
-Q8 3.0T Prestige,1256
-Q8 55 Premium,1257
-Q8 55 Premium Plus,1258
-QX30 Premium,1259
-QX56 Base,1260
-QX60 AUTOGRAPH,1261
-QX60 Base,1262
-QX60 Luxe,1263
-QX60 Pure,1264
-QX70 Base,1265
-QX80 Base,1266
-QX80 Luxe,1267
-QX80 SENSORY,1268
-Quattroporte Base,1269
-Quattroporte Modena Q4,1270
-Quattroporte S,1271
-Quattroporte S GranLusso,1272
-Quattroporte S Q4 GranLusso,1273
-Quattroporte Sport GT,1274
-Quest SL,1275
-R-Class R 350 4MATIC,1276
-R1S Adventure Package,1277
-R1S Launch Edition,1278
-R1T Launch Edition,1279
-R8 4.2 quattro Spyder,1280
-R8 5.2,1281
-R8 5.2 V10,1282
-R8 5.2 V10 performance,1283
-R8 5.2 V10 plus,1284
-R8 5.2 quattro Spyder,1285
-R8 Base,1286
-RAV4 Base,1287
-RAV4 Hybrid XLE,1288
-RAV4 Prime XSE,1289
-RAV4 SE,1290
-RAV4 TRD Off Road,1291
-RC 350 Base,1292
-RC 350 F Sport,1293
-RC F Base,1294
-RDX,1295
-RDX Advance Package,1296
-RDX Base,1297
-RDX PMC Edition,1298
-RDX Technology Package,1299
-RDX w/A-Spec Package,1300
-RDX w/Advance Package,1301
-RL Technology,1302
-RLX Advance Package,1303
-RS 3 2.5T,1304
-RS 4 4.2 quattro L,1305
-RS 4 Base,1306
-RS 5 2.9T,1307
-RS 5 4.2,1308
-RS 7 4.0T,1309
-RS 7 4.0T Performance Prestige,1310
-RS 7 4.0T Prestige,1311
-RS 7 4.0T quattro,1312
-RS Q8 4.0T,1313
-RS Q8 4.0T quattro,1314
-RSX Base,1315
-RSX Type S,1316
-RX 300 4WD,1317
-RX 300 Base,1318
-RX 330 Base,1319
-RX 350 Base,1320
-RX 350 Crafted Line F Sport,1321
-RX 350 F SPORT Appearance,1322
-RX 350 F Sport,1323
-RX 350 F Sport Performance,1324
-RX 350 RX 350,1325
-RX 350 RX 350 F SPORT Handling,1326
-RX 450h Base,1327
-RX 450h F SPORT Handling,1328
-RX 450h F Sport,1329
-RX 450h F Sport Handling,1330
-RX-8 Grand Touring,1331
-RX-8 R3,1332
-RX-8 Sport,1333
-Rainier CXL,1334
-Ram 1500 Laramie,1335
-Ram 1500 Laramie Mega Cab,1336
-Ram 1500 Quad Cab,1337
-Ram 1500 SLT Mega Cab,1338
-Ram 1500 SRT-10,1339
-Ram 1500 SRT-10 Quad Cab,1340
-Ram 1500 ST,1341
-Ram 2500 Laramie Quad Cab,1342
-Ram 2500 Quad Cab,1343
-Ram 2500 SLT Mega Cab,1344
-Ram 2500 SLT Quad Cab,1345
-Ram 2500 ST,1346
-Ram 3500 Quad Cab DRW,1347
-Ram Van 1500,1348
-Ranger Edge SuperCab,1349
-Ranger Lariat,1350
-Ranger Sport SuperCab,1351
-Ranger XLT,1352
-Ranger XLT SuperCab,1353
-Regal Turbo - Premium 1,1354
-Renegade Trailhawk,1355
-Revero Base,1356
-Ridgeline Black Edition,1357
-Ridgeline RTL-E,1358
-Rio S,1359
-Roadmaster Estate,1360
-Rogue S,1361
-Rogue SL,1362
-Rogue SV,1363
-Rogue Sport S,1364
-Roma Base,1365
-Romeo Giulia Base,1366
-Romeo Giulia Quadrifoglio,1367
-Romeo Giulia Ti,1368
-Romeo Stelvio Base,1369
-Romeo Stelvio Quadrifoglio,1370
-Romeo Stelvio Ti,1371
-Romeo Stelvio Ti Sport,1372
-Routan SE,1373
-Rover Defender,1374
-Rover Defender 110 SE,1375
-Rover Defender S,1376
-Rover Defender SE,1377
-Rover Defender V8,1378
-Rover Defender X,1379
-Rover Defender X-Dynamic SE,1380
-Rover Discovery HSE,1381
-Rover Discovery HSE LUXURY,1382
-Rover Discovery LSE,1383
-Rover Discovery S,1384
-Rover Discovery SE,1385
-Rover Discovery Sport HSE,1386
-Rover Discovery Sport S R-Dynamic,1387
-Rover Discovery Sport SE,1388
-Rover Discovery Sport SE R-Dynamic,1389
-Rover LR2 Base,1390
-Rover LR2 HSE,1391
-Rover LR3 HSE,1392
-Rover LR4 HSE,1393
-Rover LR4 HSE LUX Landmark Edition,1394
-Rover LR4 Lux,1395
-Rover Range Rover 3.0L Supercharged,1396
-Rover Range Rover 3.0L Supercharged HSE,1397
-Rover Range Rover 3.0L V6 Supercharged HSE,1398
-Rover Range Rover 5.0L Supercharged,1399
-Rover Range Rover 5.0L Supercharged Autobiography,1400
-Rover Range Rover 5.0L Supercharged Autobiography LWB,1401
-Rover Range Rover 5.0L V8 Supercharged,1402
-Rover Range Rover Autobiography,1403
-Rover Range Rover Evoque Base,1404
-Rover Range Rover Evoque HSE Dynamic,1405
-Rover Range Rover Evoque Pure,1406
-Rover Range Rover Evoque R-Dynamic HSE,1407
-Rover Range Rover Evoque S,1408
-Rover Range Rover Evoque SE,1409
-Rover Range Rover Evoque SE Premium,1410
-Rover Range Rover HSE,1411
-Rover Range Rover HSE SWB,1412
-Rover Range Rover P400 SE LWB 7 Seat,1413
-Rover Range Rover P400 SE SWB,1414
-Rover Range Rover P525 HSE SWB,1415
-Rover Range Rover P525 Westminster,1416
-Rover Range Rover P530 SE,1417
-Rover Range Rover P530 SE LWB 7 Seat,1418
-Rover Range Rover P530 SE SWB,1419
-Rover Range Rover SV Autobiography Dynamic SWB,1420
-Rover Range Rover SWB,1421
-Rover Range Rover Sport 3.0 Supercharged HST,1422
-Rover Range Rover Sport 3.0L Supercharged HSE,1423
-Rover Range Rover Sport 5.0L Supercharged Dynamic,1424
-Rover Range Rover Sport First Edition,1425
-Rover Range Rover Sport HSE,1426
-Rover Range Rover Sport HSE Dynamic,1427
-Rover Range Rover Sport HST MHEV,1428
-Rover Range Rover Sport P400 SE Dynamic,1429
-Rover Range Rover Sport SE MHEV,1430
-Rover Range Rover Sport SVR,1431
-Rover Range Rover Sport SVR Carbon Edition,1432
-Rover Range Rover Sport Supercharged,1433
-Rover Range Rover Sport Supercharged Dynamic,1434
-Rover Range Rover Sport Supercharged HSE,1435
-Rover Range Rover Supercharged,1436
-Rover Range Rover Supercharged LWB,1437
-Rover Range Rover Velar P250 S R-Dynamic,1438
-Rover Range Rover Velar P250 SE R-Dynamic,1439
-Rover Range Rover Velar P380 S,1440
-Rover Range Rover Velar P380 SE R-Dynamic,1441
-Rover Range Rover Velar R-Dynamic S,1442
-Rover Range Rover Velar R-Dynamic SE,1443
-Rover Range Rover Velar SVAutobiography Dynamic Edition,1444
-Rover Range Rover Westminster SWB,1445
-S-10 LS,1446
-S-10 LS Crew Cab,1447
-S-Class S 450,1448
-S-Class S 450 4MATIC,1449
-S-Class S 550,1450
-S-Class S 550 4MATIC,1451
-S-Class S 560,1452
-S-Class S 560 4MATIC,1453
-S-Class S 580 4MATIC,1454
-S-Class S 63 AMG,1455
-S-Class S 65 AMG,1456
-S-Class S500,1457
-S2000 Base,1458
-S2000 CR,1459
-S3 2.0T Premium Plus,1460
-S3 2.0T Tech Premium Plus,1461
-S4 3.0 Prestige,1462
-S4 3.0T Premium,1463
-S4 3.0T Premium Plus,1464
-S4 4.2 quattro,1465
-S4 Base,1466
-S40 T5,1467
-S5 3.0 Premium Plus,1468
-S5 3.0T Premium,1469
-S5 3.0T Premium Plus,1470
-S5 3.0T Prestige,1471
-S5 4.2 Premium Plus,1472
-S6 4.0T,1473
-S6 4.0T Premium Plus,1474
-S6 4.0T Prestige,1475
-S60 B5 Inscription,1476
-S60 R,1477
-S60 Recharge Plug-In Hybrid T8 Inscription,1478
-S60 T5 Premier Plus,1479
-S60 T6 Momentum,1480
-S7 2.9T Prestige,1481
-S7 4.0T Premium Plus,1482
-S8 4.0T Plus,1483
-S8 4.0T quattro,1484
-S8 4.2 quattro,1485
-S80 3.2,1486
-S80 T6,1487
-S90 T5 Momentum,1488
-SC 300 Base,1489
-SC 430 Base,1490
-SL-Class SL 550,1491
-SL-Class SL 63 AMG,1492
-SL-Class SL400,1493
-SL-Class SL500 Roadster,1494
-SL-Class SL550 Roadster,1495
-SL-Class SL600 Roadster,1496
-SL-Class SL63 AMG Roadster,1497
-SLC 300 Base,1498
-SLK-Class SLK 250,1499
-SLK-Class SLK 350,1500
-SLK-Class SLK230 Kompressor,1501
-SLK-Class SLK280 Roadster,1502
-SLK-Class SLK320,1503
-SLS AMG Base,1504
-SQ5 3.0T Premium,1505
-SQ5 3.0T Premium Plus,1506
-SQ5 3.0T Prestige,1507
-SQ7 4.0T,1508
-SQ8 4.0T Premium Plus,1509
-SRX Luxury Collection,1510
-SRX Performance Collection,1511
-SRX Standard,1512
-SSR Base,1513
-STS V6,1514
-SX4 Base,1515
-Santa Cruz 2.5T Limited,1516
-Santa Fe GLS,1517
-Santa Fe SE,1518
-Santa Fe SEL,1519
-Santa Fe SEL Plus 2.4,1520
-Santa Fe Sport 2.0L Turbo,1521
-Santa Fe Sport 2.0L Turbo Ultimate,1522
-Savana 2500 Work Van,1523
-Sebring LX,1524
-Seltos S,1525
-Sentra SR,1526
-Sequoia Limited,1527
-Sequoia Platinum,1528
-Sequoia SR5,1529
-Sequoia TRD Pro,1530
-Shelby GT350 Base,1531
-Shelby GT350R Base,1532
-Shelby GT500 Base,1533
-Sienna LE,1534
-Sienna XLE Limited,1535
-Sienna XSE 25th Anniversary,1536
-Sierra 1500 AT4,1537
-Sierra 1500 Denali,1538
-Sierra 1500 Denali Ultimate,1539
-Sierra 1500 Limited Elevation,1540
-Sierra 1500 SL Crew Cab,1541
-Sierra 1500 SLE,1542
-Sierra 1500 SLE Crew Cab,1543
-Sierra 1500 SLE1 Extended Cab,1544
-Sierra 1500 SLT,1545
-Sierra 2500 AT4,1546
-Sierra 2500 Base,1547
-Sierra 2500 Denali,1548
-Sierra 2500 SLE,1549
-Sierra 2500 SLE H/D Extended Cab,1550
-Sierra 3500 Denali,1551
-Sierra 3500 SLE,1552
-Silverado 1500 1LT,1553
-Silverado 1500 1LZ,1554
-Silverado 1500 2LT,1555
-Silverado 1500 Base,1556
-Silverado 1500 Custom Trail Boss,1557
-Silverado 1500 High Country,1558
-Silverado 1500 Hybrid 1HY,1559
-Silverado 1500 LS,1560
-Silverado 1500 LT,1561
-Silverado 1500 LT Crew Cab,1562
-Silverado 1500 LT Extended Cab,1563
-Silverado 1500 LT Trail Boss,1564
-Silverado 1500 LTZ,1565
-Silverado 1500 Limited Custom,1566
-Silverado 1500 Limited High Country,1567
-Silverado 1500 Limited LT Trail Boss,1568
-Silverado 1500 RST,1569
-Silverado 1500 W/T,1570
-Silverado 1500 Z71 Extended Cab,1571
-Silverado 1500 ZR2,1572
-Silverado 2500 H/D,1573
-Silverado 2500 High Country,1574
-Silverado 2500 LT,1575
-Silverado 2500 LT H/D Extended Cab,1576
-Silverado 2500 LTZ,1577
-Silverado 2500 LTZ H/D Extended Cab,1578
-Silverado 2500 WT,1579
-Silverado 3500 High Country,1580
-Silverado 3500 LTZ,1581
-Sky Base,1582
-Sky Red Line,1583
-Solstice Base,1584
-Solstice GXP,1585
-Sonata GLS,1586
-Sonata Hybrid Base,1587
-Sonata Hybrid Limited,1588
-Sonata SE,1589
-Sonata Sport,1590
-Sonata Sport 2.0T,1591
-Sonic LT,1592
-Sorento EX,1593
-Sorento EX V6,1594
-Sorento Hybrid EX,1595
-Sorento LX,1596
-Sorento LX V6,1597
-Sorento Plug-In Hybrid SX,1598
-Sorento Plug-In Hybrid SX Prestige,1599
-Sorento S,1600
-Sorento SX,1601
-Sorento SX Prestige,1602
-Sorento SXL,1603
-Sportage LX,1604
-Sportage Nightfall,1605
-Sportage Plug-In Hybrid X-Line,1606
-Sportage S,1607
-Sportage SX Turbo,1608
-Sportage X-Pro,1609
-Sprinter 2500,1610
-Sprinter 2500 High Roof,1611
-Sprinter 2500 Standard Roof,1612
-Sprinter 3500 High Roof,1613
-Sprinter 3500XD High Roof,1614
-Sprinter 4500 High Roof,1615
-Sprinter High Roof,1616
-Sprinter Normal Roof,1617
-Stinger GT,1618
-Stinger GT1,1619
-Stinger GT2,1620
-Suburban 1500 LS,1621
-Suburban 1500 LT,1622
-Suburban 1500 LTZ,1623
-Suburban 2500,1624
-Suburban 2500 LS,1625
-Suburban High Country,1626
-Suburban LT,1627
-Suburban LTZ,1628
-Suburban Premier,1629
-Suburban RST,1630
-Suburban Z71,1631
-Supra 3.0 Premium,1632
-Supra A91 Edition,1633
-Supra A91-MT Edition,1634
-TL 3.2,1635
-TL 3.7,1636
-TL Technology,1637
-TL Type S,1638
-TLX,1639
-TLX A-Spec,1640
-TLX Base,1641
-TLX PMC Edition,1642
-TLX Tech,1643
-TLX Type S PMC Edition,1644
-TLX Type S w/Performance Tire,1645
-TLX V6 Advance,1646
-TLX V6 Tech,1647
-TLX w/A-Spec Package,1648
-TSX 2.4,1649
-TSX Base,1650
-TSX Technology,1651
-TT 1.8L,1652
-TT 1.8T,1653
-TT 2.0T,1654
-TT 2.0T Premium,1655
-TT 3.2 Cabriolet quattro,1656
-TT RS 2.5T,1657
-TT RS Base,1658
-TT Roadster quattro,1659
-TTS 2.0T Premium Plus,1660
-Tacoma Base,1661
-Tacoma Double Cab,1662
-Tacoma PreRunner,1663
-Tacoma SR,1664
-Tacoma SR5,1665
-Tacoma TRD Pro,1666
-Tacoma TRD Sport,1667
-Tahoe Base,1668
-Tahoe High Country,1669
-Tahoe LS,1670
-Tahoe LT,1671
-Tahoe LTZ,1672
-Tahoe Premier,1673
-Tahoe RST,1674
-Taurus SHO,1675
-Taurus X Limited,1676
-Taycan,1677
-Taycan 4S,1678
-Taycan Base,1679
-Taycan Turbo,1680
-Telluride EX,1681
-Telluride EX X-Line,1682
-Telluride LX,1683
-Telluride S,1684
-Telluride SX,1685
-Terrain Denali,1686
-Terrain SLE,1687
-Terrain SLT,1688
-Terrain SLT-1,1689
-Thunderbird Deluxe,1690
-Thunderbird Premium,1691
-Tiguan 2.0T SE,1692
-Tiguan 2.0T SEL Premium R-Line,1693
-Titan S,1694
-Titan SE,1695
-Titan SL,1696
-Titan SV,1697
-Titan XD S,1698
-Titan XD SV,1699
-Touareg TDI Lux,1700
-Touareg V6 Executive,1701
-Touareg VR6 Lux,1702
-Town & Country LX,1703
-Town & Country Touring,1704
-Town & Country Touring-L,1705
-Town Car Base,1706
-Town Car Signature,1707
-Trailblazer LS,1708
-Trailblazer LT,1709
-Trailblazer RS,1710
-Trailblazer SS,1711
-Transit Connect XL,1712
-Transit Connect XL w/Rear Symmetrical Doors,1713
-Transit Connect XLT,1714
-Transit-250 Base,1715
-Transit-350 Base,1716
-Transit-350 XL,1717
-Transit-350 XLT,1718
-Traverse High Country,1719
-Traverse LS,1720
-Traverse Premier,1721
-Traverse RS,1722
-Trax LS,1723
-Tucson Hybrid SEL Convenience,1724
-Tucson Limited,1725
-Tucson SE,1726
-Tucson SEL,1727
-Tundra 1794,1728
-Tundra Grade,1729
-Tundra Hybrid Capstone,1730
-Tundra Hybrid Limited,1731
-Tundra Hybrid TRD Pro,1732
-Tundra Limited,1733
-Tundra Platinum,1734
-Tundra SR,1735
-Tundra SR5,1736
-Tundra SR5 Access Cab,1737
-Tundra SR5 Double Cab,1738
-Tundra TRD Pro,1739
-Type 57 Base,1740
-Urus Base,1741
-Urus Pearl Capsule,1742
-Utility Police Interceptor Base,1743
-V60 Cross Country T5,1744
-V60 T6 R-Design Platinum,1745
-Veloster Base,1746
-Veloster Turbo R-Spec,1747
-Veloster Value Edition,1748
-Venza XLE,1749
-Verano Convenience,1750
-Versa 1.6 SL,1751
-Versa 1.8 S,1752
-Veyron 16.4 Grand Sport,1753
-Viper GTC,1754
-Viper SRT-10,1755
-Vue Hybrid Base,1756
-WRX Base,1757
-WRX Limited,1758
-WRX Premium,1759
-WRX STI Base,1760
-Wagoneer Series II 4x4,1761
-Wagoneer Series III,1762
-Wraith Base,1763
-Wrangler 80th Anniversary,1764
-Wrangler Rubicon,1765
-Wrangler Rubicon Hard Rock,1766
-Wrangler S,1767
-Wrangler SE,1768
-Wrangler Sahara,1769
-Wrangler Sahara Altitude,1770
-Wrangler Sport,1771
-Wrangler Unlimited,1772
-Wrangler Unlimited 4xe Sahara,1773
-Wrangler Unlimited Freedom Edition,1774
-Wrangler Unlimited Rubicon,1775
-Wrangler Unlimited Rubicon 392,1776
-Wrangler Unlimited Sahara,1777
-Wrangler Unlimited Sport,1778
-Wrangler Unlimited Sport S,1779
-Wrangler Unlimited X,1780
-Wrangler X,1781
-X1 sDrive28i,1782
-X1 xDrive 28i,1783
-X1 xDrive28i,1784
-X2 xDrive28i,1785
-X3 M AWD,1786
-X3 M40i,1787
-X3 sDrive30i,1788
-X3 xDrive28i,1789
-X3 xDrive30i,1790
-X3 xDrive35i,1791
-X4 M Competition,1792
-X4 M40i,1793
-X4 xDrive30i,1794
-X5 3.0i,1795
-X5 3.0si,1796
-X5 M Base,1797
-X5 M50i,1798
-X5 PHEV xDrive45e,1799
-X5 eDrive xDrive40e,1800
-X5 sDrive35i,1801
-X5 xDrive 35i Sport Activity,1802
-X5 xDrive35i,1803
-X5 xDrive40e,1804
-X5 xDrive40i,1805
-X5 xDrive50i,1806
-X6 M Base,1807
-X6 M50i,1808
-X6 sDrive35i,1809
-X6 xDrive35i,1810
-X6 xDrive40i,1811
-X6 xDrive50i,1812
-X7 ALPINA XB7,1813
-X7 M50i,1814
-X7 xDrive40i,1815
-X7 xDrive50i,1816
-XC40 T5 Momentum,1817
-XC60 3.2,1818
-XC60 Recharge Plug-In Hybrid T8 Inscription,1819
-XC60 T5 R-Design,1820
-XC60 T6 Inscription,1821
-XC70 3.2,1822
-XC70 T6 Platinum,1823
-XC90 3.2,1824
-XC90 3.2 Premier Plus,1825
-XC90 Hybrid T8 Inscription,1826
-XC90 Hybrid T8 R-Design,1827
-XC90 Recharge Plug-In Hybrid T8 Inscription 7 Passenger,1828
-XC90 T6 Inscription,1829
-XC90 T6 Momentum,1830
-XE 20d Prestige,1831
-XE 25t,1832
-XE 35t Premium,1833
-XF 25t Premium,1834
-XF 25t Prestige,1835
-XF 3.0 Portfolio,1836
-XF 35t Prestige,1837
-XF 35t R-Sport,1838
-XF Luxury,1839
-XF Premium,1840
-XF S,1841
-XF XFR-S,1842
-XJ Base,1843
-XJ Vanden Plas,1844
-XJ6 Vanden Plas,1845
-XJ8 Base,1846
-XJ8 L,1847
-XK Base,1848
-XK R,1849
-XK8 Base,1850
-XKR Base,1851
-XLR Base,1852
-XLR V,1853
-XT4 Sport,1854
-XT5 Base,1855
-XT5 Luxury,1856
-XT5 Premium Luxury,1857
-XT6 Premium Luxury AWD,1858
-XT6 Sport AWD,1859
-XTS Luxury,1860
-XTS Premium,1861
-Xterra Pro-4X,1862
-Xterra S,1863
-Yaris Base,1864
-Yaris L,1865
-Yukon Denali,1866
-Yukon Denali Ultimate,1867
-Yukon SLE,1868
-Yukon SLT,1869
-Yukon XL 1500 SLT,1870
-Yukon XL AT4,1871
-Yukon XL Denali,1872
-Yukon XL SLT,1873
-Z Proto Spec,1874
-Z3 3.0i Roadster,1875
-Z4 2.5i,1876
-Z4 2.5i Roadster,1877
-Z4 3.0i Roadster,1878
-Z4 3.0si,1879
-Z4 sDrive28i,1880
-Z4 sDrive35is,1881
-ZDX Base,1882
-allroad 2.0T Prestige,1883
-bZ4X Limited,1884
-e-Golf SE,1885
-e-tron Premium,1886
-e-tron Prestige,1887
-i3 120Ah w/Range Extender,1888
-i3 94 Ah,1889
-i3 Base,1890
-i3 Base w/Range Extender,1891
-i8 Base,1892
-tC Anniversary Edition,1893
-tC Base,1894
-tC Release Series 6.0,1895
-xB Base,1896
+-1.6620213985443115,0
+-1.6601049900054932,1
+-1.6581885814666748,2
+-1.656272053718567,3
+-1.6543556451797483,4
+-1.6524392366409302,5
+-1.6505228281021118,6
+-1.6486064195632937,7
+-1.646690011024475,8
+-1.6447736024856567,9
+-1.6428570747375488,10
+-1.6409406661987305,11
+-1.639024257659912,12
+-1.6371078491210938,13
+-1.6351914405822754,14
+-1.633275032043457,15
+-1.631358623504639,16
+-1.6294420957565308,17
+-1.6275256872177124,18
+-1.625609278678894,19
+-1.6236928701400757,20
+-1.621776461601257,21
+-1.619860053062439,22
+-1.6179436445236206,23
+-1.6160271167755127,24
+-1.6141107082366943,25
+-1.612194299697876,26
+-1.6102778911590576,27
+-1.6083614826202393,28
+-1.606445074081421,29
+-1.6045286655426023,30
+-1.6026121377944946,31
+-1.6006957292556765,32
+-1.598779320716858,33
+-1.5968629121780396,34
+-1.5949465036392212,35
+-1.5930300951004028,36
+-1.5911136865615845,37
+-1.5891971588134766,38
+-1.5872807502746582,39
+-1.5853643417358398,40
+-1.5834479331970217,41
+-1.5815315246582031,42
+-1.5796151161193848,43
+-1.5776985883712769,44
+-1.5757821798324585,45
+-1.57386577129364,46
+-1.5719493627548218,47
+-1.5700329542160034,48
+-1.568116545677185,49
+-1.5662001371383667,50
+-1.5642836093902588,51
+-1.5623672008514404,52
+-1.560450792312622,53
+-1.5585343837738037,54
+-1.5566179752349854,55
+-1.554701566696167,56
+-1.5527851581573486,57
+-1.5508686304092407,58
+-1.5489522218704224,59
+-1.547035813331604,60
+-1.5451194047927856,61
+-1.5432029962539673,62
+-1.541286587715149,63
+-1.5393701791763306,64
+-1.5374536514282229,65
+-1.5355372428894043,66
+-1.533620834350586,67
+-1.5317044258117676,68
+-1.5297880172729492,69
+-1.5278716087341309,70
+-1.5259552001953125,71
+-1.5240386724472046,72
+-1.5221222639083862,73
+-1.520205855369568,74
+-1.5182894468307495,75
+-1.5163730382919312,76
+-1.5144566297531128,77
+-1.5125402212142944,78
+-1.5106236934661863,79
+-1.5087072849273682,80
+-1.5067908763885498,81
+-1.5048744678497314,82
+-1.502958059310913,83
+-1.5010416507720947,84
+-1.4991252422332764,85
+-1.4972087144851685,86
+-1.49529230594635,87
+-1.4933758974075315,88
+-1.4914594888687134,89
+-1.489543080329895,90
+-1.4876266717910769,91
+-1.4857102632522583,92
+-1.4837937355041504,93
+-1.481877326965332,94
+-1.4799609184265137,95
+-1.478044509887695,96
+-1.476128101348877,97
+-1.4742116928100586,98
+-1.472295165061951,99
+-1.4703787565231323,100
+-1.468462347984314,101
+-1.4665459394454956,102
+-1.4646295309066772,103
+-1.4627131223678589,104
+-1.4607967138290403,105
+-1.4588801860809326,106
+-1.4569637775421145,107
+-1.455047369003296,108
+-1.4531309604644775,109
+-1.4512145519256592,110
+-1.4492981433868408,111
+-1.4473817348480225,112
+-1.4454652070999146,113
+-1.4435487985610962,114
+-1.4416323900222778,115
+-1.4397159814834597,116
+-1.4377995729446411,117
+-1.4358831644058228,118
+-1.4339667558670044,119
+-1.4320502281188965,120
+-1.430133819580078,121
+-1.4282174110412598,122
+-1.4263010025024414,123
+-1.424384593963623,124
+-1.422468185424805,125
+-1.4205517768859863,126
+-1.4186352491378784,127
+-1.41671884059906,128
+-1.4148024320602417,129
+-1.4128860235214231,130
+-1.410969614982605,131
+-1.4090532064437866,132
+-1.4071367979049685,133
+-1.4052202701568604,134
+-1.403303861618042,135
+-1.4013874530792236,136
+-1.3994710445404053,137
+-1.397554636001587,138
+-1.3956382274627686,139
+-1.3937218189239502,140
+-1.3918052911758425,141
+-1.389888882637024,142
+-1.3879724740982056,143
+-1.3860560655593872,144
+-1.3841396570205688,145
+-1.3822232484817505,146
+-1.380306839942932,147
+-1.3783903121948242,148
+-1.376473903656006,149
+-1.3745574951171875,150
+-1.3726410865783691,151
+-1.3707246780395508,152
+-1.3688082695007324,153
+-1.366891860961914,154
+-1.3649753332138062,155
+-1.3630589246749878,156
+-1.3611425161361694,157
+-1.359226107597351,158
+-1.3573096990585327,159
+-1.3553932905197144,160
+-1.3534767627716064,161
+-1.351560354232788,162
+-1.3496439456939695,163
+-1.3477275371551514,164
+-1.345811128616333,165
+-1.3438947200775146,166
+-1.3419783115386963,167
+-1.3400617837905884,168
+-1.33814537525177,169
+-1.3362289667129517,170
+-1.3343125581741333,171
+-1.332396149635315,172
+-1.3304797410964966,173
+-1.3285633325576782,174
+-1.3266468048095703,175
+-1.324730396270752,176
+-1.3228139877319336,177
+-1.3208975791931152,178
+-1.3189811706542969,179
+-1.3170647621154783,180
+-1.3151483535766602,181
+-1.3132318258285522,182
+-1.311315417289734,183
+-1.3093990087509155,184
+-1.3074826002120972,185
+-1.3055661916732788,186
+-1.3036497831344604,187
+-1.301733374595642,188
+-1.2998168468475342,189
+-1.2979004383087158,190
+-1.2959840297698977,191
+-1.294067621231079,192
+-1.2921512126922607,193
+-1.2902348041534424,194
+-1.288318395614624,195
+-1.286401867866516,196
+-1.2844854593276978,197
+-1.2825690507888794,198
+-1.280652642250061,199
+-1.278736233711243,200
+-1.2768198251724243,201
+-1.274903416633606,202
+-1.272986888885498,203
+-1.2710704803466797,204
+-1.269154071807861,205
+-1.267237663269043,206
+-1.2653212547302246,207
+-1.2634048461914062,208
+-1.261488437652588,209
+-1.25957190990448,210
+-1.2576555013656616,211
+-1.2557390928268433,212
+-1.253822684288025,213
+-1.2519062757492063,214
+-1.2499898672103882,215
+-1.2480733394622805,216
+-1.246156930923462,217
+-1.2442405223846436,218
+-1.2423241138458252,219
+-1.2404077053070068,220
+-1.2384912967681885,221
+-1.23657488822937,222
+-1.2346583604812622,223
+-1.2327419519424438,224
+-1.2308255434036257,225
+-1.2289091348648071,226
+-1.2269927263259888,227
+-1.2250763177871704,228
+-1.223159909248352,229
+-1.221243381500244,230
+-1.2193269729614258,231
+-1.2174105644226074,232
+-1.215494155883789,233
+-1.2135777473449707,234
+-1.2116613388061523,235
+-1.209744930267334,236
+-1.207828402519226,237
+-1.2059119939804075,238
+-1.2039955854415894,239
+-1.202079176902771,240
+-1.2001627683639526,241
+-1.1982463598251345,242
+-1.196329951286316,243
+-1.194413423538208,244
+-1.1924970149993896,245
+-1.1905806064605713,246
+-1.188664197921753,247
+-1.1867477893829346,248
+-1.1848313808441162,249
+-1.182914972305298,250
+-1.18099844455719,251
+-1.1790820360183716,252
+-1.1771656274795532,253
+-1.1752492189407349,254
+-1.1733328104019165,255
+-1.171416401863098,256
+-1.1694999933242798,257
+-1.167583465576172,258
+-1.1656670570373535,259
+-1.1637506484985352,260
+-1.1618342399597168,261
+-1.1599178314208984,262
+-1.15800142288208,263
+-1.1560850143432615,264
+-1.1541684865951538,265
+-1.1522520780563354,266
+-1.150335669517517,267
+-1.1484192609786987,268
+-1.1465028524398804,269
+-1.144586443901062,270
+-1.142669916152954,271
+-1.1407535076141355,272
+-1.1388370990753174,273
+-1.136920690536499,274
+-1.1350042819976809,275
+-1.1330878734588623,276
+-1.131171464920044,277
+-1.129254937171936,278
+-1.1273385286331177,279
+-1.125422120094299,280
+-1.123505711555481,281
+-1.1215893030166626,282
+-1.1196728944778442,283
+-1.117756485939026,284
+-1.115839958190918,285
+-1.1139235496520996,286
+-1.1120071411132812,287
+-1.110090732574463,288
+-1.1081743240356443,289
+-1.1062579154968262,290
+-1.1043415069580078,291
+-1.1024249792099,292
+-1.1005085706710815,293
+-1.0985921621322632,294
+-1.0966757535934448,295
+-1.0947593450546265,296
+-1.092842936515808,297
+-1.0909265279769895,298
+-1.0890100002288818,299
+-1.0870935916900637,300
+-1.0851771831512451,301
+-1.0832607746124268,302
+-1.0813443660736084,303
+-1.07942795753479,304
+-1.0775115489959717,305
+-1.0755950212478638,306
+-1.0736786127090454,307
+-1.071762204170227,308
+-1.0698457956314087,309
+-1.0679293870925903,310
+-1.066012978553772,311
+-1.0640965700149536,312
+-1.0621800422668457,313
+-1.0602636337280271,314
+-1.058347225189209,315
+-1.0564308166503906,316
+-1.0545144081115725,317
+-1.052597999572754,318
+-1.0506815910339355,319
+-1.0487650632858276,320
+-1.0468486547470093,321
+-1.044932246208191,322
+-1.0430158376693726,323
+-1.0410994291305542,324
+-1.0391830205917358,325
+-1.0372666120529177,326
+-1.0353500843048096,327
+-1.0334336757659912,328
+-1.0315172672271729,329
+-1.0296008586883545,330
+-1.027684450149536,331
+-1.0257680416107178,332
+-1.02385151386261,333
+-1.0219351053237915,334
+-1.0200186967849731,335
+-1.0181022882461548,336
+-1.0161858797073364,337
+-1.014269471168518,338
+-1.0123530626296997,339
+-1.0104365348815918,340
+-1.0085201263427734,341
+-1.006603717803955,342
+-1.0046873092651367,343
+-1.0027709007263184,344
+-1.0008544921875,345
+-0.9989380240440368,346
+-0.9970216155052184,347
+-0.9951052069664,348
+-0.993188738822937,349
+-0.9912723302841188,350
+-0.9893559217453004,351
+-0.9874394536018372,352
+-0.9855230450630188,353
+-0.9836066365242004,354
+-0.981690227985382,355
+-0.979773759841919,356
+-0.9778573513031006,357
+-0.9759409427642822,358
+-0.9740244746208192,359
+-0.9721080660820008,360
+-0.9701916575431824,361
+-0.968275249004364,362
+-0.9663587808609008,363
+-0.9644423723220824,364
+-0.9625259637832642,365
+-0.960609495639801,366
+-0.9586930871009828,367
+-0.9567766785621644,368
+-0.954860270023346,369
+-0.9529438018798828,370
+-0.9510273933410645,371
+-0.949110984802246,372
+-0.947194516658783,373
+-0.9452781081199646,374
+-0.9433616995811462,375
+-0.9414452314376832,376
+-0.9395288228988647,377
+-0.9376124143600464,378
+-0.935696005821228,379
+-0.9337795376777648,380
+-0.9318631291389464,381
+-0.9299467206001282,382
+-0.928030252456665,383
+-0.9261138439178468,384
+-0.9241974353790284,385
+-0.92228102684021,386
+-0.9203645586967468,387
+-0.9184481501579284,388
+-0.91653174161911,389
+-0.914615273475647,390
+-0.9126988649368286,391
+-0.9107824563980104,392
+-0.908866047859192,393
+-0.9069495797157288,394
+-0.9050331711769104,395
+-0.903116762638092,396
+-0.9012002944946288,397
+-0.8992838859558105,398
+-0.8973674774169922,399
+-0.895451009273529,400
+-0.8935346007347107,401
+-0.8916181921958923,402
+-0.889701783657074,403
+-0.8877853155136108,404
+-0.8858689069747925,405
+-0.8839524984359741,406
+-0.882036030292511,407
+-0.8801196217536926,408
+-0.8782032132148743,409
+-0.8762868046760559,410
+-0.8743703365325928,411
+-0.8724539279937744,412
+-0.870537519454956,413
+-0.8686210513114929,414
+-0.8667046427726746,415
+-0.8647882342338562,416
+-0.8628718256950378,417
+-0.8609553575515747,418
+-0.8590389490127563,419
+-0.857122540473938,420
+-0.8552060723304749,421
+-0.8532896637916565,422
+-0.8513732552528381,423
+-0.8494568467140198,424
+-0.8475403785705566,425
+-0.8456239700317383,426
+-0.8437075614929199,427
+-0.8417910933494568,428
+-0.8398746848106384,429
+-0.8379582762718201,430
+-0.8360418081283569,431
+-0.8341253995895386,432
+-0.8322089910507202,433
+-0.8302925825119019,434
+-0.8283761143684387,435
+-0.8264597058296204,436
+-0.824543297290802,437
+-0.8226268291473389,438
+-0.8207104206085205,439
+-0.8187940120697021,440
+-0.8168776035308838,441
+-0.8149611353874207,442
+-0.8130447268486023,443
+-0.8111283183097839,444
+-0.8092118501663208,445
+-0.8072954416275024,446
+-0.8053790330886841,447
+-0.8034626245498657,448
+-0.8015461564064026,449
+-0.7996297478675842,450
+-0.7977133393287659,451
+-0.7957968711853027,452
+-0.7938804626464844,453
+-0.791964054107666,454
+-0.7900476455688477,455
+-0.7881311774253845,456
+-0.7862147688865662,457
+-0.7842983603477478,458
+-0.7823818922042847,459
+-0.7804654836654663,460
+-0.778549075126648,461
+-0.7766326069831848,462
+-0.7747161984443665,463
+-0.7727997899055481,464
+-0.7708833813667297,465
+-0.7689669132232666,466
+-0.7670505046844482,467
+-0.7651340961456299,468
+-0.7632176280021667,469
+-0.7613012194633484,470
+-0.75938481092453,471
+-0.7574684023857117,472
+-0.7555519342422485,473
+-0.7536355257034302,474
+-0.7517191171646118,475
+-0.7498026490211487,476
+-0.7478862404823303,477
+-0.745969831943512,478
+-0.7440534234046936,479
+-0.7421369552612305,480
+-0.7402205467224121,481
+-0.7383041381835938,482
+-0.7363876700401306,483
+-0.7344712615013123,484
+-0.7325548529624939,485
+-0.7306383848190308,486
+-0.7287219762802124,487
+-0.726805567741394,488
+-0.7248891592025757,489
+-0.7229726910591125,490
+-0.7210562825202942,491
+-0.7191398739814758,492
+-0.7172234058380127,493
+-0.7153069972991943,494
+-0.713390588760376,495
+-0.7114741802215576,496
+-0.7095577120780945,497
+-0.7076413035392761,498
+-0.7057248950004578,499
+-0.7038084268569946,500
+-0.7018920183181763,501
+-0.6999756097793579,502
+-0.6980592012405396,503
+-0.6961427330970764,504
+-0.6942263245582581,505
+-0.6923099160194397,506
+-0.6903934478759766,507
+-0.6884770393371582,508
+-0.6865606307983398,509
+-0.6846442222595215,510
+-0.6827277541160583,511
+-0.68081134557724,512
+-0.6788949370384216,513
+-0.6769784688949585,514
+-0.6750620603561401,515
+-0.6731456518173218,516
+-0.6712291836738586,517
+-0.6693127751350403,518
+-0.6673963665962219,519
+-0.6654799580574036,520
+-0.6635634899139404,521
+-0.6616470813751221,522
+-0.6597306728363037,523
+-0.6578142046928406,524
+-0.6558977961540222,525
+-0.6539813876152039,526
+-0.6520649790763855,527
+-0.6501485109329224,528
+-0.648232102394104,529
+-0.6463156938552856,530
+-0.6443992257118225,531
+-0.6424828171730042,532
+-0.6405664086341858,533
+-0.6386500000953674,534
+-0.6367335319519043,535
+-0.6348171234130859,536
+-0.6329007148742676,537
+-0.6309842467308044,538
+-0.6290678381919861,539
+-0.6271514296531677,540
+-0.6252350211143494,541
+-0.6233185529708862,542
+-0.6214021444320679,543
+-0.6194857358932495,544
+-0.6175692677497864,545
+-0.615652859210968,546
+-0.6137364506721497,547
+-0.6118199825286865,548
+-0.6099035739898682,549
+-0.6079871654510498,550
+-0.6060707569122314,551
+-0.6041542887687683,552
+-0.60223788022995,553
+-0.6003214716911316,554
+-0.5984050035476685,555
+-0.5964885950088501,556
+-0.5945721864700317,557
+-0.5926557779312134,558
+-0.5907393097877502,559
+-0.5888229012489319,560
+-0.5869064927101135,561
+-0.5849900245666504,562
+-0.583073616027832,563
+-0.5811572074890137,564
+-0.5792407989501953,565
+-0.5773243308067322,566
+-0.5754079222679138,567
+-0.5734915137290955,568
+-0.5715750455856323,569
+-0.569658637046814,570
+-0.5677422285079956,571
+-0.5658257603645325,572
+-0.5639093518257141,573
+-0.5619929432868958,574
+-0.5600765347480774,575
+-0.5581600666046143,576
+-0.5562436580657959,577
+-0.5543272495269775,578
+-0.5524107813835144,579
+-0.550494372844696,580
+-0.5485779643058777,581
+-0.5466615557670593,582
+-0.5447450876235962,583
+-0.5428286790847778,584
+-0.5409122705459595,585
+-0.5389958024024963,586
+-0.537079393863678,587
+-0.5351629853248596,588
+-0.5332465767860413,589
+-0.5313301086425781,590
+-0.5294137001037598,591
+-0.5274972915649414,592
+-0.5255808234214783,593
+-0.5236644148826599,594
+-0.5217480063438416,595
+-0.5198315978050232,596
+-0.5179151296615601,597
+-0.5159987211227417,598
+-0.5140823125839233,599
+-0.5121658444404602,600
+-0.5102494359016418,601
+-0.5083330273628235,602
+-0.5064165592193604,603
+-0.504500150680542,604
+-0.5025837421417236,605
+-0.5006673336029053,606
+-0.4987508952617645,607
+-0.4968344569206238,608
+-0.494918018579483,609
+-0.4930016100406647,610
+-0.4910851716995239,611
+-0.4891687631607055,612
+-0.4872523248195648,613
+-0.4853359162807464,614
+-0.4834194779396057,615
+-0.4815030395984649,616
+-0.4795866310596466,617
+-0.4776701927185058,618
+-0.4757537841796875,619
+-0.4738373458385467,620
+-0.471920907497406,621
+-0.4700044989585876,622
+-0.4680880606174469,623
+-0.4661716520786285,624
+-0.4642552137374878,625
+-0.4623388051986694,626
+-0.4604223668575287,627
+-0.4585059285163879,628
+-0.4565895199775696,629
+-0.4546730816364288,630
+-0.4527566730976105,631
+-0.4508402347564697,632
+-0.4489238262176513,633
+-0.4470073878765106,634
+-0.4450909495353699,635
+-0.4431745409965515,636
+-0.4412581026554107,637
+-0.4393416941165924,638
+-0.4374252557754516,639
+-0.4355088174343109,640
+-0.4335924088954925,641
+-0.4316759705543518,642
+-0.4297595620155334,643
+-0.4278431236743927,644
+-0.4259267151355743,645
+-0.4240102767944336,646
+-0.4220938384532928,647
+-0.4201774299144745,648
+-0.4182609915733337,649
+-0.4163445830345154,650
+-0.4144281446933746,651
+-0.4125117063522339,652
+-0.4105952978134155,653
+-0.4086788594722748,654
+-0.4067624509334564,655
+-0.4048460125923157,656
+-0.4029296040534973,657
+-0.4010131657123565,658
+-0.3990967273712158,659
+-0.3971803188323974,660
+-0.3952638804912567,661
+-0.3933474719524383,662
+-0.3914310336112976,663
+-0.3895145952701568,664
+-0.3875981867313385,665
+-0.3856817483901977,666
+-0.3837653398513794,667
+-0.3818489015102386,668
+-0.3799324929714203,669
+-0.3780160546302795,670
+-0.3760996162891388,671
+-0.3741832077503204,672
+-0.3722667694091797,673
+-0.3703503608703613,674
+-0.3684339225292206,675
+-0.3665175139904022,676
+-0.3646010756492615,677
+-0.3626846373081207,678
+-0.3607682287693023,679
+-0.3588517904281616,680
+-0.3569353818893432,681
+-0.3550189435482025,682
+-0.3531025052070617,683
+-0.3511860966682434,684
+-0.3492696583271026,685
+-0.3473532497882843,686
+-0.3454368114471435,687
+-0.3435204029083252,688
+-0.3416039645671844,689
+-0.3396875262260437,690
+-0.3377711176872253,691
+-0.3358546793460846,692
+-0.3339382708072662,693
+-0.3320218324661255,694
+-0.3301053941249847,695
+-0.3281889855861664,696
+-0.3262725472450256,697
+-0.3243561387062073,698
+-0.3224397003650665,699
+-0.3205232918262481,700
+-0.3186068534851074,701
+-0.3166904151439667,702
+-0.3147740066051483,703
+-0.3128575682640075,704
+-0.3109411597251892,705
+-0.3090247213840484,706
+-0.3071082830429077,707
+-0.3051918745040893,708
+-0.3032754361629486,709
+-0.3013590276241302,710
+-0.2994425892829895,711
+-0.2975261807441711,712
+-0.2956097424030304,713
+-0.2936933040618896,714
+-0.2917768955230713,715
+-0.2898604571819305,716
+-0.2879440486431122,717
+-0.2860276103019714,718
+-0.2841112017631531,719
+-0.2821947634220123,720
+-0.2802783250808716,721
+-0.2783619165420532,722
+-0.2764454782009125,723
+-0.2745290696620941,724
+-0.2726126313209533,725
+-0.2706961929798126,726
+-0.2687797844409942,727
+-0.2668633460998535,728
+-0.2649469375610351,729
+-0.2630304992198944,730
+-0.261114090681076,731
+-0.2591976523399353,732
+-0.2572812139987945,733
+-0.2553648054599762,734
+-0.2534483671188354,735
+-0.2515319585800171,736
+-0.2496155202388763,737
+-0.2476990967988968,738
+-0.2457826733589172,739
+-0.2438662499189376,740
+-0.2419498115777969,741
+-0.2400333881378173,742
+-0.2381169646978378,743
+-0.2362005412578582,744
+-0.2342841178178787,745
+-0.2323676943778991,746
+-0.2304512560367584,747
+-0.2285348325967788,748
+-0.2266184091567993,749
+-0.2247019857168197,750
+-0.2227855622768402,751
+-0.2208691388368606,752
+-0.2189527004957199,753
+-0.2170362770557403,754
+-0.2151198536157608,755
+-0.2132034301757812,756
+-0.2112870067358017,757
+-0.2093705832958221,758
+-0.2074541598558426,759
+-0.2055377215147018,760
+-0.2036212980747223,761
+-0.2017048746347427,762
+-0.1997884511947631,763
+-0.1978720277547836,764
+-0.195955604314804,765
+-0.1940391659736633,766
+-0.1921227425336837,767
+-0.1902063190937042,768
+-0.1882898956537246,769
+-0.1863734722137451,770
+-0.1844570487737655,771
+-0.1825406104326248,772
+-0.1806241869926452,773
+-0.1787077635526657,774
+-0.1767913401126861,775
+-0.1748749166727066,776
+-0.172958493232727,777
+-0.1710420548915863,778
+-0.1691256314516067,779
+-0.1672092080116272,780
+-0.1652927845716476,781
+-0.1633763611316681,782
+-0.1614599376916885,783
+-0.1595434993505478,784
+-0.1576270759105682,785
+-0.1557106524705886,786
+-0.1537942290306091,787
+-0.1518778055906295,788
+-0.14996138215065,789
+-0.1480449438095092,790
+-0.1461285203695297,791
+-0.1442120969295501,792
+-0.1422956734895706,793
+-0.140379250049591,794
+-0.1384628266096115,795
+-0.1365463882684707,796
+-0.1346299648284912,797
+-0.1327135413885116,798
+-0.1307971179485321,799
+-0.1288806945085525,800
+-0.126964271068573,801
+-0.1250478476285934,802
+-0.1231314167380333,803
+-0.1212149858474731,804
+-0.1192985624074935,805
+-0.117382138967514,806
+-0.1154657080769538,807
+-0.1135492846369743,808
+-0.1116328611969947,809
+-0.1097164303064346,810
+-0.107800006866455,811
+-0.1058835834264755,812
+-0.1039671525359153,813
+-0.1020507290959358,814
+-0.1001343056559562,815
+-0.0982178747653961,816
+-0.0963014513254165,817
+-0.094385027885437,818
+-0.0924686044454574,819
+-0.0905521735548973,820
+-0.0886357501149177,821
+-0.0867193266749382,822
+-0.084802895784378,823
+-0.0828864723443985,824
+-0.0809700489044189,825
+-0.0790536180138588,826
+-0.0771371945738792,827
+-0.0752207711338996,828
+-0.0733043402433395,829
+-0.0713879168033599,830
+-0.0694714933633804,831
+-0.0675550624728202,832
+-0.0656386390328407,833
+-0.0637222155928611,834
+-0.0618057884275913,835
+-0.0598893612623214,836
+-0.0579729340970516,837
+-0.056056510657072,838
+-0.0541400834918022,839
+-0.0522236563265323,840
+-0.0503072328865528,841
+-0.0483908057212829,842
+-0.0464743785560131,843
+-0.0445579551160335,844
+-0.0426415279507637,845
+-0.0407251007854938,846
+-0.0388086773455143,847
+-0.0368922501802444,848
+-0.0349758230149745,849
+-0.033059399574995,850
+-0.0311429724097251,851
+-0.0292265471071004,852
+-0.0273101218044757,853
+-0.0253936946392059,854
+-0.0234772693365812,855
+-0.0215608440339565,856
+-0.0196444187313318,857
+-0.0177279915660619,858
+-0.0158115662634372,859
+-0.0138951400294899,860
+-0.0119787147268652,861
+-0.010062288492918,862
+-0.0081458622589707,863
+-0.006229436956346,864
+-0.0043130107223987,865
+-0.0023965849541127,866
+-0.0004801591858267,867
+0.0014362666988745,868
+0.0033526925835758,869
+0.0052691185846924,870
+0.0071855443529784,871
+0.0091019701212644,872
+0.0110183963552117,873
+0.0129348216578364,874
+0.0148512478917837,875
+0.0167676731944084,876
+0.0186841003596782,877
+0.0206005256623029,878
+0.0225169509649276,879
+0.0244333762675523,880
+0.0263498034328222,881
+0.0282662287354469,882
+0.0301826540380716,883
+0.0320990793406963,884
+0.0340155065059661,885
+0.035931933671236,886
+0.0378483571112155,887
+0.0397647842764854,888
+0.0416812114417552,889
+0.0435976348817348,890
+0.0455140620470047,891
+0.0474304892122745,892
+0.0493469126522541,893
+0.0512633398175239,894
+0.0531797632575035,895
+0.0550961904227733,896
+0.0570126175880432,897
+0.0589290410280227,898
+0.0608454681932926,899
+0.0627618953585624,900
+0.064678318798542,901
+0.0665947496891021,902
+0.0685111731290817,903
+0.0704275965690612,904
+0.0723440200090408,905
+0.0742604508996009,906
+0.0761768743395805,907
+0.07809329777956,908
+0.0800097286701202,909
+0.0819261521100997,910
+0.0838425755500793,911
+0.0857590064406395,912
+0.087675429880619,913
+0.0895918533205986,914
+0.0915082842111587,915
+0.0934247076511383,916
+0.0953411310911178,917
+0.097257561981678,918
+0.0991739854216575,919
+0.1010904088616371,920
+0.1030068397521972,921
+0.1049232631921768,922
+0.1068396866321563,923
+0.1087561175227165,924
+0.110672540962696,925
+0.1125889644026756,926
+0.1145053952932357,927
+0.1164218187332153,928
+0.1183382421731948,929
+0.120254673063755,930
+0.1221710965037345,931
+0.1240875199437141,932
+0.1260039508342743,933
+0.1279203742742538,934
+0.1298367977142334,935
+0.1317532211542129,936
+0.1336696445941925,937
+0.1355860829353332,938
+0.1375025063753128,939
+0.1394189298152923,940
+0.1413353532552719,941
+0.1432517766952514,942
+0.145168200135231,943
+0.1470846384763717,944
+0.1490010619163513,945
+0.1509174853563308,946
+0.1528339087963104,947
+0.1547503322362899,948
+0.1566667556762695,949
+0.1585831940174102,950
+0.1604996174573898,951
+0.1624160408973693,952
+0.1643324643373489,953
+0.1662488877773285,954
+0.168165311217308,955
+0.1700817495584488,956
+0.1719981729984283,957
+0.1739145964384079,958
+0.1758310198783874,959
+0.177747443318367,960
+0.1796638667583465,961
+0.1815803050994873,962
+0.1834967285394668,963
+0.1854131519794464,964
+0.1873295754194259,965
+0.1892459988594055,966
+0.191162422299385,967
+0.1930788606405258,968
+0.1949952840805053,969
+0.1969117075204849,970
+0.1988281309604644,971
+0.200744554400444,972
+0.2026609778404235,973
+0.2045774012804031,974
+0.2064938396215438,975
+0.2084102630615234,976
+0.210326686501503,977
+0.2122431099414825,978
+0.2141595333814621,979
+0.2160759568214416,980
+0.2179923951625824,981
+0.2199088186025619,982
+0.2218252420425415,983
+0.223741665482521,984
+0.2256580889225006,985
+0.2275745123624801,986
+0.2294909507036209,987
+0.2314073741436004,988
+0.23332379758358,989
+0.2352402210235595,990
+0.2371566444635391,991
+0.2390730679035186,992
+0.2409895062446594,993
+0.2429059296846389,994
+0.2448223531246185,995
+0.246738776564598,996
+0.2486552000045776,997
+0.2505716383457184,998
+0.2524880468845367,999
+0.2544044852256775,1000
+0.2563208937644958,1001
+0.2582373321056366,1002
+0.2601537704467773,1003
+0.2620701789855957,1004
+0.2639866173267364,1005
+0.2659030258655548,1006
+0.2678194642066955,1007
+0.2697359025478363,1008
+0.2716523110866546,1009
+0.2735687494277954,1010
+0.2754851579666137,1011
+0.2774015963077545,1012
+0.2793180048465729,1013
+0.2812344431877136,1014
+0.2831508815288543,1015
+0.2850672900676727,1016
+0.2869837284088135,1017
+0.2889001369476318,1018
+0.2908165752887726,1019
+0.2927329838275909,1020
+0.2946494221687317,1021
+0.2965658605098724,1022
+0.2984822690486908,1023
+0.3003987073898315,1024
+0.3023151159286499,1025
+0.3042315542697906,1026
+0.3061479926109314,1027
+0.3080644011497497,1028
+0.3099808394908905,1029
+0.3118972480297088,1030
+0.3138136863708496,1031
+0.3157300949096679,1032
+0.3176465332508087,1033
+0.3195629715919494,1034
+0.3214793801307678,1035
+0.3233958184719085,1036
+0.3253122270107269,1037
+0.3272286653518677,1038
+0.3291451036930084,1039
+0.3310615122318268,1040
+0.3329779505729675,1041
+0.3348943591117859,1042
+0.3368107974529266,1043
+0.338727205991745,1044
+0.3406436443328857,1045
+0.3425600826740265,1046
+0.3444764912128448,1047
+0.3463929295539856,1048
+0.3483093380928039,1049
+0.3502257764339447,1050
+0.3521422147750854,1051
+0.3540586233139038,1052
+0.3559750616550445,1053
+0.3578914701938629,1054
+0.3598079085350036,1055
+0.361724317073822,1056
+0.3636407554149627,1057
+0.3655571937561035,1058
+0.3674736022949219,1059
+0.3693900406360626,1060
+0.371306449174881,1061
+0.3732228875160217,1062
+0.3751392960548401,1063
+0.3770557343959808,1064
+0.3789721727371216,1065
+0.3808885812759399,1066
+0.3828050196170807,1067
+0.384721428155899,1068
+0.3866378664970398,1069
+0.3885543048381805,1070
+0.3904707133769989,1071
+0.3923871517181396,1072
+0.394303560256958,1073
+0.3962199985980987,1074
+0.3981364071369171,1075
+0.4000528454780578,1076
+0.4019692838191986,1077
+0.4038856923580169,1078
+0.4058021306991577,1079
+0.4077185392379761,1080
+0.4096349775791168,1081
+0.4115514159202575,1082
+0.4134678244590759,1083
+0.4153842628002167,1084
+0.417300671339035,1085
+0.4192171096801758,1086
+0.4211335182189941,1087
+0.4230499565601349,1088
+0.4249663949012756,1089
+0.426882803440094,1090
+0.4287992417812347,1091
+0.4307156503200531,1092
+0.4326320886611938,1093
+0.4345485270023346,1094
+0.4364649355411529,1095
+0.4383813738822937,1096
+0.440297782421112,1097
+0.4422142207622528,1098
+0.4441306293010711,1099
+0.4460470676422119,1100
+0.4479635059833526,1101
+0.449879914522171,1102
+0.4517963528633117,1103
+0.4537127614021301,1104
+0.4556291997432709,1105
+0.4575456082820892,1106
+0.45946204662323,1107
+0.4613784849643707,1108
+0.4632948935031891,1109
+0.4652113318443298,1110
+0.4671277403831482,1111
+0.4690441787242889,1112
+0.4709606170654297,1113
+0.472877025604248,1114
+0.4747934639453888,1115
+0.4767098724842071,1116
+0.4786263108253479,1117
+0.4805427193641662,1118
+0.482459157705307,1119
+0.4843755960464477,1120
+0.4862920045852661,1121
+0.4882084429264068,1122
+0.4901248514652252,1123
+0.4920412898063659,1124
+0.4939577281475067,1125
+0.4958741366863251,1126
+0.4977905750274658,1127
+0.4997069835662842,1128
+0.5016233921051025,1129
+0.5035398602485657,1130
+0.505456268787384,1131
+0.5073726773262024,1132
+0.5092891454696655,1133
+0.5112055540084839,1134
+0.5131219625473022,1135
+0.5150383710861206,1136
+0.5169548392295837,1137
+0.5188712477684021,1138
+0.5207876563072205,1139
+0.5227041244506836,1140
+0.524620532989502,1141
+0.5265369415283203,1142
+0.5284533500671387,1143
+0.5303698182106018,1144
+0.5322862267494202,1145
+0.5342026352882385,1146
+0.5361191034317017,1147
+0.53803551197052,1148
+0.5399519205093384,1149
+0.5418683886528015,1150
+0.5437847971916199,1151
+0.5457012057304382,1152
+0.5476176142692566,1153
+0.5495340824127197,1154
+0.5514504909515381,1155
+0.5533668994903564,1156
+0.5552833676338196,1157
+0.5571997761726379,1158
+0.5591161847114563,1159
+0.5610325932502747,1160
+0.5629490613937378,1161
+0.5648654699325562,1162
+0.5667818784713745,1163
+0.5686983466148376,1164
+0.570614755153656,1165
+0.5725311636924744,1166
+0.5744475722312927,1167
+0.5763640403747559,1168
+0.5782804489135742,1169
+0.5801968574523926,1170
+0.5821133255958557,1171
+0.5840297341346741,1172
+0.5859461426734924,1173
+0.5878626108169556,1174
+0.5897790193557739,1175
+0.5916954278945923,1176
+0.5936118364334106,1177
+0.5955283045768738,1178
+0.5974447131156921,1179
+0.5993611216545105,1180
+0.6012775897979736,1181
+0.603193998336792,1182
+0.6051104068756104,1183
+0.6070268154144287,1184
+0.6089432835578918,1185
+0.6108596920967102,1186
+0.6127761006355286,1187
+0.6146925687789917,1188
+0.6166089773178101,1189
+0.6185253858566284,1190
+0.6204417943954468,1191
+0.6223582625389099,1192
+0.6242746710777283,1193
+0.6261910796165466,1194
+0.6281075477600098,1195
+0.6300239562988281,1196
+0.6319403648376465,1197
+0.6338567733764648,1198
+0.635773241519928,1199
+0.6376896500587463,1200
+0.6396060585975647,1201
+0.6415225267410278,1202
+0.6434389352798462,1203
+0.6453553438186646,1204
+0.6472718119621277,1205
+0.649188220500946,1206
+0.6511046290397644,1207
+0.6530210375785828,1208
+0.6549375057220459,1209
+0.6568539142608643,1210
+0.6587703227996826,1211
+0.6606867909431458,1212
+0.6626031994819641,1213
+0.6645196080207825,1214
+0.6664360165596008,1215
+0.668352484703064,1216
+0.6702688932418823,1217
+0.6721853017807007,1218
+0.6741017699241638,1219
+0.6760181784629822,1220
+0.6779345870018005,1221
+0.6798509955406189,1222
+0.681767463684082,1223
+0.6836838722229004,1224
+0.6856002807617188,1225
+0.6875167489051819,1226
+0.6894331574440002,1227
+0.6913495659828186,1228
+0.693265974521637,1229
+0.6951824426651001,1230
+0.6970988512039185,1231
+0.6990152597427368,1232
+0.7009317278862,1233
+0.7028481364250183,1234
+0.7047645449638367,1235
+0.7066810131072998,1236
+0.7085974216461182,1237
+0.7105138301849365,1238
+0.7124302387237549,1239
+0.714346706867218,1240
+0.7162631154060364,1241
+0.7181795239448547,1242
+0.7200959920883179,1243
+0.7220124006271362,1244
+0.7239288091659546,1245
+0.725845217704773,1246
+0.7277616858482361,1247
+0.7296780943870544,1248
+0.7315945029258728,1249
+0.7335109710693359,1250
+0.7354273796081543,1251
+0.7373437881469727,1252
+0.739260196685791,1253
+0.7411766648292542,1254
+0.7430930733680725,1255
+0.7450094819068909,1256
+0.746925950050354,1257
+0.7488423585891724,1258
+0.7507587671279907,1259
+0.7526752352714539,1260
+0.7545916438102722,1261
+0.7565080523490906,1262
+0.7584244608879089,1263
+0.7603409290313721,1264
+0.7622573375701904,1265
+0.7641737461090088,1266
+0.7660902142524719,1267
+0.7680066227912903,1268
+0.7699230313301086,1269
+0.771839439868927,1270
+0.7737559080123901,1271
+0.7756723165512085,1272
+0.7775887250900269,1273
+0.77950519323349,1274
+0.7814216017723083,1275
+0.7833380103111267,1276
+0.7852544188499451,1277
+0.7871708869934082,1278
+0.7890872955322266,1279
+0.7910037040710449,1280
+0.7929201722145081,1281
+0.7948365807533264,1282
+0.7967529892921448,1283
+0.7986693978309631,1284
+0.8005858659744263,1285
+0.8025022745132446,1286
+0.804418683052063,1287
+0.8063351511955261,1288
+0.8082515597343445,1289
+0.8101679682731628,1290
+0.812084436416626,1291
+0.8140008449554443,1292
+0.8159172534942627,1293
+0.817833662033081,1294
+0.8197501301765442,1295
+0.8216665387153625,1296
+0.8235829472541809,1297
+0.825499415397644,1298
+0.8274158239364624,1299
+0.8293322324752808,1300
+0.8312486410140991,1301
+0.8331651091575623,1302
+0.8350815176963806,1303
+0.836997926235199,1304
+0.8389143943786621,1305
+0.8408308029174805,1306
+0.8427472114562988,1307
+0.8446636199951172,1308
+0.8465800881385803,1309
+0.8484964966773987,1310
+0.850412905216217,1311
+0.8523293733596802,1312
+0.8542457818984985,1313
+0.8561621904373169,1314
+0.8580785989761353,1315
+0.8599950671195984,1316
+0.8619114756584167,1317
+0.8638278841972351,1318
+0.8657443523406982,1319
+0.8676607608795166,1320
+0.869577169418335,1321
+0.8714936375617981,1322
+0.8734100461006165,1323
+0.8753264546394348,1324
+0.8772428631782532,1325
+0.8791593313217163,1326
+0.8810757398605347,1327
+0.882992148399353,1328
+0.8849086165428162,1329
+0.8868250250816345,1330
+0.8887414336204529,1331
+0.8906578421592712,1332
+0.8925743103027344,1333
+0.8944907188415527,1334
+0.8964071273803711,1335
+0.8983235955238342,1336
+0.9002400040626526,1337
+0.902156412601471,1338
+0.9040728211402892,1339
+0.9059892892837524,1340
+0.9079056978225708,1341
+0.9098221063613892,1342
+0.9117385745048524,1343
+0.9136549830436708,1344
+0.915571391582489,1345
+0.917487859725952,1346
+0.9194042682647704,1347
+0.9213206768035888,1348
+0.9232370853424072,1349
+0.9251535534858704,1350
+0.9270699620246888,1351
+0.9289863705635072,1352
+0.9309028387069702,1353
+0.9328192472457886,1354
+0.9347356557846068,1355
+0.9366520643234252,1356
+0.9385685324668884,1357
+0.9404849410057068,1358
+0.9424013495445251,1359
+0.9443178176879884,1360
+0.9462342262268066,1361
+0.948150634765625,1362
+0.9500670433044434,1363
+0.9519835114479064,1364
+0.9538999199867249,1365
+0.9558163285255432,1366
+0.9577327966690063,1367
+0.9596492052078248,1368
+0.9615656137466432,1369
+0.9634820222854614,1370
+0.9653984904289246,1371
+0.9673148989677428,1372
+0.9692313075065612,1373
+0.9711477756500244,1374
+0.9730641841888428,1375
+0.9749805927276612,1376
+0.9768970608711244,1377
+0.9788134694099426,1378
+0.980729877948761,1379
+0.9826462864875792,1380
+0.9845627546310424,1381
+0.9864791631698608,1382
+0.9883955717086792,1383
+0.9903120398521424,1384
+0.9922284483909608,1385
+0.994144856929779,1386
+0.9960612654685974,1387
+0.9979777336120604,1388
+0.9998941421508788,1389
+1.0018105506896973,1390
+1.0037269592285156,1391
+1.005643367767334,1392
+1.007559895515442,1393
+1.0094763040542605,1394
+1.0113927125930786,1395
+1.013309121131897,1396
+1.015225529670715,1397
+1.0171419382095337,1398
+1.019058346748352,1399
+1.02097487449646,1400
+1.0228912830352783,1401
+1.024807691574097,1402
+1.026724100112915,1403
+1.0286405086517334,1404
+1.0305569171905518,1405
+1.03247332572937,1406
+1.034389853477478,1407
+1.0363062620162964,1408
+1.0382226705551147,1409
+1.040139079093933,1410
+1.0420554876327517,1411
+1.0439718961715698,1412
+1.0458883047103882,1413
+1.047804832458496,1414
+1.0497212409973145,1415
+1.0516376495361328,1416
+1.0535540580749512,1417
+1.0554704666137695,1418
+1.057386875152588,1419
+1.0593034029006958,1420
+1.0612198114395142,1421
+1.0631362199783323,1422
+1.0650526285171509,1423
+1.0669690370559692,1424
+1.0688854455947876,1425
+1.070801854133606,1426
+1.072718381881714,1427
+1.0746347904205322,1428
+1.0765511989593506,1429
+1.078467607498169,1430
+1.0803840160369873,1431
+1.0823004245758057,1432
+1.084216833114624,1433
+1.086133360862732,1434
+1.0880497694015503,1435
+1.0899661779403689,1436
+1.091882586479187,1437
+1.0937989950180054,1438
+1.0957154035568235,1439
+1.097631812095642,1440
+1.09954833984375,1441
+1.1014647483825684,1442
+1.1033811569213867,1443
+1.105297565460205,1444
+1.1072139739990234,1445
+1.1091303825378418,1446
+1.1110467910766602,1447
+1.112963318824768,1448
+1.1148797273635864,1449
+1.1167961359024048,1450
+1.1187125444412231,1451
+1.1206289529800415,1452
+1.12254536151886,1453
+1.1244617700576782,1454
+1.126378297805786,1455
+1.1282947063446045,1456
+1.1302111148834229,1457
+1.1321275234222412,1458
+1.1340439319610596,1459
+1.135960340499878,1460
+1.1378767490386963,1461
+1.1397932767868042,1462
+1.1417096853256226,1463
+1.143626093864441,1464
+1.1455425024032593,1465
+1.1474589109420776,1466
+1.149375319480896,1467
+1.1512917280197144,1468
+1.1532082557678225,1469
+1.1551246643066406,1470
+1.157041072845459,1471
+1.1589574813842771,1472
+1.1608738899230957,1473
+1.162790298461914,1474
+1.164706826210022,1475
+1.1666232347488403,1476
+1.1685396432876587,1477
+1.170456051826477,1478
+1.1723724603652954,1479
+1.1742888689041138,1480
+1.176205277442932,1481
+1.17812180519104,1482
+1.1800382137298584,1483
+1.1819546222686768,1484
+1.1838710308074951,1485
+1.1857874393463137,1486
+1.1877038478851318,1487
+1.1896202564239502,1488
+1.191536784172058,1489
+1.1934531927108765,1490
+1.1953696012496948,1491
+1.1972860097885132,1492
+1.1992024183273315,1493
+1.20111882686615,1494
+1.2030352354049685,1495
+1.2049517631530762,1496
+1.2068681716918943,1497
+1.208784580230713,1498
+1.2107009887695312,1499
+1.2126173973083496,1500
+1.214533805847168,1501
+1.2164502143859863,1502
+1.2183667421340942,1503
+1.2202831506729126,1504
+1.222199559211731,1505
+1.224115967750549,1506
+1.2260323762893677,1507
+1.227948784828186,1508
+1.2298651933670044,1509
+1.2317817211151123,1510
+1.2336981296539309,1511
+1.235614538192749,1512
+1.2375309467315674,1513
+1.2394473552703855,1514
+1.241363763809204,1515
+1.2432801723480225,1516
+1.2451967000961304,1517
+1.2471131086349487,1518
+1.249029517173767,1519
+1.2509459257125854,1520
+1.2528623342514038,1521
+1.2547787427902222,1522
+1.2566951513290403,1523
+1.2586116790771484,1524
+1.2605280876159668,1525
+1.2624444961547852,1526
+1.2643609046936035,1527
+1.266277313232422,1528
+1.2681937217712402,1529
+1.2701101303100586,1530
+1.2720266580581665,1531
+1.2739430665969849,1532
+1.2758594751358032,1533
+1.2777758836746216,1534
+1.27969229221344,1535
+1.2816087007522583,1536
+1.2835252285003662,1537
+1.2854416370391846,1538
+1.287358045578003,1539
+1.2892744541168213,1540
+1.2911908626556396,1541
+1.293107271194458,1542
+1.2950236797332764,1543
+1.2969402074813845,1544
+1.2988566160202026,1545
+1.300773024559021,1546
+1.3026894330978394,1547
+1.3046058416366575,1548
+1.306522250175476,1549
+1.3084386587142944,1550
+1.3103551864624023,1551
+1.3122715950012207,1552
+1.314188003540039,1553
+1.3161044120788574,1554
+1.3180208206176758,1555
+1.319937229156494,1556
+1.3218536376953125,1557
+1.3237701654434204,1558
+1.3256865739822388,1559
+1.3276029825210571,1560
+1.3295193910598757,1561
+1.3314357995986938,1562
+1.3333522081375122,1563
+1.3352686166763306,1564
+1.3371851444244385,1565
+1.3391015529632568,1566
+1.3410179615020752,1567
+1.3429343700408936,1568
+1.344850778579712,1569
+1.3467671871185305,1570
+1.3486835956573486,1571
+1.3506001234054563,1572
+1.352516531944275,1573
+1.3544329404830933,1574
+1.3563493490219116,1575
+1.35826575756073,1576
+1.3601821660995483,1577
+1.3620985746383667,1578
+1.3640151023864746,1579
+1.365931510925293,1580
+1.367847919464111,1581
+1.3697643280029297,1582
+1.371680736541748,1583
+1.3735971450805664,1584
+1.3755135536193848,1585
+1.377430081367493,1586
+1.379346489906311,1587
+1.3812628984451294,1588
+1.3831793069839478,1589
+1.385095715522766,1590
+1.3870121240615845,1591
+1.3889286518096924,1592
+1.3908450603485107,1593
+1.392761468887329,1594
+1.3946778774261477,1595
+1.3965942859649658,1596
+1.3985106945037842,1597
+1.4004271030426023,1598
+1.4023436307907104,1599
+1.4042600393295288,1600
+1.4061764478683472,1601
+1.4080928564071655,1602
+1.410009264945984,1603
+1.4119256734848022,1604
+1.4138420820236206,1605
+1.4157586097717283,1606
+1.4176750183105469,1607
+1.4195914268493652,1608
+1.4215078353881836,1609
+1.423424243927002,1610
+1.4253406524658203,1611
+1.427257061004639,1612
+1.4291735887527466,1613
+1.431089997291565,1614
+1.4330064058303833,1615
+1.4349228143692017,1616
+1.43683922290802,1617
+1.4387556314468384,1618
+1.4406720399856567,1619
+1.4425885677337646,1620
+1.444504976272583,1621
+1.4464213848114014,1622
+1.4483377933502195,1623
+1.450254201889038,1624
+1.4521706104278564,1625
+1.4540870189666748,1626
+1.4560035467147827,1627
+1.457919955253601,1628
+1.4598363637924194,1629
+1.4617527723312378,1630
+1.4636691808700562,1631
+1.4655855894088743,1632
+1.4675019979476929,1633
+1.4694185256958008,1634
+1.4713349342346191,1635
+1.4732513427734375,1636
+1.475167751312256,1637
+1.4770841598510742,1638
+1.4790005683898926,1639
+1.480916976928711,1640
+1.4828335046768188,1641
+1.4847499132156372,1642
+1.4866663217544556,1643
+1.488582730293274,1644
+1.4904991388320925,1645
+1.4924155473709106,1646
+1.4943320751190186,1647
+1.496248483657837,1648
+1.4981648921966553,1649
+1.5000813007354736,1650
+1.501997709274292,1651
+1.5039141178131104,1652
+1.5058305263519287,1653
+1.5077470541000366,1654
+1.509663462638855,1655
+1.5115798711776731,1656
+1.5134962797164917,1657
+1.51541268825531,1658
+1.5173290967941284,1659
+1.5192455053329468,1660
+1.521162033081055,1661
+1.523078441619873,1662
+1.5249948501586914,1663
+1.5269112586975098,1664
+1.528827667236328,1665
+1.5307440757751465,1666
+1.5326604843139648,1667
+1.5345770120620728,1668
+1.5364934206008911,1669
+1.5384098291397097,1670
+1.5403262376785278,1671
+1.5422426462173462,1672
+1.5441590547561646,1673
+1.546075463294983,1674
+1.5479919910430908,1675
+1.5499083995819092,1676
+1.5518248081207275,1677
+1.553741216659546,1678
+1.5556576251983645,1679
+1.5575740337371826,1680
+1.559490442276001,1681
+1.5614069700241089,1682
+1.5633233785629272,1683
+1.5652397871017456,1684
+1.567156195640564,1685
+1.5690726041793823,1686
+1.570989012718201,1687
+1.572905421257019,1688
+1.574821949005127,1689
+1.576738357543945,1690
+1.5786547660827637,1691
+1.580571174621582,1692
+1.5824875831604004,1693
+1.5844039916992188,1694
+1.586320400238037,1695
+1.588236927986145,1696
+1.5901533365249634,1697
+1.5920697450637815,1698
+1.5939861536026,1699
+1.5959025621414185,1700
+1.5978189706802368,1701
+1.5997353792190552,1702
+1.601651906967163,1703
+1.6035683155059814,1704
+1.6054847240447998,1705
+1.6074011325836182,1706
+1.6093175411224363,1707
+1.6112339496612549,1708
+1.6131504774093628,1709
+1.6150668859481812,1710
+1.6169832944869995,1711
+1.618899703025818,1712
+1.6208161115646362,1713
+1.6227325201034546,1714
+1.624648928642273,1715
+1.6265654563903809,1716
+1.6284818649291992,1717
+1.6303982734680176,1718
+1.632314682006836,1719
+1.6342310905456543,1720
+1.6361474990844729,1721
+1.638063907623291,1722
+1.639980435371399,1723
+1.6418968439102173,1724
+1.6438132524490356,1725
+1.645729660987854,1726
+1.6476460695266724,1727
+1.6495624780654907,1728
+1.651478886604309,1729
+1.653395414352417,1730
+1.6553118228912354,1731
+1.6572282314300537,1732
+1.659144639968872,1733
+1.6610610485076904,1734
+1.6629774570465088,1735
+1.6648938655853271,1736
+1.666810393333435,1737
+1.6687268018722534,1738
+1.6706432104110718,1739
+1.67255961894989,1740
+1.6744760274887085,1741
+1.6763924360275269,1742
+1.6783088445663452,1743
+1.6802253723144531,1744
+1.6821417808532717,1745
+1.6840581893920898,1746
+1.6859745979309082,1747
+1.6878910064697266,1748
+1.689807415008545,1749
+1.6917238235473633,1750
+1.6936403512954712,1751
+1.6955567598342896,1752
+1.697473168373108,1753
+1.6993895769119265,1754
+1.7013059854507446,1755
+1.703222393989563,1756
+1.7051388025283811,1757
+1.7070553302764893,1758
+1.7089717388153076,1759
+1.710888147354126,1760
+1.7128045558929443,1761
+1.7147209644317627,1762
+1.716637372970581,1763
+1.718553900718689,1764
+1.720470309257507,1765
+1.7223867177963257,1766
+1.724303126335144,1767
+1.7262195348739624,1768
+1.7281359434127808,1769
+1.7300523519515991,1770
+1.731968879699707,1771
+1.7338852882385254,1772
+1.7358016967773438,1773
+1.737718105316162,1774
+1.7396345138549805,1775
+1.7415509223937988,1776
+1.7434673309326172,1777
+1.745383858680725,1778
+1.7473002672195437,1779
+1.7492166757583618,1780
+1.7511330842971802,1781
+1.7530494928359983,1782
+1.754965901374817,1783
+1.7568823099136353,1784
+1.7587988376617432,1785
+1.7607152462005615,1786
+1.76263165473938,1787
+1.7645480632781982,1788
+1.7664644718170166,1789
+1.768380880355835,1790
+1.770297288894653,1791
+1.7722138166427612,1792
+1.7741302251815796,1793
+1.776046633720398,1794
+1.7779630422592163,1795
+1.779879450798035,1796
+1.781795859336853,1797
+1.7837122678756714,1798
+1.7856287956237793,1799
+1.7875452041625977,1800
+1.789461612701416,1801
+1.7913780212402344,1802
+1.7932944297790527,1803
+1.795210838317871,1804
+1.7971272468566897,1805
+1.7990437746047974,1806
+1.8009601831436155,1807
+1.802876591682434,1808
+1.8047930002212524,1809
+1.8067094087600708,1810
+1.8086258172988887,1811
+1.8105422258377075,1812
+1.8124587535858157,1813
+1.8143751621246336,1814
+1.816291570663452,1815
+1.8182079792022705,1816
+1.8201243877410889,1817
+1.8220407962799072,1818
+1.8239573240280151,1819
+1.8258737325668333,1820
+1.827790141105652,1821
+1.8297065496444704,1822
+1.8316229581832888,1823
+1.833539366722107,1824
+1.8354557752609253,1825
+1.8373723030090328,1826
+1.839288711547852,1827
+1.84120512008667,1828
+1.8431215286254885,1829
+1.8450379371643064,1830
+1.846954345703125,1831
+1.8488707542419436,1832
+1.8507872819900515,1833
+1.8527036905288696,1834
+1.854620099067688,1835
+1.8565365076065063,1836
+1.8584529161453247,1837
+1.860369324684143,1838
+1.8622857332229612,1839
+1.8642022609710691,1840
+1.866118669509888,1841
+1.868035078048706,1842
+1.8699514865875244,1843
+1.8718678951263428,1844
+1.873784303665161,1845
+1.8757007122039795,1846
+1.8776172399520876,1847
+1.8795336484909055,1848
+1.881450057029724,1849
+1.8833664655685425,1850
+1.8852828741073608,1851
+1.8871992826461792,1852
+1.8891156911849976,1853
+1.8910322189331052,1854
+1.892948627471924,1855
+1.8948650360107424,1856
+1.8967814445495603,1857
+1.898697853088379,1858
+1.9006142616271973,1859
+1.902530670166016,1860
+1.9044471979141235,1861
+1.906363606452942,1862
+1.9082800149917605,1863
+1.9101964235305784,1864
+1.912112832069397,1865
+1.9140292406082156,1866
+1.9159456491470337,1867
+1.9178621768951416,1868
+1.91977858543396,1869
+1.9216949939727783,1870
+1.923611402511597,1871
+1.925527811050415,1872
+1.9274442195892332,1873
+1.929360628128052,1874
+1.93127715587616,1875
+1.933193564414978,1876
+1.9351099729537964,1877
+1.9370263814926147,1878
+1.938942790031433,1879
+1.9408591985702517,1880
+1.9427757263183596,1881
+1.9446921348571775,1882
+1.946608543395996,1883
+1.9485249519348145,1884
+1.9504413604736328,1885
+1.9523577690124512,1886
+1.9542741775512693,1887
+1.9561907052993772,1888
+1.958107113838196,1889
+1.9600235223770144,1890
+1.9619399309158323,1891
+1.9638564586639404,1892
+1.9657728672027588,1893
+1.9676892757415767,1894
+1.969605803489685,1895
+1.9715222120285036,1896

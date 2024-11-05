@@ -165,9 +165,11 @@ def normalize_tensor(abnormal_tensor: torch.Tensor) -> Union [torch.Tensor, torc
     
     output:
     normal_tensor   : Size (N X D). The tensor after normalization by column
-    mean            : Size (D X 1). The means for each column of the abnormal_tensor
-    std             : Size (D X 1). The standard deviations for each column of the abnormal_tensor
+    mean            : Size (D). The means for each column of the abnormal_tensor
+    std             : Size (D). The standard deviations for each column of the abnormal_tensor
     '''
+    print("Normalizing tensor............",end="")
+
     # Get dimensions
     N, D = abnormal_tensor.shape
     
@@ -177,12 +179,26 @@ def normalize_tensor(abnormal_tensor: torch.Tensor) -> Union [torch.Tensor, torc
     # Get mean and standard deviation
     mean = torch.mean(abnormal_tensor, 0)
     std = torch.std(abnormal_tensor, 0)
+    
+    # Percent status update messaging info
+    n_loops = D*N
+    update_index = int(n_loops/100)
 
     # For each column and each row, normalize the value
-    for col in range(D):        
+    for col in range(D):
+        n_loops_done = col*N
         for row in range(N):
             normal_tensor[row, col] = (abnormal_tensor[row, col].item()-mean[col])/std[col]
-        
+
+            # Print status for every whole percent
+            loop = n_loops_done + row
+            if  loop % update_index == 0:
+                print("{:.0f} %\r".format(100*loop/n_loops),end="Normalizing tensor............")
+        # End for row
+    # End for col
+
+    print(Fore.GREEN + "Complete" + Style.RESET_ALL)
+
     # Return normal_tensor, mean and std
     return normal_tensor, mean, std
 
@@ -191,8 +207,7 @@ def split_data(
     data: torch.Tensor,
     targets: torch.Tensor,
     train_ratio: float = 0.8,
-    shuffle: bool = False,
-    normalize: bool = True) -> Union[tuple, tuple, tuple, tuple]:
+    shuffle: bool = False,) -> Union[tuple, tuple]:
     '''
     Splits the data and targets into a train and test set with the train_ratio.
     
@@ -210,10 +225,6 @@ def split_data(
     train_targets   : Size (split_index x 1). The training targets.
     test_data       : Size ((N-split_index) x D). The testing data
     test_targets    : Size ((N-split_index) x 1). The testing targets
-    data_mean       : Size (D X 1). The mean of each column of the data before normalizing
-    data_std        : Size (D X 1). The standard deviation of each column of the data before normalizing
-    target_mean     : Size (1 X 1). The mean of the target before normalizing.
-    target_std      : Size (1 X 1). The standard deviation of the target before normalizing.
     '''
     # Try except in case something goes wrong
     try:
@@ -235,14 +246,6 @@ def split_data(
             data = data[indices_new]
             targets = targets[indices_new]
 
-        # Init normalizers
-        data_normalizer = None
-        target_normalizer = None
-        # If normalize is True, normalize data
-        if normalize:
-            data, data_mean, data_std = normalize_tensor(data)
-            targets, target_mean, target_std = normalize_tensor(targets)
-
         # Find split_index between training data and test data.
         split_index = int(N * train_ratio)
 
@@ -261,7 +264,7 @@ def split_data(
         print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
         # Returned split training and testing sets
-        return (train_data, train_targets), (test_data, test_targets), (data_mean, data_std), (target_mean, target_std)
+        return (train_data, train_targets), (test_data, test_targets)
 
     # Except statement
     except Exception as e:
@@ -331,29 +334,52 @@ def tensor_to_weights(t: torch.Tensor) -> torch.nn.parameter.Parameter:
     '''
     return torch.nn.parameter.Parameter(t,requires_grad=True)
 
-def error_to_csv(loss_matrix: torch.Tensor, filename: str):
+def tensor_to_csv(tensor: torch.Tensor, filename: str, fieldnames: list=['ID', 'Value']):
     '''
-    Saves the loss matrix as a csv file
+    Saves a tensor as a csv file.
+    The first column in the csv file is the row number, ID, of the tensor and the rest of the
+    columns are the values in each column of the input tensor
     
     inputs:
-    loss_matrix : The loss matrix from NeuralNetwork.train_on_data
-    filename    : The name of the file (including path)
+    tensor      : Size (N X D), the data to be saved to a csv file
+    filename    : The name of the file (including path and file extension '.csv')
+    fieldnames  : Size (D). List of fieldnames, the header of the csv file.
     '''
-    train_cycles = loss_matrix.shape[0]
+    print("Saving to csv..................",end="")
+
+    # Get dimensions
+    N = tensor.shape[0]
+    cols = len(fieldnames)
     
+    # Percent status update messaging info
+    n_loops = cols*N
+    update_index = int(n_loops/100)
+
     # Init csv file with writing permissions and no newline at end of row for condensed data
     with open(filename, 'w', newline='') as csvfile:
-        # Header
-        fieldnames = ['Training_cycle', 'Mean_error']
         # Init writer
         writer = csv.DictWriter(csvfile, delimiter=',', fieldnames=fieldnames)
-        # Write header with fieldnames
+        # Write header. This uses the fieldnames input
         writer.writeheader()
         # For each training cycle, write mean error
-        for cycle in range(train_cycles):
-            # Write errors to csv file
-            writer.writerow({'Training_cycle'   : cycle,
-                            'Mean_error'   : loss_matrix[cycle]})
+        for n in range(N):
+            # Init row dictionary
+            row = dict()
+            row.update({fieldnames[0]: n})
+            # Count loops
+            n_loops_done = n*cols
+            # For each field, generate row
+            for col in range(1, cols):
+                row.update({fieldnames[col]: tensor[n][col-1].item()})
+
+                # Print status for every whole percent
+                loop = n_loops_done + col
+                if  loop % update_index == 0:
+                    print("{:.0f} %\r".format(100*loop/n_loops),end="Saving to csv..................")
+
+            # Write each row to the csv file
+            writer.writerow(row)
+    print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
 # Get device for torch
 # Based on https://pytorch.org/tutorials/beginner/basics/buildmodel_tutorial.html
