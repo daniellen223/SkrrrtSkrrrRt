@@ -4,6 +4,8 @@ n_layers = 12
 
 print("Starting")
 
+layer_stacks = []
+
 # For each version of the layer stack update it and print
 for n_layers_in_stack in range(1, n_layers):
     # Print results
@@ -18,6 +20,6 @@ for n_layers_in_stack in range(1, n_layers):
             # Append layers to layer_stack
             layer_stack.append(n_nodes)
 
-        print(layer_stack)
+        layer_stacks.append(layer_stack)
 
 print("Done")
