@@ -18,6 +18,7 @@ from colorama import Fore, Style  # For coloring terminal messages
 
 # Read data function
 def read_in_file(filename: str = 'train.csv',
+                 should_map: bool=True,
                  save_mapping: bool=False,
                  mapping_folder_name: str="data_mapping") -> Union[torch.Tensor, torch.Tensor] :
     '''
@@ -28,7 +29,9 @@ def read_in_file(filename: str = 'train.csv',
     
     input:
     filename        : The filename to fetch
+    should_map      : If the data should be mapped or not
     save_mapping   : If the data mapping should be saved or not.
+    mapping_folder_name : Where to save the mapping
     
     outputs:
     data_tensor     : Size (N x 12) where N is the number of data points
@@ -54,47 +57,48 @@ def read_in_file(filename: str = 'train.csv',
         # Load the data
         data = pd.read_csv(filename)
 
-        # Define categorical columns for label encoding
-        # Old categorical_columns = ['brand', 'model', 'fuel_type', 'transmission', 'engine', 'ext_col', 'int_col']
-        categorical_columns = ['brand', 'model', 'fuel_type', 'transmission', 'engine', 'ext_col', 'int_col', 'accident', 'clean_title']
+        if should_map:
+            # Define categorical columns for label encoding
+            # Old categorical_columns = ['brand', 'model', 'fuel_type', 'transmission', 'engine', 'ext_col', 'int_col']
+            categorical_columns = ['brand', 'model', 'fuel_type', 'transmission', 'engine', 'ext_col', 'int_col', 'accident', 'clean_title']
 
-        # Initialize the label encoder
-        label_encoder = LabelEncoder()
+            # Initialize the label encoder
+            label_encoder = LabelEncoder()
 
-        # Apply label encoding to each categorical column and save if promped
-        for category in categorical_columns:
-            data[category] = label_encoder.fit_transform(data[category])    
+            # Apply label encoding to each categorical column and save if promped
+            for category in categorical_columns:
+                data[category] = label_encoder.fit_transform(data[category])    
 
-            # if save_mapping then save mapping
-            if save_mapping:
-                # Get mapping for this column in a dictionary
-                label_encoder_name_mapping = dict(zip(label_encoder.classes_, label_encoder.transform(label_encoder.classes_)))
-                # make 2 fieldnames for the header of the csv file
-                fieldnames = [category, category + str("_map")]
+                # if save_mapping then save mapping
+                if save_mapping:
+                    # Get mapping for this column in a dictionary
+                    label_encoder_name_mapping = dict(zip(label_encoder.classes_, label_encoder.transform(label_encoder.classes_)))
+                    # make 2 fieldnames for the header of the csv file
+                    fieldnames = [category, category + str("_map")]
 
-                # Init csv file with writing permissions and no newline at end of row for condensed data
-                path = "./" + mapping_folder_name + "/" + category + '.csv'
-                file = Path(path)
-                file.parent.mkdir(parents=True, exist_ok=True)
-                with open(file, 'w', newline='') as csvfile:
-                    # Init writer
-                    writer = csv.DictWriter(csvfile, delimiter=',', fieldnames=fieldnames)
-                    # Write header with fieldnames
-                    writer.writeheader()
-                    # For each label encoding
-                    for key, value in label_encoder_name_mapping.items():
-                        # Write encoding to file
-                        writer.writerow({fieldnames[0]  : key,
-                                        fieldnames[1]   : value})
+                    # Init csv file with writing permissions and no newline at end of row for condensed data
+                    path = "./" + mapping_folder_name + "/" + category + '.csv'
+                    file = Path(path)
+                    file.parent.mkdir(parents=True, exist_ok=True)
+                    with open(file, 'w', newline='') as csvfile:
+                        # Init writer
+                        writer = csv.DictWriter(csvfile, delimiter=',', fieldnames=fieldnames)
+                        # Write header with fieldnames
+                        writer.writeheader()
+                        # For each label encoding
+                        for key, value in label_encoder_name_mapping.items():
+                            # Write encoding to file
+                            writer.writerow({fieldnames[0]  : key,
+                                            fieldnames[1]   : value})
 
-        # Convert any remaining object columns to numeric values
-        object_columns = data.select_dtypes(include=['object']).columns
-        if len(object_columns) > 0:
-            print("Non-numeric columns found, attempting to convert:", object_columns)
-            data[object_columns] = data[object_columns].apply(lambda x: pd.to_numeric(x))
+            # Convert any remaining object columns to numeric values
+            object_columns = data.select_dtypes(include=['object']).columns
+            if len(object_columns) > 0:
+                print("Non-numeric columns found, attempting to convert:", object_columns)
+                data[object_columns] = data[object_columns].apply(lambda x: pd.to_numeric(x))
 
-        # Ensure 'price' is numeric
-        data['price'] = pd.to_numeric(data['price'])
+            # Ensure 'price' is numeric
+            data['price'] = pd.to_numeric(data['price'])
 
         # Separate data and targets
         arraydata = data.iloc[:, 1:-1]  # Assuming the first column is ID (skip that) and last column is the target (skip those)
@@ -323,7 +327,7 @@ def percent_error(p1: torch.Tensor, p2: torch.Tensor) -> float:
     error   : The percent error as a ratio
     '''
     # Find the absolute value of the distance between p1 and p2, get the error ratio and return it
-    return abs(abs(p2-p1)/p2)    
+    return abs(abs(p2-p1)/p2)
 
 def tensor_to_weights(t: torch.Tensor) -> torch.nn.parameter.Parameter:
     '''
@@ -341,7 +345,7 @@ def tensor_to_csv(tensor: torch.Tensor, filename: str, fieldnames: list=['ID', '
     columns are the values in each column of the input tensor
     
     inputs:
-    tensor      : Size (N X D), the data to be saved to a csv file
+    tensor      : Size (N) or (N X D), the data to be saved to a csv file
     filename    : The name of the file (including path and file extension '.csv')
     fieldnames  : Size (D). List of fieldnames, the header of the csv file.
     '''
@@ -351,9 +355,14 @@ def tensor_to_csv(tensor: torch.Tensor, filename: str, fieldnames: list=['ID', '
     N = tensor.shape[0]
     cols = len(fieldnames)
     
+    # Add unsqueeze for 1 dimensional tensors to make them 2D
+    tensor = tensor.unsqueeze(1)
+    
     # Percent status update messaging info
     n_loops = cols*N
     update_index = int(n_loops/100)
+    if update_index == 0:
+        update_index = 1
 
     # Init csv file with writing permissions and no newline at end of row for condensed data
     with open(filename, 'w', newline='') as csvfile:
@@ -361,7 +370,7 @@ def tensor_to_csv(tensor: torch.Tensor, filename: str, fieldnames: list=['ID', '
         writer = csv.DictWriter(csvfile, delimiter=',', fieldnames=fieldnames)
         # Write header. This uses the fieldnames input
         writer.writeheader()
-        # For each training cycle, write mean error
+        # For each row
         for n in range(N):
             # Init row dictionary
             row = dict()

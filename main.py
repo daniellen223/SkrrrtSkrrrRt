@@ -22,23 +22,28 @@ print(" \r\nRunning main.py")
 
 # Settings
 #--------------------------------------------------------
-data_file_name = "Data_Normalized.csv"    # Which file to get the data from
+data_file_name = "train.csv"    # Which file to get the data from
+encode = True              # If the read in data function should encode the categorical columns or not
+map_data = False            # If the data should be mapped
 save_mapping = True            # Saves the data mapping for the read data to a csv file
 mapping_folder = "Data_mapping" # Name of mapping folder
 normalize_data = False           # If the data should be normalized before splitting into training and testing
 normalized_data_filename = "Data_Normalized.csv" # The filename to save the normalized data to
+used_fields = ['brand','model_year','milage','accident','clean_title'] # Fields to use
 shuffle_data = True             # If the data should be randomized before splitting into training and testing
 load_weights = False            # If the weights should be loaded from initial_weights_filename
 initial_weights_filename = "weights_initial.csv" # Filename (including path) for the weights to be saved to or read from
 should_train    = True          # If the neural network should train or just test
-train_ratio = 0.2               # How high ratio of data should be used for training
-nodes = [11, 22, 10, 1]                # Number of hidden nodes per layer - 11 dimensional data. First layer is equal to number of data dimensions, last layer is equal to output dimensions (1 in this case) - Decided via trial and error or heuristics according to Jón but usually more than number of data dimensions in order to not compress data.
+train_ratio = 0.1               # How high ratio of data should be used for training
+nodes = [len(used_fields), 512, 1]                # Number of hidden nodes per layer - 11 dimensional data. First layer is equal to number of data dimensions, last layer is equal to output dimensions (1 in this case) - Decided via trial and error or heuristics according to Jón but usually more than number of data dimensions in order to not compress data.
 training_cycles = 3            # A.k.a "epochs" or how many times the training goes through each data point in the training data
 learning_rate = [0.005] #[0.001,0.005,0.01,0.05,0.1,0.5,1,5,10,50,100,500,1000]              # The learning rate for the neural network training
 save_initial_weights = True            # If the weights should be saved
 save_final_weights = True            # If the weights should be saved
 final_weights_filename = "weights_final.csv" # Filename (including path) for the weights to be saved to or read from - NOT YET IMPLEMENTED
 test_eval_method = "percent"    # Which evaluation method for the error is used for testing. See tools.test_on_data for options
+save_errors     = True          # If we should save the errors as a csv file
+error_file      = "percent_error.csv"   # Name of error csv file
 show_plots      = False         # If the plots should be showed or not. Note: Plots are always saved
 #--------------------------------------------------------
 
@@ -57,7 +62,7 @@ print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 #--------------------------------------------------------
 
 # Load data and transform data into manageable form
-data, targets = tools.read_in_file(data_file_name, save_mapping=save_mapping, mapping_folder_name=mapping_folder)
+data, targets = tools.read_in_file(data_file_name, save_mapping=save_mapping, mapping_folder_name=mapping_folder, should_map=map_data) #, encode=encode)
 N, D = data.size()  # Get number of data points, N, and number of data dimensions, D.
 
 # Normalize data
@@ -69,6 +74,9 @@ if normalize_data:
     data = data[:][0:11]
     
     # targets, target_mean, target_std = tools.normalize_tensor(targets)
+
+# Use only the specified fields
+data = 
 
 # Split data into training_data, training_targets, test_data & test_targets
 (train_data, train_targets), (test_data, test_targets) = tools.split_data(data,targets, train_ratio=train_ratio, shuffle=shuffle_data)
@@ -100,19 +108,26 @@ for i in range(len(learning_rate)):
     if save_final_weights:
         neural_network.save_weights(final_weights_filename)
 
-    print("Estimated car price of first car (a.k.a. data point): " + str(int(neural_network(train_data[0]).item())))
-    print("Supposed to be: " + str(int(train_targets[0].item())))
+    print("Estimated car price of first car (a.k.a. data point): " + str(neural_network(train_data[0]).item()))
+    print("Supposed to be: " + str(train_targets[0].item()))
 
     # Test neural network on test set, log errors
     test_time = time.time()
     testing_loss = neural_network.test_on_data(test_data, test_targets,eval_method=test_eval_method)
     test_time = time.time() - test_time
+    
+    # If we save test results, save them
+    if save_errors:
+        tools.tensor_to_csv(testing_loss, error_file)
 
     # Plot results with learning rate in filenames
     print("Plotting results..............",end="")
-    tools.plot_results(100*training_MSE_loss,filename=f"FigTrainingMSEloss{learning_rate[i]}", xlabel="Training cycles", ylabel="MSE error",title=("Training loss, learning rate: " + str(learning_rate[i])), show_plot=show_plots)
+    tools.plot_results(training_MSE_loss,filename=f"FigTrainingMSEloss{learning_rate[i]}", xlabel="Training cycles", ylabel="MSE error",title=("Training loss, learning rate: " + str(learning_rate[i])), show_plot=show_plots)
     tools.plot_results(100*training_percent_loss,filename=f"FigTrainingpercentloss{learning_rate[i]}", xlabel="Training cycles", ylabel="% error",title=("Training loss, learning rate: " + str(learning_rate[i])), show_plot=show_plots)
     tools.plot_results(100*testing_loss,filename=f"Figaftertrainingtestloss{learning_rate[i]}", ylabel="% error",title=("After training " + str(training_cycles) + " cycles, learning rate: " + str(learning_rate[i])), show_plot=show_plots)
+    matplotlib.pyplot.figure()
+    matplotlib.pyplot.hist(100*testing_loss, bins= 50)
+    matplotlib.pyplot.show()
     print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
     # Run final messages and print times

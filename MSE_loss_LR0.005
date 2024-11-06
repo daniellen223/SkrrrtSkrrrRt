@@ -1,6 +1,4 @@
-Training_cycle,Mean_error
-0,tensor(5.3248e+09)
-1,tensor(5.2519e+09)
-2,tensor(5.2503e+09)
-3,tensor(5.2467e+09)
-4,tensor(5.2445e+09)
+Data point,Error
+0,0.8541629910469055
+1,0.8319953680038452
+2,0.8259969353675842
