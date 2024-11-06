@@ -424,7 +424,7 @@ def reduce_data_by_fields(data: torch.Tensor,
     # Return data_to_use
     return data_to_use
 
-def make_nodes(D: int, Y: int, max_layer_stacks: int) -> list:
+def make_layer_stacks(D: int, Y: int, max_layer_stacks: int) -> list:
     '''
     Makes a list of lists where each entry is a nodes list in the form where the first layer
     in the first layer stack has 2 nodes, the first layer in the second layer stack has 4 nodes and
@@ -444,9 +444,9 @@ def make_nodes(D: int, Y: int, max_layer_stacks: int) -> list:
     layer_stacks = []
 
     # For each version of the layer stack update it and print
-    for n_layers_in_stack in range(1, max_layer_stacks):
+    for n_layers_in_stack in range(1, max_layer_stacks+1):
         # For each depth, make a layer_stack
-        for depth in range(1, max_layer_stacks - n_layers_in_stack + 1):
+        for depth in range(1, max_layer_stacks - n_layers_in_stack + 2):
             # Init layer_stack with D dimensions for inputs
             layer_stack = [D]
             # Make each node number for each layer
