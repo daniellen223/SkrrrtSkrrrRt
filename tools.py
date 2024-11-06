@@ -424,6 +424,46 @@ def reduce_data_by_fields(data: torch.Tensor,
     # Return data_to_use
     return data_to_use
 
+def make_nodes(D: int, Y: int, max_layer_stacks: int) -> list:
+    '''
+    Makes a list of lists where each entry is a nodes list in the form where the first layer
+    in the first layer stack has 2 nodes, the first layer in the second layer stack has 4 nodes and
+    it keeps going, always multiplying by the power of 2.
+    Then it makes another layer stack with 2 layers and the last layer is 2 and each layer before always has 2
+    times more nodes.
+    
+    inputs:
+    D   : Number of data dimensions
+    Y   : Number of output dimensions
+    max_layer_stacks : Maximum number of layer_stacks. Example: If 3 then output is [[D, 2, Y], [D, 4, Y], [D, 8, Y], [D, 4, 2, Y], [D, 8, 4, Y], [D, 8, 4, 2, Y]]
+    
+    output:
+    layer_stacks : All the layer stacks made from the inputs
+    '''
+    # Init empty list of layer_stacks
+    layer_stacks = []
+
+    # For each version of the layer stack update it and print
+    for n_layers_in_stack in range(1, max_layer_stacks):
+        # For each depth, make a layer_stack
+        for depth in range(1, max_layer_stacks - n_layers_in_stack + 1):
+            # Init layer_stack with D dimensions for inputs
+            layer_stack = [D]
+            # Make each node number for each layer
+            for each_layer_in_stack in range(n_layers_in_stack):
+                # Find how many nodes should be in this layer
+                n_nodes = 2**(depth + n_layers_in_stack - each_layer_in_stack - 1)
+                # Append layers to layer_stack
+                layer_stack.append(n_nodes)
+
+            # Add output layer dimensions
+            layer_stack.append(Y)
+
+            layer_stacks.append(layer_stack)
+    # Return layer_stacks
+    return layer_stacks
+
+
 # Get device for torch
 # Based on https://pytorch.org/tutorials/beginner/basics/buildmodel_tutorial.html
 def get_device() -> str:
