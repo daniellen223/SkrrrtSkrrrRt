@@ -23,14 +23,14 @@ print(" \r\nRunning main.py")
 # Settings
 #--------------------------------------------------------
 data_file_name = "train.csv"    # Which file to get the data from
-encode = True              # If the read in data function should encode the categorical columns or not
-map_data = False            # If the data should be mapped
+map_data = True            # If the data should be mapped
 save_mapping = True            # Saves the data mapping for the read data to a csv file
 mapping_folder = "Data_mapping" # Name of mapping folder
 normalize_data = False           # If the data should be normalized before splitting into training and testing
 normalized_data_filename = "Data_Normalized.csv" # The filename to save the normalized data to
-used_fields = ['brand','model_year','milage','accident','clean_title'] # Fields to use
-shuffle_data = True             # If the data should be randomized before splitting into training and testing
+all_fieldnames = ['id','brand','model','model_year','milage','fuel_type','engine','transmission','ext_col','int_col','accident','clean_title', 'price'] # The names of the columns of the input data from the csv file in the same order as it appears in the csv file
+used_fields = ['brand','model_year','milage','accident','clean_title'] # Which fields we plan on using for the data
+shuffle_data = False             # If the data should be randomized before splitting into training and testing
 load_weights = False            # If the weights should be loaded from initial_weights_filename
 initial_weights_filename = "weights_initial.csv" # Filename (including path) for the weights to be saved to or read from
 should_train    = True          # If the neural network should train or just test
@@ -69,14 +69,14 @@ N, D = data.size()  # Get number of data points, N, and number of data dimension
 # If normalize is True, normalize data
 if normalize_data:
     data, means, stds = tools.normalize_tensor(torch.cat((data,targets.unsqueeze(1)),1))
-    tools.tensor_to_csv(data, normalized_data_filename, fieldnames=['id','brand','model','model_year','milage','fuel_type','engine','transmission','ext_col','int_col','accident','clean_title', 'price'])
+    tools.tensor_to_csv(data, normalized_data_filename, fieldnames=all_fieldnames)
     targets = data[:][11]
     data = data[:][0:11]
     
     # targets, target_mean, target_std = tools.normalize_tensor(targets)
 
 # Use only the specified fields
-data = 
+data = tools.reduce_data_by_fields(data, all_fieldnames, used_fields)
 
 # Split data into training_data, training_targets, test_data & test_targets
 (train_data, train_targets), (test_data, test_targets) = tools.split_data(data,targets, train_ratio=train_ratio, shuffle=shuffle_data)
@@ -125,9 +125,6 @@ for i in range(len(learning_rate)):
     tools.plot_results(training_MSE_loss,filename=f"FigTrainingMSEloss{learning_rate[i]}", xlabel="Training cycles", ylabel="MSE error",title=("Training loss, learning rate: " + str(learning_rate[i])), show_plot=show_plots)
     tools.plot_results(100*training_percent_loss,filename=f"FigTrainingpercentloss{learning_rate[i]}", xlabel="Training cycles", ylabel="% error",title=("Training loss, learning rate: " + str(learning_rate[i])), show_plot=show_plots)
     tools.plot_results(100*testing_loss,filename=f"Figaftertrainingtestloss{learning_rate[i]}", ylabel="% error",title=("After training " + str(training_cycles) + " cycles, learning rate: " + str(learning_rate[i])), show_plot=show_plots)
-    matplotlib.pyplot.figure()
-    matplotlib.pyplot.hist(100*testing_loss, bins= 50)
-    matplotlib.pyplot.show()
     print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
     # Run final messages and print times

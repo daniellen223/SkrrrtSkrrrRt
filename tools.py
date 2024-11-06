@@ -390,6 +390,40 @@ def tensor_to_csv(tensor: torch.Tensor, filename: str, fieldnames: list=['ID', '
             writer.writerow(row)
     print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
+def reduce_data_by_fields(data: torch.Tensor,
+                          all_fieldnames: list,
+                          fields_to_use: list) -> torch.Tensor:
+    '''
+    Reduces the number of columns used in the data by the fields specified
+    
+    inputs:
+    data            : Size (N X D). The data to slice where N is the number of data points and D is the number of dimensions
+    all_fieldnames  : Size (D). Name of each dimension of the given data in the same order as the columns in the given data.
+    fields_to_use   : Size (d). Name of each dimensions that's planned to use. Can be in any order but the output will have it's columns in the same order
+    
+    output:
+    data_to_use
+    '''
+    print("Reducing data.................",end="")
+
+    # Find number of data points
+    N = data.shape[0]
+    
+    # Init used_data
+    data_to_use = torch.zeros([N,len(fields_to_use)])
+    # For each field in used_fields, get that into data
+    for i in range(len(fields_to_use)):
+        # Check if the field is in the input fields, if it is, save the location
+        for j in range(data.shape[1]):
+            if fields_to_use[i] == all_fieldnames[j]:
+                # Update each row
+                for n in range(N):
+                    data_to_use[n][i] = data[n][j]
+
+    print(Fore.GREEN + "Complete" + Style.RESET_ALL)
+    # Return data_to_use
+    return data_to_use
+
 # Get device for torch
 # Based on https://pytorch.org/tutorials/beginner/basics/buildmodel_tutorial.html
 def get_device() -> str:
