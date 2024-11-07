@@ -114,7 +114,7 @@ for layer_stack_ID in range(num_layer_stacks):
         else:
             neural_network = tools.NeuralNetwork(nodes).to(tools.get_device())
         print("Nodes in layers: " + str(nodes))
-        print("Leaning rate: " + str(learning_rate[i]))
+        print("Learning rate: " + str(learning_rate[i]))
         print("Training cycles: " + str(training_cycles))
 
         # Save initial weights if save weights
