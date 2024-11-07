@@ -99,21 +99,22 @@ if not(use_generated_layer_stacks):
 for layer_stack_ID in range(num_layer_stacks):
     # For each learning rate being tested
     for i in range(len(learning_rate)):
-        # Folder name
-        path = "./results/" + str(layer_stacks[layer_stack_ID]) + "/"
-        file = Path(path)
-        file.mkdir(parents=True, exist_ok=True)
-        # Initialize neural network with random weights or saved ones
-        
         # Update nodes in case we want to control them
         if use_generated_layer_stacks:
             nodes = layer_stacks[layer_stack_ID]
-        
+
+        # Make folder name from nodes
+        path = "./results/" + str(layer_stacks[layer_stack_ID]) + "/"
+        file = Path(path)
+        file.mkdir(parents=True, exist_ok=True)
+
+        # Initialize neural network with random weights or saved ones
         if load_weights:
             neural_network = tools.NeuralNetwork(nodes, load_weights_file=initial_weights_filename)
         else:
             neural_network = tools.NeuralNetwork(nodes).to(tools.get_device())
         print("Nodes in layers: " + str(nodes))
+        print("Leaning rate: " + str(learning_rate[i]))
 
         # Save initial weights if save weights
         if save_initial_weights:
