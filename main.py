@@ -35,12 +35,12 @@ shuffle_data = False             # If the data should be randomized before split
 load_weights = False            # If the weights should be loaded from initial_weights_filename
 initial_weights_filename = "weights_initial.csv" # Filename (including path) for the weights to be saved to or read from
 should_train    = True          # If the neural network should train or just test
-train_ratio = 0.3               # How high ratio of data should be used for training
-nodes = [5, 256, 64, 1]                # Number of hidden nodes per layer - 11 dimensional data. First layer is equal to number of data dimensions, last layer is equal to output dimensions (1 in this case) - Decided via trial and error or heuristics according to Jón but usually more than number of data dimensions in order to not compress data.
+train_ratio = 0.1               # How high ratio of data should be used for training
+nodes = [5, 128, 64, 1]                # Number of hidden nodes per layer - 11 dimensional data. First layer is equal to number of data dimensions, last layer is equal to output dimensions (1 in this case) - Decided via trial and error or heuristics according to Jón but usually more than number of data dimensions in order to not compress data.
 use_generated_layer_stacks = False              # If we should use the nodes in the nodes variable or generate layer stacks.
 max_layer_stacks = 12   # How many layer stacks we add maximum
 training_cycles = 4            # A.k.a "epochs" or how many times the training goes through each data point in the training data
-learning_rate = [0.001, 0.005, 0.01] #[0.001,0.005,0.01,0.05,0.1,0.5,1,5,10,50,100,500,1000]              # The learning rate for the neural network training
+learning_rate = [0.01, 0.05, 0.1, 0.5] #[0.001,0.005,0.01,0.05,0.1,0.5,1,5,10,50,100,500,1000]              # The learning rate for the neural network training
 save_initial_weights = True            # If the weights should be saved
 save_final_weights = True            # If the weights should be saved
 final_weights_filename = "weights_final.csv" # Filename (including path) for the weights to be saved to or read from - NOT YET IMPLEMENTED
@@ -115,6 +115,7 @@ for layer_stack_ID in range(num_layer_stacks):
             neural_network = tools.NeuralNetwork(nodes).to(tools.get_device())
         print("Nodes in layers: " + str(nodes))
         print("Leaning rate: " + str(learning_rate[i]))
+        print("Training cycles: " + str(training_cycles))
 
         # Save initial weights if save weights
         if save_initial_weights:
@@ -163,7 +164,7 @@ for layer_stack_ID in range(num_layer_stacks):
         layer_stacks_mean_errors.append(torch.mean(testing_loss).item())
         layer_stacks_max_errors.append(torch.max(testing_loss).item())
         
-        print(Fore.YELLOW + "BIG RUN STATUS: {:.2f}".format(100*(layer_stack_ID+1)/num_layer_stacks) + " %" + Style.RESET_ALL)
+        print(Fore.YELLOW + "BIG RUN STATUS: {:.1f}".format(100*(layer_stack_ID*len(learning_rate)+i)/(num_layer_stacks*len(learning_rate))) + " %" + Style.RESET_ALL)
 
 # Find minimum mean_error and minimum max_error, print which neural network reached it
 print("Best mean_error: " + str(100*min(layer_stacks_mean_errors)))
@@ -175,5 +176,5 @@ print("From layer stack: " + str(layer_stacks[index]) + " on run " + str(index+1
 
 # Calculate runtime and print successful run message
 runtime = time.time() - start_time
-print("\nmain.py ran successfully in " + Fore.BLUE + " {:0.1f} minutes\n".format(runtime/60)  + Style.RESET_ALL)
+print("\nmain.py ran successfully in " + Fore.BLUE + " {:0.1f} minutes".format(runtime/60)  + Style.RESET_ALL + " at " + datetime.datetime.now().strftime("%H:%M:%S") + "\n")
 input("Press enter to end") # In case a run is being done in a terminal window then add input prompt so window doesn't close automatically
