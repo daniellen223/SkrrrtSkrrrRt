@@ -14,11 +14,12 @@ torch til að geta notað autograd og þurfa ekki að diffra fallið sjálf
 '''
 # Start timer import
 import time # For measuring runtime
+import datetime # For displaying the start time in a readable format
 # Start timer
 start_time = time.time()
 
 # Start message
-print(" \r\nRunning main.py")
+print(" \r\nRunning main.py at " + datetime.datetime.now().strftime("%H:%M:%S"))
 
 # Settings
 #--------------------------------------------------------
@@ -35,10 +36,10 @@ load_weights = False            # If the weights should be loaded from initial_w
 initial_weights_filename = "weights_initial.csv" # Filename (including path) for the weights to be saved to or read from
 should_train    = True          # If the neural network should train or just test
 train_ratio = 0.8               # How high ratio of data should be used for training
-nodes = [5, 512, 1]                # None in order to not override. Number of hidden nodes per layer - 11 dimensional data. First layer is equal to number of data dimensions, last layer is equal to output dimensions (1 in this case) - Decided via trial and error or heuristics according to Jón but usually more than number of data dimensions in order to not compress data.
-use_generated_layer_stacks = False
+nodes = [5, 256, 128, 64, 32, 16, 8, 4, 2, 1]                # Number of hidden nodes per layer - 11 dimensional data. First layer is equal to number of data dimensions, last layer is equal to output dimensions (1 in this case) - Decided via trial and error or heuristics according to Jón but usually more than number of data dimensions in order to not compress data.
+use_generated_layer_stacks = False              # If we should use the nodes in the nodes variable or generate layer stacks.
 max_layer_stacks = 12   # How many layer stacks we add maximum
-training_cycles = 50            # A.k.a "epochs" or how many times the training goes through each data point in the training data
+training_cycles = 15            # A.k.a "epochs" or how many times the training goes through each data point in the training data
 learning_rate = [0.005] #[0.001,0.005,0.01,0.05,0.1,0.5,1,5,10,50,100,500,1000]              # The learning rate for the neural network training
 save_initial_weights = True            # If the weights should be saved
 save_final_weights = True            # If the weights should be saved

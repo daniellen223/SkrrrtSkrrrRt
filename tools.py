@@ -694,7 +694,7 @@ class NeuralNetwork(torch.nn.Module):
         MSE_Loss = torch.nn.MSELoss()
 
         # Define the optimizer (Adam optimizer)
-        optimizer = torch.optim.Adam(self.parameters(), lr=0.001)
+        optimizer = torch.optim.Adam(self.parameters(), lr=lr)
         
         # Set model to training mode
         self.train()
