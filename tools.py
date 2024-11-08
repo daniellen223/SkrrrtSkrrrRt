@@ -750,8 +750,8 @@ class NeuralNetwork(torch.nn.Module):
 
             # End for n
             # Log running_loss to loss_matrix
-            MSE_loss_matrix[epoch] = MSE_running_loss/N
-            percent_loss_matrix[epoch] = percent_running_loss/N
+            MSE_loss_matrix[epoch] = MSE_running_loss/N # Should be divided by (N-unclean_points)
+            percent_loss_matrix[epoch] = percent_running_loss/N  # Should be divided by (N-unclean_points)
         # End for epoch
             
         # Modified code from ChatGPT end

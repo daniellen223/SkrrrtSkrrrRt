@@ -36,7 +36,7 @@ load_weights = False                # If the weights should be loaded from initi
 initial_weights_filename = "weights_initial.csv" # Filename (including path) for the weights to be saved to or read from
 should_train    = True              # If the neural network should train or just test
 train_ratio = 0.2                   # How high ratio of data should be used for training
-nodes = [5, 2048, 1024, 512, 256, 1]          # Number of hidden nodes per layer - 11 dimensional data. First layer is equal to number of data dimensions, last layer is equal to output dimensions (1 in this case) - Decided via trial and error or heuristics according to Jón but usually more than number of data dimensions in order to not compress data.
+nodes = [5, 2048, 1024, 512, 256, 128, 1]          # Number of hidden nodes per layer - 11 dimensional data. First layer is equal to number of data dimensions, last layer is equal to output dimensions (1 in this case) - Decided via trial and error or heuristics according to Jón but usually more than number of data dimensions in order to not compress data.
 use_generated_layer_stacks = False  # If we should use the nodes in the nodes variable or generate layer stacks.
 max_layer_stacks = 12               # How many layer stacks we add maximum
 training_cycles = 2                 # A.k.a "epochs" or how many times the training goes through each data point in the training data
@@ -136,8 +136,8 @@ for layer_stack_ID in range(num_layer_stacks):
             print("Unclean points: " + str(n_unclean_points))
 
         # Save errors as CSV file
-        tools.tensor_to_csv(training_MSE_loss, (path + "MSE_loss_LR" + str(learning_rate[i])),fieldnames=['Data point', 'Error'])
-        tools.tensor_to_csv(training_percent_loss, (path + "percent_loss_LR" + str(learning_rate[i])),fieldnames=['Data point', 'Error'])
+        tools.tensor_to_csv(training_MSE_loss, (path + "MSE_loss_LR" + str(learning_rate[i]) + ".csv"),fieldnames=['Data point', 'Error'])
+        tools.tensor_to_csv(training_percent_loss, (path + "percent_loss_LR" + str(learning_rate[i]) + ".csv"),fieldnames=['Data point', 'Error'])
 
         # Save final weights if save weights
         if save_final_weights:
@@ -187,6 +187,6 @@ print("\nmain.py ran successfully in " + Fore.BLUE + " {:0.1f} minutes".format(r
 
 # Notify user if possible
 if toaster != None:
-    toaster.show_toast("main.py", "Finished in {:0.1f} minutes".format(runtime/60), duration=10)
+    toaster.show_toast("main.py", ("Finished in " + str(runtime/60) + " minutes"), duration=10)
 
 input("Press enter to end") # In case a run is being done in a terminal window then add input prompt so window doesn't close automatically
