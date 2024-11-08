@@ -95,6 +95,7 @@ layer_stacks_max_errors = []
 
 if not(use_generated_layer_stacks):
     num_layer_stacks = 1
+    layer_stacks = [nodes]
 
 for layer_stack_ID in range(num_layer_stacks):
     # For each learning rate being tested
