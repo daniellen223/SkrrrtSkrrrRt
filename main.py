@@ -23,31 +23,31 @@ print(" \r\nRunning main.py at " + datetime.datetime.now().strftime("%H:%M:%S"))
 
 # Settings
 #--------------------------------------------------------
-data_file_name = "train.csv"    # Which file to get the data from
-map_data = True            # If the data should be mapped
-save_mapping = True            # Saves the data mapping for the read data to a csv file
-mapping_folder = "Data_mapping" # Name of mapping folder
-normalize_data = False           # If the data should be normalized before splitting into training and testing
+data_file_name = "train.csv"        # Which file to get the data from
+map_data = True                     # If the data should be mapped
+save_mapping = True                 # Saves the data mapping for the read data to a csv file
+mapping_folder = "Data_mapping"     # Name of mapping folder
+normalize_data = False              # If the data should be normalized before splitting into training and testing
 normalized_data_filename = "Data_Normalized.csv" # The filename to save the normalized data to
 all_fieldnames = ['id','brand','model','model_year','milage','fuel_type','engine','transmission','ext_col','int_col','accident','clean_title', 'price'] # The names of the columns of the input data from the csv file in the same order as it appears in the csv file
 used_fields = ['brand','model_year','milage','accident','clean_title'] # Which fields we plan on using for the data
-shuffle_data = False             # If the data should be randomized before splitting into training and testing
-load_weights = False            # If the weights should be loaded from initial_weights_filename
+shuffle_data = False                # If the data should be randomized before splitting into training and testing
+load_weights = False                # If the weights should be loaded from initial_weights_filename
 initial_weights_filename = "weights_initial.csv" # Filename (including path) for the weights to be saved to or read from
-should_train    = True          # If the neural network should train or just test
-train_ratio = 0.2               # How high ratio of data should be used for training
-nodes = [5, 2048, 1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1]                # Number of hidden nodes per layer - 11 dimensional data. First layer is equal to number of data dimensions, last layer is equal to output dimensions (1 in this case) - Decided via trial and error or heuristics according to Jón but usually more than number of data dimensions in order to not compress data.
-use_generated_layer_stacks = False              # If we should use the nodes in the nodes variable or generate layer stacks.
-max_layer_stacks = 12   # How many layer stacks we add maximum
-training_cycles = 8            # A.k.a "epochs" or how many times the training goes through each data point in the training data
-learning_rate = [0.5] #[0.001,0.005,0.01,0.05,0.1,0.5,1,5,10,50,100,500,1000]              # The learning rate for the neural network training
-save_initial_weights = True            # If the weights should be saved
-save_final_weights = True            # If the weights should be saved
+should_train    = True              # If the neural network should train or just test
+train_ratio = 0.2                   # How high ratio of data should be used for training
+nodes = [5, 2048, 1024, 512, 256, 1]          # Number of hidden nodes per layer - 11 dimensional data. First layer is equal to number of data dimensions, last layer is equal to output dimensions (1 in this case) - Decided via trial and error or heuristics according to Jón but usually more than number of data dimensions in order to not compress data.
+use_generated_layer_stacks = False  # If we should use the nodes in the nodes variable or generate layer stacks.
+max_layer_stacks = 12               # How many layer stacks we add maximum
+training_cycles = 2                 # A.k.a "epochs" or how many times the training goes through each data point in the training data
+learning_rate = [0.5]               # The learning rate for the neural network training
+save_initial_weights = True         # If the weights should be saved
+save_final_weights = True           # If the weights should be saved
 final_weights_filename = "weights_final.csv" # Filename (including path) for the weights to be saved to or read from - NOT YET IMPLEMENTED
-test_eval_method = "percent"    # Which evaluation method for the error is used for testing. See tools.test_on_data for options
-save_errors     = True          # If we should save the errors as a csv file
+test_eval_method = "percent"        # Which evaluation method for the error is used for testing. See tools.test_on_data for options
+save_errors     = True              # If we should save the errors as a csv file
 error_file      = "percent_error.csv"   # Name of error csv file
-show_plots      = False         # If the plots should be showed or not. Note: Plots are always saved
+show_plots      = False             # If the plots should be showed or not. Note: Plots are always saved
 #--------------------------------------------------------
 
 # Imports
@@ -58,6 +58,12 @@ import torch # For working with tensors and neural networks
 import tools # Group tools
 from pathlib import Path # For paths of files
 from colorama import Fore, Style  # For coloring terminal messages
+try:
+    from win10toast import ToastNotifier    # For notifying users that the run is finished
+    toaster = ToastNotifier()
+except:
+    toaster = None
+    
 print(Fore.GREEN + "Complete" + Style.RESET_ALL)
 
 # Testing area
@@ -178,4 +184,9 @@ print("From layer stack: " + str(layer_stacks[index]) + " on run " + str(index+1
 # Calculate runtime and print successful run message
 runtime = time.time() - start_time
 print("\nmain.py ran successfully in " + Fore.BLUE + " {:0.1f} minutes".format(runtime/60)  + Style.RESET_ALL + " at " + datetime.datetime.now().strftime("%H:%M:%S") + "\n")
+
+# Notify user if possible
+if toaster != None:
+    toaster.show_toast("main.py", "Finished in {:0.1f} minutes".format(runtime/60), duration=10)
+
 input("Press enter to end") # In case a run is being done in a terminal window then add input prompt so window doesn't close automatically
