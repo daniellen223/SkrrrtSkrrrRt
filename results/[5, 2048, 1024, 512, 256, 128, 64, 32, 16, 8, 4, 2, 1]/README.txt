@@ -1,0 +1,1 @@
+Only the files with 0.5 learning rate in this folder actually come from the 11 layer run
